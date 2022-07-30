@@ -18,7 +18,6 @@ public class MainController {
         return "index";
     }
     
-    
     @PostMapping("/postMessage")
     public String post(@RequestParam String postText, String hashtag, String hashtagSelect) {
     	
