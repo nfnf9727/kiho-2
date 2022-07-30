@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>タイトル</title>
+    <link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/BASE.css}" rel="stylesheet" type="text/css">
+</head>
+<header class="header">
+<div class="site">
+   <img src="ICON.png" alt="アイコン画像">
+  
+  <div class="head">
+  <button id="top" class="button">　TOP　</button>
+  <button id="modalOpen" class="button">投稿する</button>
+  <input type="text" id="serch" value="">
+  <button id="search" class="button">検索</button>
+  </div>
+  
+  <div id="easyModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1><font color="white">投稿</font></h1>
+        <span class="modalClose">×</span>
+      </div>
+      <form method="post">
+      <div class="modal-body">
+      
+      
+        <b>投稿者</b>
+          <b><span th:text="${userName}" style="margin-left:62px;"></spanth:text=></b>
+        
+        <div>
+         <span>
+            <b>投稿内容</b>
+         </span>
+           <input id="postText" name="postText" type="text" style="width:20em; height:10em; margin-left:50px;" maxlength="200"/>
+        </div>
+       <div class="input-row">
+           <span>
+              <b>#ハッシュタグ</b>
+           </span>
+           <input id="hashtag" name="hashtag" type="text" style="margin-left:6px;"/>
+			<br/>
+             <select name="hashtagSelect" id="hashtagSelect" style="margin-left:120px;">
+               <option value="1">上記で入力</option>
+               <option value="2">#趣味</option>
+               <option value="3">#休日</option>
+               <option value="4">#ランチ</option>
+             </select>
+           <!--
+           <label><input id="hashtag_hobby" name="hashtagSelect" type="radio" value="1" onClick="setValue(this.value)"/>#趣味</label>
+           <label><input id="hashtag_holiday" name="hashtagSelect" type="radio" value="2" onClick="setValue(this.value)"/>#休日</label>
+           <label><input id="hashtag_lunch" name="hashtagSelect" type="radio" value="3" onClick="setValue(this.value)"/>#ランチ</label>
+           -->
+        </div>
+        <br/>
+        <div align="center">
+          <button id="toukou" class="button" formaction="/postMessage">投稿</button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</header>
+<body>
+<script type="text/javascript" th:src="@{/js/main.js}"></script> 
+     <table>
+     <tr>
+       <td bgcolor="#cccccc">
+         <div class="oneone">
+           <span>#休日</span>
+         </div>
+       </td>
+       <td rowSpan="2" bgcolor="#faf0e6">
+         <div class="onetwo">
+           <img  src="/images/landScape2.jpg">
+         </div>
+       </td>
+       <td colSpan="2" bgcolor="#b0c4de">
+         <div class="onethree">    
+           <img src="/images/landScape1.jpg">   
+         </div>
+       </td>
+       <td bgcolor="#e6e6fa" rowSpan="2">
+         <div class="onefour">    
+           <img src="">   
+           <span>#趣味</span>
+         </div>
+       </td>
+     </tr>
+    
+     
+     <tr>
+       <td  bgcolor="#f0e68c">
+       <div class="twoone">
+         <img  src="/images/landScape3.jpg">
+       </div>
+       </td>
+       <td  bgcolor="#ffb6c1">
+         <div class="twotwo">
+         <img  src="/images/landScape4.jpg">
+         </div>
+       </td>
+       <td  bgcolor="#ffebcd">
+         <div class="twothree">
+         <img  src="/images/landScape5.jpg">
+         </div>
+       </td>
+     </tr>
+    
+     
+     <tr>
+       <td bgcolor="#7fffd4" colSpan="3">
+       <div class="threeone">
+         <img  src="">
+         <span>#ランチ</span>
+       </div>
+       </td>
+       <td bgcolor="#fffacd">
+         <div class="threetwo">
+         <img  src="">
+           <span>#旅行</span>
+         </div>
+       </td>
+       <td bgcolor="#e0ffff">
+         <div class="threethree">
+         <img  src="/images/landScape6.jpg">
+         </div>
+       </td>
+     </tr>
+  </table>
+       <br/>
+ 
+     <table>
+     <tr>
+       <td rowSpan="2" bgcolor="#ffb6c1">
+         <div class="layout2_oneone">
+         <img  src="/images/landScape1.jpg">
+         </div>
+       </td>
+       <td bgcolor="#fffacd">
+         <div class="layout2_onetwo">
+         <img  src="/images/landScape2.jpg">
+         </div>
+       </td>
+       <td bgcolor="#b0c4de">
+        <div class="layout2_onethree">    
+         <img src="/images/landScape3.jpg">   
+         </div>
+       </td>
+       <td colSpan="2" bgcolor="#f0e68c">
+        <div class="layout2_onefour">    
+         <img src="">  
+          <span>#趣味</span>
+         </div>
+       </td>
+     </tr>
+   
+     
+     <tr>
+       <td colSpan="2"  bgcolor="#7fffd4">
+         <div class="layout2_twoone">
+           <img  src="">
+           <span>#休日</span>
+         </div>
+       </td>
+       <td rowSpan="2" bgcolor="#cccccc">
+         <div class="layout2_twotwo">
+           <img  src="/images/landScape4.jpg">
+         </div>
+       </td>
+       <td bgcolor="#ffebcd">
+         <div class="layout2_twothree">
+           <img  src="">
+            <span>#ランチ</span>
+         </div>
+       </td>
+     </tr>
+   
+     
+     <tr>
+       <td colSpan="2" bgcolor="#e0ffff">
+         <div class="layout2_threeone">
+           <img  src="/images/landScape5.jpg">
+         </div>
+       </td>
+       <td bgcolor="#e6e6fa">
+         <div class="layout2_threetwo">
+           <img  src="/images/landScape6.jpg">
+         </div>
+       </td>
+       <td bgcolor="#faf0e6">
+         <div class="layout2_threethree">
+           <img  src="">
+           <span>#旅行</span>
+         </div>
+       </td>
+     </tr>
+   </table>
+   
+   
+   <br/>
+   
+   
+    <table>
+     <tr>
+       <td colSpan="2"　bgcolor="#ffb6c1">
+         <div class="layout3_oneone">
+         <img  src="/images/landScape1.jpg">
+         </div>
+       </td>
+       <td colSpan="2" bgcolor="#b0c4de">
+         <div class="layout3_onetwo">
+         <img  src="/images/landScape2.jpg">
+         </div>
+       </td>
+       <td colSpan="2"　bgcolor="#f0e68c">
+        <div class="layout3_onethree">    
+         <img src="/images/landScape3.jpg">   
+         </div>
+       </td>
+     </tr>
+   
+     
+     <tr>
+       <td bgcolor="#e0ffff">
+         <div class="layout3_twoone">
+           <img  src="">
+           <span>#休日</span>
+         </div>
+       </td>
+       <td colSpan="2" bgcolor="#7fffd4">
+         <div class="layout3_twotwo">
+           <img  src="/images/landScape4.jpg">
+         </div>
+       </td>
+       <td colSpan="2"　bgcolor="#cccccc">
+         <div class="layout3_twothree">
+           <img  src="">
+            <span>#ランチ</span>
+         </div>
+       </td>
+       <td bgcolor="#e6e6fa">
+         <div class="layout3_twofour">
+           <img  src="">
+           <span>#趣味</span>
+         </div>
+       </td>
+     </tr>
+   
+     
+     <tr>
+       <td colSpan="2" bgcolor="#ffebcd">
+         <div class="layout3_threeone">
+           <img  src="/images/landScape5.jpg">
+         </div>
+       </td>
+       <td colSpan="2"　bgcolor="#faf0e6">
+         <div class="layout3_threetwo">
+           <img  src="/images/landScape6.jpg">
+         </div>
+       </td>
+       <td colSpan="2"　bgcolor="#red">
+         <div class="layout3_threethree">
+           <img  src="">
+           <span>#旅行</span>
+         </div>
+       </td>
+     </tr>
+   </table>
+</body>
+</html>
