@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.kiho;
 
 
 import org.springframework.stereotype.Controller;
@@ -29,6 +29,6 @@ public class MainController {
     	System.out.println(hashtagSelect);
     	
     	return "index";
-    }
-
+    }    
+    
 }
