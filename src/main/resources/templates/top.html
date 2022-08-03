@@ -22,7 +22,7 @@
         <h1><font color="white">投稿</font></h1>
         <span class="modalClose">×</span>
       </div>
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
       <div class="modal-body">
       
       
@@ -52,6 +52,10 @@
            <label><input id="hashtag_holiday" name="hashtagSelect" type="radio" value="2" onClick="setValue(this.value)"/>#休日</label>
            <label><input id="hashtag_lunch" name="hashtagSelect" type="radio" value="3" onClick="setValue(this.value)"/>#ランチ</label>
            -->
+           <br/>
+          <input type="file" name="image" id="input" accept="image/jpeg, image/png">
+          <br/>
+          <img id="img" />
         </div>
         <br/>
         <div align="center">
@@ -65,6 +69,9 @@
 </header>
 <body>
 <script type="text/javascript" th:src="@{/js/main.js}"></script> 
+
+
+  <th:block th:if="${flg == 0}">
      <table>
      <tr>
        <td bgcolor="#cccccc">
@@ -74,7 +81,7 @@
        </td>
        <td rowSpan="2" bgcolor="#faf0e6">
          <div class="onetwo">
-           <img  src="/images/landScape2.jpg">
+           <img th:src="${base64image}">
          </div>
        </td>
        <td colSpan="2" bgcolor="#b0c4de">
@@ -130,13 +137,16 @@
        </td>
      </tr>
   </table>
+  </th:block>
+  
+  
        <br/>
- 
+   <th:block th:if="${flg == 1}">
      <table>
      <tr>
        <td rowSpan="2" bgcolor="#ffb6c1">
          <div class="layout2_oneone">
-         <img  src="/images/landScape1.jpg">
+         <img th:src="${base64image}">
          </div>
        </td>
        <td bgcolor="#fffacd">
@@ -198,16 +208,17 @@
        </td>
      </tr>
    </table>
+   </th:block>
    
    
    <br/>
    
-   
+   <th:block th:if="${flg == 2}">
     <table>
      <tr>
        <td colSpan="2"　bgcolor="#ffb6c1">
          <div class="layout3_oneone">
-         <img  src="/images/landScape1.jpg">
+         <img th:src="${base64image}">
          </div>
        </td>
        <td colSpan="2" bgcolor="#b0c4de">
@@ -261,7 +272,7 @@
            <img  src="/images/landScape6.jpg">
          </div>
        </td>
-       <td colSpan="2"　bgcolor="#red">
+       <td colSpan="2"　bgcolor="#cccccc">
          <div class="layout3_threethree">
            <img  src="">
            <span>#旅行</span>
@@ -269,5 +280,6 @@
        </td>
      </tr>
    </table>
+   </th:block>
 </body>
 </html>

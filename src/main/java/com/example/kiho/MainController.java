@@ -1,13 +1,10 @@
 package com.example.kiho;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -15,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -29,21 +27,38 @@ public class MainController {
         List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
         System.out.println(list);
         
+        Random rnd = new Random();
+		model.addAttribute("flg", rnd.nextInt(3));
     	model.addAttribute("userName", "しぶたに");
         
-        return "index";
+        return "top";
     }
     
     
     @PostMapping("/postMessage")
-    public String post(@RequestParam String postText, String hashtag, String hashtagSelect) {
+    public String post(Model model,@RequestParam String postText, String hashtag, String hashtagSelect, MultipartFile image) {
     	
     	System.out.println(postText);
     	//セレクトボックスの値：1のとき、テキストボックスの値をハッシュタグに保存
     	//セレクトボックスの値：上記以外、セレクトボックスの値をハッシュタグに保存
     	System.out.println(hashtag);
     	System.out.println(hashtagSelect);
+    	System.out.println(image);
     	
-    	return "index";
+    	try {
+    	StringBuffer data = new StringBuffer();
+        String base64 = new String(Base64.encodeBase64(image.getBytes()),"ASCII");
+        data.append("data:image/jpeg;base64,");
+        data.append(base64);
+        model.addAttribute("base64image",data.toString());
+    	
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	Random rnd = new Random();
+		model.addAttribute("flg", rnd.nextInt(3));
+		
+    	return "top";
     }    
 }
