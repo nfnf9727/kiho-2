@@ -22,6 +22,7 @@ public class MainController {
 	
     @RequestMapping(path = "/")
     public String showIndex(Model model) {
+    	
     	System.out.println("OK");
     	String sql = "SELECT * FROM user";
         List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
