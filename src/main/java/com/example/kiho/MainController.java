@@ -36,7 +36,6 @@ public class MainController {
     }
     
     
-    
     @PostMapping("/postMessage")
     public String post(Model model,@RequestParam String postText, String hashtag, String hashtagSelect, MultipartFile image) {
     	
