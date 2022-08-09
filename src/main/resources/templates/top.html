@@ -10,7 +10,9 @@
    <img src="ICON.png" alt="アイコン画像">
   
   <div class="head">
-  <button id="top" class="button">　TOP　</button>
+  <form style="display: inline" action="/top">
+    <button id="top" class="button">　TOP　</button>
+  </form>
   <button id="modalOpen" class="button">投稿する</button>
   <input type="text" id="serch" value="">
   <button id="search" class="button">検索</button>
@@ -76,23 +78,50 @@
      <tr>
        <td bgcolor="#cccccc">
          <div class="oneone">
-           <span>#休日</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[1] == ''}">
+             <span th:text="${hashTagList[1]}"></span>
+           </div>
+           <div th:if="${imagePathList[1] != ''}">
+             <input type="image" th:src="${imagePathList[1]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td rowSpan="2" bgcolor="#faf0e6">
          <div class="onetwo">
-           <img th:src="${base64image}">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[8] == ''}">
+             <span th:text="${hashTagList[8]}"></span>
+           </div>
+           <div th:if="${imagePathList[8] != ''}">
+             <input type="image" th:src="${imagePathList[8]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td colSpan="2" bgcolor="#b0c4de">
-         <div class="onethree">    
-           <img src="/images/landScape1.jpg">   
+         <div class="onethree">  
+         <form method="post" action="/postDetail">  
+           <div th:if="${imagePathList[7] == ''}">
+             <span th:text="${hashTagList[7]}"></span>
+           </div>
+           <div th:if="${imagePathList[7] != ''}">
+             <input type="image" th:src="${imagePathList[7]}"/>
+           </div> 
+         </form>
          </div>
        </td>
        <td bgcolor="#e6e6fa" rowSpan="2">
-         <div class="onefour">    
-           <img src="">   
-           <span>#趣味</span>
+         <div class="onefour"> 
+         <form method="post" action="/postDetail">   
+           <div th:if="${imagePathList[0] == ''}">
+             <span th:text="${hashTagList[0]}"></span>
+           </div>
+           <div th:if="${imagePathList[0] != ''}">
+             <input type="image" th:src="${imagePathList[0]}"/>
+           </div>
+         </form>
          </div>
        </td>
      </tr>
@@ -101,17 +130,38 @@
      <tr>
        <td  bgcolor="#f0e68c">
        <div class="twoone">
-         <img  src="/images/landScape3.jpg">
+       <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[4] == ''}">
+             <span th:text="${hashTagList[4]}"></span>
+           </div>
+           <div th:if="${imagePathList[4] != ''}">
+             <input type="image" th:src="${imagePathList[4]}"/>
+           </div>
+       </form>
        </div>
        </td>
        <td  bgcolor="#ffb6c1">
          <div class="twotwo">
-         <img  src="/images/landScape4.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[9] == ''}">
+             <span th:text="${hashTagList[9]}"></span>
+           </div>
+           <div th:if="${imagePathList[9] != ''}">
+             <input type="image" th:src="${imagePathList[9]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td  bgcolor="#ffebcd">
          <div class="twothree">
-         <img  src="/images/landScape5.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[3] == ''}">
+             <span th:text="${hashTagList[3]}"></span>
+           </div>
+           <div th:if="${imagePathList[3] != ''}">
+             <input type="image" th:src="${imagePathList[3]}"/>
+           </div>
+         </form>
          </div>
        </td>
      </tr>
@@ -120,52 +170,99 @@
      <tr>
        <td bgcolor="#7fffd4" colSpan="3">
        <div class="threeone">
-         <img  src="">
-         <span>#ランチ</span>
+       <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[5] == ''}">
+             <span th:text="${hashTagList[5]}"></span>
+           </div>
+           <div th:if="${imagePathList[5] != ''}">
+             <input type="image" th:src="${imagePathList[5]}"/>
+           </div>
+       </form>
        </div>
        </td>
        <td bgcolor="#fffacd">
          <div class="threetwo">
-         <img  src="">
-           <span>#旅行</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[6] == ''}">
+             <span th:text="${hashTagList[6]}"></span>
+           </div>
+           <div th:if="${imagePathList[6] != ''}">
+             <input type="image" th:src="${imagePathList[6]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#e0ffff">
          <div class="threethree">
-         <img  src="/images/landScape6.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[2] == ''}">
+             <button><span th:text="${hashTagList[2]}"></span></button>
+           </div>
+           <div th:if="${imagePathList[2] != ''}">
+             <input type="image" th:src="${imagePathList[2]}"/>
+           </div>
+         </form>
          </div>
        </td>
      </tr>
   </table>
   </th:block>
-  
+
   
  <br/>
        
        
     
-   
+
    <th:block th:if="${flg == 2}">
     <table>
      <tr>
        <td bgcolor="#ffb6c1">
          <div class="layout3_oneone">
-         <img th:src="${base64image}">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[3] == ''}">
+             <span th:text="${hashTagList[3]}"></span>
+           </div>
+           <div th:if="${imagePathList[3] != ''}">
+             <input type="image" th:src="${imagePathList[3]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#b0c4de">
          <div class="layout3_onetwo">
-         <img  src="/images/landScape2.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[8] == ''}">
+             <span th:text="${hashTagList[8]}"></span>
+           </div>
+           <div th:if="${imagePathList[8] != ''}">
+             <input type="image" th:src="${imagePathList[8]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#f0e68c">
-        <div class="layout3_onethree">    
-         <img src="/images/landScape3.jpg">   
+        <div class="layout3_onethree">   
+        <form method="post" action="/postDetail"> 
+           <div th:if="${imagePathList[4] == ''}">
+             <span th:text="${hashTagList[4]}"></span>
+           </div>
+           <div th:if="${imagePathList[4] != ''}">
+             <input type="image" th:src="${imagePathList[4]}"/>
+           </div>  
+        </form>
          </div>
        </td>
        <td bgcolor="#e0ffff">
         <div class="layout3_onethree">    
-         <img src="/images/landScape3.jpg">   
+        <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[9] == ''}">
+             <span th:text="${hashTagList[9]}"></span>
+           </div>
+           <div th:if="${imagePathList[9] != ''}">
+             <input type="image" th:src="${imagePathList[9]}"/>
+           </div>  
+        </form>
          </div>
        </td>
      </tr>
@@ -174,13 +271,26 @@
      <tr>
        <td colSpan="2" bgcolor="#7fffd4">
          <div class="layout3_twotwo">
-           <img  src="/images/landScape4.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[5] == ''}">
+             <span th:text="${hashTagList[5]}"></span>
+           </div>
+           <div th:if="${imagePathList[5] != ''}">
+             <input type="image" th:src="${imagePathList[5]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td colSpan="2" bgcolor="#e6e6fa">
          <div class="layout3_twofour">
-           <img  src="">
-           <span>#趣味</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[0] == ''}">
+             <span th:text="${hashTagList[0]}"></span>
+           </div>
+           <div th:if="${imagePathList[0] != ''}">
+             <input type="image" th:src="${imagePathList[0]}"/>
+           </div>
+         </form>
          </div>
        </td>
      </tr>
@@ -189,24 +299,50 @@
      <tr>
        <td bgcolor="#ffebcd">
          <div class="layout3_threeone">
-           <img  src="/images/landScape5.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[6] == ''}">
+             <span th:text="${hashTagList[6]}"></span>
+           </div>
+           <div th:if="${imagePathList[6] != ''}">
+             <input type="image" th:src="${imagePathList[6]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#faf0e6">
          <div class="layout3_threetwo">
-           <img  src="/images/landScape6.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[7] == ''}">
+             <span th:text="${hashTagList[7]}"></span>
+           </div>
+           <div th:if="${imagePathList[7] != ''}">
+             <input type="image" th:src="${imagePathList[7]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#cccccc">
          <div class="layout3_threethree">
-           <img  src="">
-           <span>#旅行</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[2] == ''}">
+             <span th:text="${hashTagList[2]}"></span>
+           </div>
+           <div th:if="${imagePathList[2] != ''}">
+             <input type="image" th:src="${imagePathList[2]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#ffe4e1">
          <div class="layout3_threethree">
-           <img  src="">
-           <span>#旅行</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[1] == ''}">
+             <span th:text="${hashTagList[1]}"></span>
+           </div>
+           <div th:if="${imagePathList[1] != ''}">
+             <input type="image" th:src="${imagePathList[1]}"/>
+           </div>
+         </form>
          </div>
        </td>
      </tr>
@@ -216,30 +352,57 @@
    
    <br/>
    
-   
+
    
    <th:block th:if="${flg == 1}">
      <table>
      <tr>
        <td rowSpan="2" bgcolor="#ffb6c1">
          <div class="layout2_oneone">
-         <img th:src="${base64image}">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[2] == ''}">
+             <span th:text="${hashTagList[2]}"></span>
+           </div>
+           <div th:if="${imagePathList[2] != ''}">
+             <input type="image" th:src="${imagePathList[2]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#fffacd">
          <div class="layout2_onetwo">
-         <img  src="/images/landScape2.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[5] == ''}">
+             <span th:text="${hashTagList[5]}"></span>
+           </div>
+           <div th:if="${imagePathList[5] != ''}">
+             <input type="image" th:src="${imagePathList[5]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#b0c4de">
         <div class="layout2_onethree">    
-         <img src="/images/landScape3.jpg">   
+        <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[6] == ''}">
+             <span th:text="${hashTagList[6]}"></span>
+           </div>
+           <div th:if="${imagePathList[6] != ''}">
+             <input type="image" th:src="${imagePathList[6]}"/>
+           </div>
+        </form>
          </div>
        </td>
        <td colSpan="2" bgcolor="#f0e68c">
-        <div class="layout2_onefour">    
-         <img src="">  
-          <span>#趣味</span>
+        <div class="layout2_onefour">  
+        <form method="post" action="/postDetail">  
+           <div th:if="${imagePathList[9] == ''}">
+             <span th:text="${hashTagList[9]}"></span>
+           </div>
+           <div th:if="${imagePathList[9] != ''}">
+             <input type="image" th:src="${imagePathList[9]}"/>
+           </div>
+        </form>
          </div>
        </td>
      </tr>
@@ -248,19 +411,38 @@
      <tr>
        <td colSpan="2"  bgcolor="#7fffd4">
          <div class="layout2_twoone">
-           <img  src="">
-           <span>#休日</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[3] == ''}">
+             <span th:text="${hashTagList[3]}"></span>
+           </div>
+           <div th:if="${imagePathList[3] != ''}">
+             <input type="image" th:src="${imagePathList[3]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td rowSpan="2" bgcolor="#cccccc">
          <div class="layout2_twotwo">
-           <img  src="/images/landScape4.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[4] == ''}">
+             <span th:text="${hashTagList[4]}"></span>
+           </div>
+           <div th:if="${imagePathList[4] != ''}">
+             <input type="image" th:src="${imagePathList[4]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#ffebcd">
          <div class="layout2_twothree">
-           <img  src="">
-            <span>#ランチ</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[1] == ''}">
+             <span th:text="${hashTagList[1]}"></span>
+           </div>
+           <div th:if="${imagePathList[1] != ''}">
+             <input type="image" th:src="${imagePathList[1]}"/>
+           </div>
+         </form>
          </div>
        </td>
      </tr>
@@ -269,18 +451,38 @@
      <tr>
        <td colSpan="2" bgcolor="#e0ffff">
          <div class="layout2_threeone">
-           <img  src="/images/landScape5.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[0] == ''}">
+             <span th:text="${hashTagList[0]}"></span>
+           </div>
+           <div th:if="${imagePathList[0] != ''}">
+             <input type="image" th:src="${imagePathList[0]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#e6e6fa">
          <div class="layout2_threetwo">
-           <img  src="/images/landScape6.jpg">
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[7] == ''}">
+             <span th:text="${hashTagList[7]}"></span>
+           </div>
+           <div th:if="${imagePathList[7] != ''}">
+             <input type="image" th:src="${imagePathList[7]}"/>
+           </div>
+         </form>
          </div>
        </td>
        <td bgcolor="#faf0e6">
          <div class="layout2_threethree">
-           <img  src="">
-           <span>#旅行</span>
+         <form method="post" action="/postDetail">
+           <div th:if="${imagePathList[8] == ''}">
+             <span th:text="${hashTagList[8]}"></span>
+           </div>
+           <div th:if="${imagePathList[8] != ''}">
+             <input type="image" th:src="${imagePathList[8]}"/>
+           </div>
+         </form>
          </div>
        </td>
      </tr>

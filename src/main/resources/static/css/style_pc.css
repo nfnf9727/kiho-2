@@ -19,6 +19,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .oneone img{
   max-height: 150px;
@@ -35,6 +36,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 300px;
 }
 .onetwo img{
   max-height: 300px;
@@ -52,6 +54,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .onethree img{
   max-height: 150px;
@@ -71,6 +74,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 300px;
 }
 .onefour img{
   max-height: 300px;
@@ -88,6 +92,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .twoone img{
   max-height: 150px;
@@ -106,6 +111,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .twotwo img{
   max-height: 150px;
@@ -123,6 +129,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .twothree img{
   max-height: 150px;
@@ -141,6 +148,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .threeone img{
   max-height: 150px;
@@ -159,6 +167,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .threetwo img{
   max-height: 150px;
@@ -177,6 +186,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .threethree img{
   max-height: 150px;
@@ -195,6 +205,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 300px;
 }
 .layout2_oneone img{
   max-height: 300px;
@@ -212,6 +223,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_onetwo img{
   max-height: 150px;
@@ -230,6 +242,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_onethree img{
   max-height: 150px;
@@ -248,6 +261,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_onefour img{
   max-height: 150px;
@@ -266,6 +280,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_twoone img{
   max-height: 150px;
@@ -285,6 +300,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 300px;
 }
 .layout2_twotwo img{
   max-height: 300px;
@@ -304,6 +320,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_twothree img{
   max-height: 150px;
@@ -323,6 +340,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_threeone img{
   max-height: 150px;
@@ -342,6 +360,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_threetwo img{
   max-height: 150px;
@@ -362,6 +381,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout2_threethree img{
   max-height: 150px;
@@ -382,6 +402,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_oneone img{
   max-height: 150px;
@@ -399,6 +420,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_onetwo img{
   max-height: 150px;
@@ -417,6 +439,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_onethree img{
   max-height: 150px;
@@ -435,6 +458,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_twoone img{
   max-height: 150px;
@@ -454,6 +478,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_twotwo img{
   max-height: 150px;
@@ -473,6 +498,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_twothree img{
   max-height: 150px;
@@ -489,6 +515,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_twofour img{
   max-height: 150px;
@@ -508,6 +535,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_threeone img{
   max-height: 150px;
@@ -527,6 +555,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_threetwo img{
   max-height: 150px;
@@ -547,6 +576,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
+  max-height: 150px;
 }
 .layout3_threethree img{
   max-height: 150px;
