@@ -26,7 +26,7 @@ public class MainController {
 	
 	// テスト用です。このメソッド後で消します。
 	// 本来はshowIndex()を経由してトップ画面を表示します
-	// postmsgテーブル未作成であれば情報取れずエラーになりますので、postmsgテーブルを作成してください
+	// postmsgテーブル（投稿内容を格納するテーブル）未作成であれば情報取れずエラーになりますので、postmsgテーブルを作成してください
 	// 投稿する場合も、postmsgテーブルを作成してから入力ください
 	// 接続URL：http://localhost:8080/
     @RequestMapping(path = "/")
