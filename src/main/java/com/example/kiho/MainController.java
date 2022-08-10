@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -83,26 +85,16 @@ public class MainController {
     // postmsgテーブル作成後、接続してください
     // 接続URL：http://localhost:8080/top
     @RequestMapping(path = "/top")
-    public String showIndex(Model model) {
+    public String showIndex(Model model,HttpSession httpSession) {
 
     	TopController tc = new TopController();
-    	List<String> hashTagList = tc.topHashTag(model, jdbcTemplate);
-    	List<String> imageList = tc.topImagePath(model, jdbcTemplate);
-    	List<String> loginIdList = tc.topLoginId(model, jdbcTemplate);
-    	List<String> imagePathList = new ArrayList<>();
-    	for(int i = 0; i < 10 ; i++) {
-    		if(imageList.get(i) == null || imageList.get(i).isEmpty() || imageList.get(i).isBlank()) {
-    			imagePathList.add("");
-    		}else {
-    			String result = imageList.get(i).substring(25);
-        		imagePathList.add(result);
-    		}
-    	}
-    	
-    	model.addAttribute("hashTagList", hashTagList);
-    	model.addAttribute("imagePathList", imagePathList);
-    	model.addAttribute("loginIdList", loginIdList);
-    	model.addAttribute("userName", "しぶたに");
+    	tc.topHashTag(model, jdbcTemplate);
+    	tc.topImagePath(model, jdbcTemplate);
+    	tc.topLoginId(model, jdbcTemplate);
+    	//ログイン時にユーザ情報をsessionに保存するはず
+    	//sessionからログイン情報取りに行く　後で追加
+    	httpSession.setAttribute("userName", "しぶたに");
+    	model.addAttribute("userName", httpSession.getAttribute("userName"));
     	Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
 
@@ -121,28 +113,7 @@ public class MainController {
     	
     	PostMessageController pmc = new PostMessageController();
     	
-    	List<String> resulList = pmc.postMessage(model, jdbcTemplate, form);
-    	List<String> hashTagList = new ArrayList<>();
-    	List<String> imagePathList = new ArrayList<>();
-    	List<String> loginIdList = new ArrayList<>();
-    	for(int i=0; i<10; i++) {
-    		hashTagList.add(resulList.get(i));
-    	}
-    	for(int i=10; i<20; i++) {
-    		if(resulList.get(i) == null || resulList.get(i).isEmpty() || resulList.get(i).isBlank()) {
-    			imagePathList.add("");
-    		}else {
-    			String result = resulList.get(i).substring(25);
-        		imagePathList.add(result);
-    		}
-    		    		
-    	}
-    	for(int i=20; i<30; i++) {
-    		loginIdList.add(resulList.get(i));
-    	}
-    	model.addAttribute("hashTagList", hashTagList);
-    	model.addAttribute("imagePathList", imagePathList);
-    	model.addAttribute("loginIdList", loginIdList);
+    	pmc.postMessage(model, jdbcTemplate, form);
     	
     	Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
@@ -152,7 +123,7 @@ public class MainController {
       
     }
     
-    @RequestMapping(path = "/postDetail")
+    @PostMapping(path = "/postDetail")
     public String postDetail(Model model) {
     	
     	return "test";

@@ -13,13 +13,11 @@ import java.util.Random;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
-
-import com.example.kiho.MainController;
 import com.example.kiho.top.TopController;
 
 public class PostMessageController {
 	
-	public List<String> postMessage(Model model,JdbcTemplate jdbcTemplate, PostForm form) {
+	public void postMessage(Model model,JdbcTemplate jdbcTemplate, PostForm form) {
 		
 		//項目チェック
 		PostCheck pc = new PostCheck();
@@ -69,13 +67,13 @@ public class PostMessageController {
 			int num = rand.nextInt(sb1.length());
 			sb.append(sb1.charAt(num));
 		}
-		List<String> resultList = new ArrayList<>();
 		try {
 			Path path = Paths.get("src/main/resources/static/images/"+ sb + ".png");
-			byte[] bytes  = form.getImage().getBytes();
-			OutputStream stream = Files.newOutputStream(path);
-			stream.write(bytes);
-
+			if(!form.getImage().isEmpty()) {
+				byte[] bytes  = form.getImage().getBytes();
+				OutputStream stream = Files.newOutputStream(path);
+				stream.write(bytes);
+			}
 
 			if(form.getImage().isEmpty()) {
 				String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime) VALUES('test1', '"+form.getPostText()+"',' "+hashTag+"', '','"+fdate1+"')";
@@ -87,25 +85,13 @@ public class PostMessageController {
 			
 			//top画面を表示させるためにDB内容取得
 			TopController tc = new TopController();
-			List<String> hashTagList = tc.topHashTag(model, jdbcTemplate);
-			List<String> imagePathList = tc.topImagePath(model, jdbcTemplate);
-			List<String> loginIdList = tc.topLoginId(model, jdbcTemplate);
-	        for(int i=0 ; i<10; i++) {
-	        	resultList.add(hashTagList.get(i));
-	        }
-	        for(int i=0 ; i<10; i++) {	
-	        	resultList.add(imagePathList.get(i));
-	        }
-	        for(int i=0 ; i<10; i++) {
-	        	resultList.add(loginIdList.get(i));
-	        }
+			tc.topHashTag(model, jdbcTemplate);
+			tc.topImagePath(model, jdbcTemplate);
+			tc.topLoginId(model, jdbcTemplate);
 
 		}catch(Exception e){
     		e.printStackTrace();
     	}
-		
-		return resultList;
-		
 	}
 
 }

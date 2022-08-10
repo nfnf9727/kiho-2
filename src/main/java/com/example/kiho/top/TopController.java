@@ -1,39 +1,45 @@
 package com.example.kiho.top;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 
 
 public class TopController {
 	
-	public List<String> topHashTag(Model model,JdbcTemplate jdbcTemplate) {
+	public void topHashTag(Model model,JdbcTemplate jdbcTemplate) {
 		
 		String hashTagSQL = "SELECT hashTag FROM postmsg ORDER BY createdTime DESC";
 		List<String> hashTagList = jdbcTemplate.queryForList(hashTagSQL,String.class);	
-        
-        return hashTagList;
+		model.addAttribute("hashTagList", hashTagList);
 		
 	}
 	
-	public List<String> topImagePath(Model model,JdbcTemplate jdbcTemplate) {
+	public void topImagePath(Model model,JdbcTemplate jdbcTemplate) {
 		
         String imageSQL = "SELECT image FROM postmsg ORDER BY createdTime DESC";
-        List<String> imagePathList = jdbcTemplate.queryForList(imageSQL,String.class);
-        
-        return imagePathList;
+        List<String> imagePathSQLList = jdbcTemplate.queryForList(imageSQL,String.class);
+    	List<String> imagePathList = new ArrayList<>();
+    	for(int i = 0; i < 10 ; i++) {
+    		if(imagePathSQLList.get(i) == null ||imagePathSQLList.get(i).isEmpty() || imagePathSQLList.get(i).isBlank()) {
+    			imagePathList.add("");
+    		}else {
+    			String result = imagePathSQLList.get(i).substring(25);
+        		imagePathList.add(result);
+    		}
+    	}
+        model.addAttribute("imagePathList", imagePathList);
 		
 	}
 	
-	public List<String> topLoginId(Model model,JdbcTemplate jdbcTemplate) {
+	public void topLoginId(Model model,JdbcTemplate jdbcTemplate) {
 		
         String loginIdSQL = "SELECT loginId FROM postmsg ORDER BY createdTime DESC";
         List<String> loginIdList = jdbcTemplate.queryForList(loginIdSQL,String.class);
-        
-        return loginIdList;
+        model.addAttribute("loginIdList", loginIdList);
 		
 	}
 
