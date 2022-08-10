@@ -35,6 +35,7 @@ public class PostMessageController {
 			DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		String fdate1 = dtformat.format(date1); 		
 		//コメント
+		//渋谷先生
 		//ハッシュタグの設定
 		String str = null;
 		String hashTag = "";
