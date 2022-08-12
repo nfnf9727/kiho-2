@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.kiho.postMessage.PostForm;
-import com.example.kiho.postMessage.PostMessageController;
-import com.example.kiho.top.TopController;
+import com.example.kiho.postMessage.PostMessageMainLogic;
+import com.example.kiho.top.TopMainLogic;
 
 
 @Controller
@@ -87,7 +87,7 @@ public class MainController {
     @RequestMapping(path = "/top")
     public String showIndex(Model model,HttpSession httpSession) {
 
-    	TopController tc = new TopController();
+    	TopMainLogic tc = new TopMainLogic();
     	tc.topHashTag(model, jdbcTemplate);
     	tc.topImagePath(model, jdbcTemplate);
     	tc.topLoginId(model, jdbcTemplate);
@@ -111,7 +111,7 @@ public class MainController {
     	form.setHashtagSelect(hashtagSelect);
     	form.setImage(image);
     	
-    	PostMessageController pmc = new PostMessageController();
+    	PostMessageMainLogic pmc = new PostMessageMainLogic();
     	
     	pmc.postMessage(model, jdbcTemplate, form);
     	
@@ -124,7 +124,8 @@ public class MainController {
     }
     
     @PostMapping(path = "/postDetail")
-    public String postDetail(Model model) {
+    public String postDetail(Model model,@RequestParam String loginId) {
+    	System.out.println(loginId);
     	
     	return "test";
     }

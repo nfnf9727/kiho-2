@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
 
 
-public class TopController {
+public class TopMainLogic {
 	
 	public void topHashTag(Model model,JdbcTemplate jdbcTemplate) {
 		
