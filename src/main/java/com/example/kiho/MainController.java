@@ -25,6 +25,7 @@ public class MainController {
 	@Autowired
     private JdbcTemplate jdbcTemplate;
 	
+	//試しにプルしてからコミットしてみた。
 	
 	// テスト用です。このメソッド後で消します。
 	// 本来はshowIndex()を経由してトップ画面を表示します

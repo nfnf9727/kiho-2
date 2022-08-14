@@ -18,6 +18,7 @@ public class PostMessageMainLogic {
 
 	public void postMessage(Model model, JdbcTemplate jdbcTemplate, PostForm form) {
 
+		//こっちも試しにコメント追加してみた。
 		// 項目チェック（jsとサーブレットのダブルチェック）
 		PostCheck pc = new PostCheck();
 		String errorMsg = "";
