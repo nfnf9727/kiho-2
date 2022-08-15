@@ -2,8 +2,10 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>タイトル</title>
-    <link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css"/>
-    <link th:href="@{/css/BASE.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)"/>
+    <link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)"/>
+    <link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)"/> 
+    <link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)"/>
 </head>
 <header class="header">
 <div class="site">
@@ -38,7 +40,9 @@
            <span>
               <b>#ハッシュタグ</b>
            </span>
-           <input id="hashtag" name="hashtag" type="text" style="margin-left:6px;"/><font size="1">※ハッシュタグ「#」は半角で入力してください</font>
+           <input id="hashtag" name="hashtag" type="text" style="margin-left:6px;"/>
+           <br/>
+           <font size="1">※ハッシュタグ「#」は半角で入力してください</font>
            <br/>
              <select name="hashtagSelect" id="hashtagSelect" style="margin-left:120px;">
                <option value="1">上記で入力</option>
@@ -79,7 +83,7 @@
            <div th:if="${imagePathList[1] != ''}">
              <input type="image" th:src="${imagePathList[1]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[1]}"/>
+           <input type="hidden" name="no" th:value="${noList[1]}"/>
          </form>
          </div>
        </td>
@@ -92,7 +96,7 @@
            <div th:if="${imagePathList[8] != ''}">
              <input type="image" th:src="${imagePathList[8]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[8]}"/>
+           <input type="hidden" name="no" th:value="${noList[8]}"/>
          </form>
          </div>
        </td>
@@ -105,7 +109,7 @@
            <div th:if="${imagePathList[7] != ''}">
              <input type="image" th:src="${imagePathList[7]}"/>
            </div> 
-           <input type="hidden" name="loginId" th:value="${loginIdList[7]}"/>
+           <input type="hidden" name="no" th:value="${noList[7]}"/>
          </form>
          </div>
        </td>
@@ -118,7 +122,7 @@
            <div th:if="${imagePathList[0] != ''}">
              <input type="image" th:src="${imagePathList[0]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[0]}"/>
+           <input type="hidden" name="no" th:value="${noList[0]}"/>
          </form>
          </div>
        </td>
@@ -135,7 +139,7 @@
            <div th:if="${imagePathList[4] != ''}">
              <input type="image" th:src="${imagePathList[4]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[4]}"/>
+           <input type="hidden" name="no" th:value="${noList[4]}"/>
        </form>
        </div>
        </td>
@@ -148,7 +152,7 @@
            <div th:if="${imagePathList[9] != ''}">
              <input type="image" th:src="${imagePathList[9]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[9]}"/>
+           <input type="hidden" name="no" th:value="${noList[9]}"/>
          </form>
          </div>
        </td>
@@ -161,7 +165,7 @@
            <div th:if="${imagePathList[3] != ''}">
              <input type="image" th:src="${imagePathList[3]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[3]}"/>
+           <input type="hidden" name="no" th:value="${noList[3]}"/>
          </form>
          </div>
        </td>
@@ -178,7 +182,7 @@
            <div th:if="${imagePathList[5] != ''}">
              <input type="image" th:src="${imagePathList[5]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[5]}"/>
+           <input type="hidden" name="no" th:value="${noList[5]}"/>
        </form>
        </div>
        </td>
@@ -191,7 +195,7 @@
            <div th:if="${imagePathList[6] != ''}">
              <input type="image" th:src="${imagePathList[6]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[6]}"/>
+           <input type="hidden" name="no" th:value="${noList[6]}"/>
          </form>
          </div>
        </td>
@@ -204,7 +208,7 @@
            <div th:if="${imagePathList[2] != ''}">
              <input type="image" th:src="${imagePathList[2]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[2]}"/>
+           <input type="hidden" name="no" th:value="${noList[2]}"/>
          </form>
          </div>
        </td>
@@ -230,7 +234,7 @@
            <div th:if="${imagePathList[3] != ''}">
              <input type="image" th:src="${imagePathList[3]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[3]}"/>
+           <input type="hidden" name="no" th:value="${noList[3]}"/>
          </form>
          </div>
        </td>
@@ -243,7 +247,7 @@
            <div th:if="${imagePathList[8] != ''}">
              <input type="image" th:src="${imagePathList[8]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[8]}"/>
+           <input type="hidden" name="no" th:value="${noList[8]}"/>
          </form>
          </div>
        </td>
@@ -256,7 +260,7 @@
            <div th:if="${imagePathList[4] != ''}">
              <input type="image" th:src="${imagePathList[4]}"/>
            </div>  
-           <input type="hidden" name="loginId" th:value="${loginIdList[4]}"/>
+           <input type="hidden" name="no" th:value="${noList[4]}"/>
         </form>
          </div>
        </td>
@@ -269,7 +273,7 @@
            <div th:if="${imagePathList[9] != ''}">
              <input type="image" th:src="${imagePathList[9]}"/>
            </div>  
-           <input type="hidden" name="loginId" th:value="${loginIdList[9]}"/>
+           <input type="hidden" name="no" th:value="${noList[9]}"/>
         </form>
          </div>
        </td>
@@ -286,7 +290,7 @@
            <div th:if="${imagePathList[5] != ''}">
              <input type="image" th:src="${imagePathList[5]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[5]}"/>
+           <input type="hidden" name="no" th:value="${noList[5]}"/>
          </form>
          </div>
        </td>
@@ -299,7 +303,7 @@
            <div th:if="${imagePathList[0] != ''}">
              <input type="image" th:src="${imagePathList[0]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[0]}"/>
+           <input type="hidden" name="no" th:value="${noList[0]}"/>
          </form>
          </div>
        </td>
@@ -316,7 +320,7 @@
            <div th:if="${imagePathList[6] != ''}">
              <input type="image" th:src="${imagePathList[6]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[6]}"/>
+           <input type="hidden" name="no" th:value="${noList[6]}"/>
          </form>
          </div>
        </td>
@@ -329,7 +333,7 @@
            <div th:if="${imagePathList[7] != ''}">
              <input type="image" th:src="${imagePathList[7]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[7]}"/>
+           <input type="hidden" name="no" th:value="${noList[7]}"/>
          </form>
          </div>
        </td>
@@ -342,7 +346,7 @@
            <div th:if="${imagePathList[2] != ''}">
              <input type="image" th:src="${imagePathList[2]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[2]}"/>
+           <input type="hidden" name="no" th:value="${noList[2]}"/>
          </form>
          </div>
        </td>
@@ -355,7 +359,7 @@
            <div th:if="${imagePathList[1] != ''}">
              <input type="image" th:src="${imagePathList[1]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[1]}"/>
+           <input type="hidden" name="no" th:value="${noList[1]}"/>
          </form>
          </div>
        </td>
@@ -380,7 +384,7 @@
            <div th:if="${imagePathList[2] != ''}">
              <input type="image" th:src="${imagePathList[2]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[2]}"/>
+           <input type="hidden" name="no" th:value="${noList[2]}"/>
          </form>
          </div>
        </td>
@@ -393,7 +397,7 @@
            <div th:if="${imagePathList[5] != ''}">
              <input type="image" th:src="${imagePathList[5]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[5]}"/>
+           <input type="hidden" name="no" th:value="${noList[5]}"/>
          </form>
          </div>
        </td>
@@ -406,7 +410,7 @@
            <div th:if="${imagePathList[6] != ''}">
              <input type="image" th:src="${imagePathList[6]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[6]}"/>
+           <input type="hidden" name="no" th:value="${noList[6]}"/>
         </form>
          </div>
        </td>
@@ -419,7 +423,7 @@
            <div th:if="${imagePathList[9] != ''}">
              <input type="image" th:src="${imagePathList[9]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[9]}"/>
+           <input type="hidden" name="no" th:value="${noList[9]}"/>
         </form>
          </div>
        </td>
@@ -434,9 +438,9 @@
              <a href="javascript:FORM25.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[3]}"></span></a>
            </div>
            <div th:if="${imagePathList[3] != ''}">
-             <input type="image" name="loginId" th:src="${imagePathList[3]}"/>
+             <input type="image"  th:src="${imagePathList[3]}"/>
            </div>
-           <input type="hidden" th:value="${loginIdList[3]}"/>
+           <input type="hidden" name="no" th:value="${noList[3]}"/>
          </form>
          </div>
        </td>
@@ -449,7 +453,7 @@
            <div th:if="${imagePathList[4] != ''}">
              <input type="image" th:src="${imagePathList[4]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[4]}"/>
+           <input type="hidden" name="no" th:value="${noList[4]}"/>
          </form>
          </div>
        </td>
@@ -462,7 +466,7 @@
            <div th:if="${imagePathList[1] != ''}">
              <input type="image" th:src="${imagePathList[1]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[1]}"/>
+           <input type="hidden" name="no" th:value="${noList[1]}"/>
          </form>
          </div>
        </td>
@@ -479,7 +483,7 @@
            <div th:if="${imagePathList[0] != ''}">
              <input type="image" th:src="${imagePathList[0]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[0]}"/>
+           <input type="hidden" name="no" th:value="${noList[0]}"/>
          </form>
          </div>
        </td>
@@ -492,7 +496,7 @@
            <div th:if="${imagePathList[7] != ''}">
              <input type="image" th:src="${imagePathList[7]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[7]}"/>
+           <input type="hidden" name="no" th:value="${noList[7]}"/>
          </form>
          </div>
        </td>
@@ -505,7 +509,7 @@
            <div th:if="${imagePathList[8] != ''}">
              <input type="image" th:src="${imagePathList[8]}"/>
            </div>
-           <input type="hidden" name="loginId" th:value="${loginIdList[8]}"/>
+           <input type="hidden" name="no" th:value="${noList[8]}"/>
          </form>
          </div>
        </td>

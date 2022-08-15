@@ -1,13 +1,13 @@
 @charset "Shift_JIS";
 table{
-  width: 900px;
-  height: 450px;
+  width: 360px;
+  height: 180px;
   table-layout: fixed;
-  margin: 40px 40px 40px 40px;
+  margin: 5px 5px 5px 5px;
 }
  
 tr{
-  height: 150px;
+  height: 60px;
 }
 td{
   text-align: center;
@@ -19,7 +19,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 
 .oneone:hover{
@@ -33,7 +33,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 300px;
+  max-height: 120px;
 }
 
 .onetwo:hover{
@@ -48,10 +48,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .onethree img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .onethree:hover{
@@ -68,10 +68,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 300px;
+  max-height: 120px;
 }
 .onefour img{
-  max-height: 300px;
+  max-height: 120px;
   cursor: pointer;
 }
 .onefour:hover{
@@ -86,10 +86,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .twoone img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .twoone:hover{
@@ -105,10 +105,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .twotwo img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .twotwo:hover{
@@ -123,10 +123,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .twothree img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .twothree:hover{
@@ -142,10 +142,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .threeone img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .threeone:hover{
@@ -161,10 +161,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .threetwo img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .threetwo:hover{
@@ -180,10 +180,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .threethree img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .threethree:hover{
@@ -199,10 +199,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 300px;
+  max-height: 120px;
 }
 .layout2_oneone img{
-  max-height: 300px;
+  max-height: 120px;
   cursor: pointer;
 }
 .layout2_oneone:hover{
@@ -217,10 +217,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_onetwo img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .layout2_onetwo:hover{
@@ -236,10 +236,10 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_onethree img{
-  max-height: 150px;
+  max-height: 60px;
   cursor: pointer;
 }
 .layout2_onethree:hover{
@@ -255,7 +255,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_onefour:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -270,7 +270,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_twoone:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -286,7 +286,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 300px;
+  max-height: 120px;
 }
 .layout2_twotwo:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -302,7 +302,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_twothree:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -318,7 +318,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_threeone:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -334,7 +334,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_threetwo:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -351,7 +351,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout2_threethree:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -368,7 +368,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_oneone:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -382,7 +382,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_onetwo:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -397,7 +397,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_onethree:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -412,7 +412,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_twoone:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -428,7 +428,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_twotwo:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -444,7 +444,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_twothree:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -457,7 +457,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_twofour:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -473,7 +473,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_threeone:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -489,7 +489,7 @@ td{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_threetwo:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
@@ -497,21 +497,16 @@ td{
   transition-duration: 0.5s;
 }
  
- 
- 
- 
- 
- 
 .layout3_threethree{
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
-  max-height: 150px;
+  max-height: 60px;
 }
 .layout3_threethree:hover{
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
   transform: translateY(-10px);
   transition-duration: 0.5s;
 }
- 
- 
+
+

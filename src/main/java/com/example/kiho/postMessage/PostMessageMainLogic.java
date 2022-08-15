@@ -22,7 +22,6 @@ public class PostMessageMainLogic {
 		PostCheck pc = new PostCheck();
 		String errorMsg = "";
 		errorMsg = pc.postCheck(form);
-		System.out.println(errorMsg);
 		if ("".equals(errorMsg)) {
 
 			// 現在時刻の設定
@@ -70,12 +69,12 @@ public class PostMessageMainLogic {
 				}
 
 				if (form.getImage().isEmpty()) {
-					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime) VALUES('test1', '"
-							+ form.getPostText() + "',' " + hashTag + "', '','" + fdate1 + "')";
+					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
+							+ form.getPostText() + "',' " + hashTag + "', '','" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				} else {
-					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime) VALUES('test1', '"
-							+ form.getPostText() + "', '" + hashTag + "', '" + path + "', '" + fdate1 + "')";
+					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
+							+ form.getPostText() + "', '" + hashTag + "', '" + path + "', '" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				}
 				
@@ -84,7 +83,6 @@ public class PostMessageMainLogic {
 				tc.topHashTag(model, jdbcTemplate);
 				tc.topImagePath(model, jdbcTemplate);
 				tc.topLoginId(model, jdbcTemplate);
-
 
 			} catch (Exception e) {
 				e.printStackTrace();

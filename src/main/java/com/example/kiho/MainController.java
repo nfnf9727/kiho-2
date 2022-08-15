@@ -124,8 +124,9 @@ public class MainController {
     }
     
     @PostMapping(path = "/postDetail")
-    public String postDetail(Model model,@RequestParam String loginId) {
-    	System.out.println(loginId);
+    public String postDetail(Model model,@RequestParam String no) {
+    	
+    	
     	
     	return "test";
     }

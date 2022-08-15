@@ -37,9 +37,9 @@ public class TopMainLogic {
 	
 	public void topLoginId(Model model,JdbcTemplate jdbcTemplate) {
 		
-        String loginIdSQL = "SELECT loginId FROM postmsg ORDER BY createdTime DESC";
-        List<String> loginIdList = jdbcTemplate.queryForList(loginIdSQL,String.class);
-        model.addAttribute("loginIdList", loginIdList);
+        String noSQL = "SELECT no FROM postmsg ORDER BY createdTime DESC";
+        List<String> noList = jdbcTemplate.queryForList(noSQL,String.class);
+        model.addAttribute("noList", noList);
 		
 	}
 
