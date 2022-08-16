@@ -82,7 +82,7 @@ public class PostMessageMainLogic {
 				TopMainLogic tc = new TopMainLogic();
 				tc.topHashTag(model, jdbcTemplate);
 				tc.topImagePath(model, jdbcTemplate);
-				tc.topLoginId(model, jdbcTemplate);
+				tc.topNo(model, jdbcTemplate);
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -95,7 +95,7 @@ public class PostMessageMainLogic {
 			TopMainLogic tc = new TopMainLogic();
 			tc.topHashTag(model, jdbcTemplate);
 			tc.topImagePath(model, jdbcTemplate);
-			tc.topLoginId(model, jdbcTemplate);
+			tc.topNo(model, jdbcTemplate);
 		}
 	}
 

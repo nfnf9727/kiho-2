@@ -496,12 +496,7 @@ td{
   transform: translateY(-10px);
   transition-duration: 0.5s;
 }
- 
- 
- 
- 
- 
- 
+
 .layout3_threethree{
   object-fit: cover;
   overflow: hidden;
@@ -513,5 +508,42 @@ td{
   transform: translateY(-10px);
   transition-duration: 0.5s;
 }
- 
- 
+
+
+
+
+.parent{
+	margin-left: 40px;
+	display: flex;
+	width: 100%;
+}
+.child1{
+	flex-grow: 1;
+	width: 50%;
+}
+.child2{
+	flex-grow: 1;
+	width: 20%;
+}
+.child3{
+	flex-grow: 1;
+	width: 30%;
+}
+
+
+.button009 a {
+    background: #eee;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 160px;
+    padding: 10px 20px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+.button009 a:hover {
+    background: #313131;
+    color: #FFF;
+}

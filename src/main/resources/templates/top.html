@@ -16,8 +16,10 @@
     <button id="top" class="button">　TOP　</button>
   </form>
   <button id="modalOpen" class="button">投稿する</button>
-  <input type="text" id="serch" value="">
-  <button id="search" class="button">検索</button>
+  <form style="display: inline" method="post" action="/wordSearch">
+  	<input type="text" id="wordText" name="wordText"/>
+  	<button id="search" class="button">検索</button>
+  </form>
   </div>
   
   <div id="easyModal" class="modal">
@@ -28,7 +30,6 @@
       </div>
       <form method="post" enctype="multipart/form-data" name="postMsg" onSubmit="return inputCheck()">
       <div class="modal-body">
-
         <b>投稿者</b>
           <b><span th:text="${userName}" style="margin-left:62px;"></spanth:text=></b>
         <div>
@@ -216,8 +217,6 @@
   </table>
   </th:block>
 
-  
- <br/>
        
        
     
@@ -366,9 +365,7 @@
      </tr>
    </table>
    </th:block>
-   
-   
-   <br/>
+
    
 
    
@@ -516,5 +513,26 @@
      </tr>
    </table>
    </th:block>
+   <div class="parent">
+     <div class="child1">
+       <span>カテゴリ</span>
+       <br/>
+       		<th:block th:each="category : ${categoryList}">
+       		<form method="post" style="display: inline" name="FORMCATEGORY" action="/categorySearch">
+       			<input type="hidden" name="category" th:value="${category}"/>
+       		    <a href="javascript:FORMCATEGORY.submit()"  style="color:black; margin-left: 45px;"><span th:text="${category}"></span></a>
+       		</form>
+       		</th:block>
+     </div>
+     <div class="child2">
+     </div>
+     <div class="child3">
+     	<form method="post" name="FORMALL" action="/allPost">
+     		<div class="button009">
+				<a href="javascript:FORMALL.submit()">その他の投稿も見る</a>
+			</div>
+     	</form>
+     </div>
+   </div>
 </body>
 </html>

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.kiho.postMessage.PostForm;
 import com.example.kiho.postMessage.PostMessageMainLogic;
 import com.example.kiho.top.TopMainLogic;
+import com.example.kiho.wordSearch.SearchMainLogic;
 
 
 @Controller
@@ -90,7 +91,8 @@ public class MainController {
     	TopMainLogic tc = new TopMainLogic();
     	tc.topHashTag(model, jdbcTemplate);
     	tc.topImagePath(model, jdbcTemplate);
-    	tc.topLoginId(model, jdbcTemplate);
+    	tc.topNo(model, jdbcTemplate);
+    	tc.topCategory(model, jdbcTemplate);
     	//ログイン時にユーザ情報をsessionに保存するはず
     	//sessionからログイン情報取りに行く　後で追加
     	httpSession.setAttribute("userName", "しぶたに");
@@ -129,6 +131,34 @@ public class MainController {
     	
     	
     	return "test";
+    }
+    
+    @PostMapping(path = "/wordSearch")
+    public String wordSearch(Model model,@RequestParam String wordText) {
+    	SearchMainLogic sml = new SearchMainLogic();
+    	sml.wordSearch(model, jdbcTemplate, wordText);
+    	
+    	return "test2";
+    }
+    
+    @PostMapping(path = "/categorySearch")
+    public String categorySearch(Model model,@RequestParam String category) {
+    	SearchMainLogic sml = new SearchMainLogic();
+    	System.out.println(category);
+    	//sml.wordSearch(model, jdbcTemplate, wordText);
+    	
+    	return "test2";
+    }
+    
+    @PostMapping(path = "/allPost")
+    public String allPost(Model model) {
+    	TopMainLogic tml = new TopMainLogic();
+    	tml.topHashTag(model, jdbcTemplate);
+    	tml.topImagePath(model, jdbcTemplate);
+    	tml.topNo(model, jdbcTemplate);
+    	tml.topHashTag(model, jdbcTemplate);
+    	
+    	return "test2";
     }
 
 }

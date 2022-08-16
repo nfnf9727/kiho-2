@@ -35,11 +35,20 @@ public class TopMainLogic {
 		
 	}
 	
-	public void topLoginId(Model model,JdbcTemplate jdbcTemplate) {
+	public void topNo(Model model,JdbcTemplate jdbcTemplate) {
 		
         String noSQL = "SELECT no FROM postmsg ORDER BY createdTime DESC";
         List<String> noList = jdbcTemplate.queryForList(noSQL,String.class);
         model.addAttribute("noList", noList);
+		
+	}
+	
+	
+	public void topCategory(Model model,JdbcTemplate jdbcTemplate) {
+		
+        String categorySQL = "SELECT tag FROM tag";
+        List<String> categoryList = jdbcTemplate.queryForList(categorySQL,String.class);
+        model.addAttribute("categoryList", categoryList);
 		
 	}
 
