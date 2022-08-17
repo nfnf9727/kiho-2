@@ -1,7 +1,7 @@
 @charset "Shift_JIS";
 table{
-  width: 360px;
-  height: 180px;
+  width: 90%;
+  height: 50%;
   table-layout: fixed;
   margin: 5px 5px 5px 5px;
 }
@@ -510,3 +510,39 @@ td{
 }
 
 
+
+.parent{
+	margin-left: 20px;
+	display: flex;
+	width: 100%;
+}
+.child1{
+	flex-grow: 1;
+	width: 40%;
+}
+.child2{
+	flex-grow: 1;
+	width: 10%;
+}
+.child3{
+	flex-grow: 1;
+	width: 40%;
+}
+
+
+.button009 a {
+    background: #eee;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100px;
+    padding: 5px 10px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+.button009 a:hover {
+    background: #313131;
+    color: #FFF;
+}

@@ -85,6 +85,12 @@ public class MainController {
     // 本来はこっち(top画面を表示するメソッド)    
     // postmsgテーブル作成後、接続してください
     // 接続URL：http://localhost:8080/top
+    /**
+     * トップ画面出力
+     * @param model
+     * @param httpSession
+     * @return
+     */
     @RequestMapping(path = "/top")
     public String showIndex(Model model,HttpSession httpSession) {
 
@@ -104,7 +110,16 @@ public class MainController {
 
     }
     
-    
+    /**
+     * 投稿
+     * @param model
+     * @param form
+     * @param postText
+     * @param hashtag
+     * @param hashtagSelect
+     * @param image
+     * @return
+     */
     @PostMapping("/postMessage")
     public String post(Model model,PostForm form,@RequestParam String postText, String hashtag, String hashtagSelect, MultipartFile image) {
     	
@@ -112,6 +127,8 @@ public class MainController {
     	form.setHashtag(hashtag);
     	form.setHashtagSelect(hashtagSelect);
     	form.setImage(image);
+    	System.out.println(hashtag);
+    	System.out.println(hashtagSelect);
     	
     	PostMessageMainLogic pmc = new PostMessageMainLogic();
     	
@@ -125,6 +142,12 @@ public class MainController {
       
     }
     
+    /**
+     * 最新10件より詳細画面へ飛ぶ処理
+     * @param model
+     * @param no
+     * @return
+     */
     @PostMapping(path = "/postDetail")
     public String postDetail(Model model,@RequestParam String no) {
     	
@@ -133,6 +156,12 @@ public class MainController {
     	return "test";
     }
     
+    /**
+     * ワード検索
+     * @param model
+     * @param wordText　入力内容
+     * @return
+     */
     @PostMapping(path = "/wordSearch")
     public String wordSearch(Model model,@RequestParam String wordText) {
     	SearchMainLogic sml = new SearchMainLogic();
@@ -141,22 +170,32 @@ public class MainController {
     	return "test2";
     }
     
+    /**
+     * カテゴリ検索
+     * @param model
+     * @param category
+     * @return
+     */
     @PostMapping(path = "/categorySearch")
     public String categorySearch(Model model,@RequestParam String category) {
     	SearchMainLogic sml = new SearchMainLogic();
-    	System.out.println(category);
-    	//sml.wordSearch(model, jdbcTemplate, wordText);
+    	sml.categorySearch(model, jdbcTemplate, category);
     	
     	return "test2";
     }
     
+    /**
+     * 「その他の投稿」ボタンから全件出力
+     * @param model
+     * @return
+     */
     @PostMapping(path = "/allPost")
     public String allPost(Model model) {
     	TopMainLogic tml = new TopMainLogic();
     	tml.topHashTag(model, jdbcTemplate);
     	tml.topImagePath(model, jdbcTemplate);
     	tml.topNo(model, jdbcTemplate);
-    	tml.topHashTag(model, jdbcTemplate);
+    	tml.topName(model, jdbcTemplate);
     	
     	return "test2";
     }

@@ -40,7 +40,6 @@ public class TopMainLogic {
         String noSQL = "SELECT no FROM postmsg ORDER BY createdTime DESC";
         List<String> noList = jdbcTemplate.queryForList(noSQL,String.class);
         model.addAttribute("noList", noList);
-		
 	}
 	
 	
@@ -51,5 +50,20 @@ public class TopMainLogic {
         model.addAttribute("categoryList", categoryList);
 		
 	}
+	
+	public void topName(Model model,JdbcTemplate jdbcTemplate) {
+		
+        String loginIdSQL = "SELECT loginId FROM postmsg";
+        List<String> loginIdList = jdbcTemplate.queryForList(loginIdSQL,String.class);
+        List<String> nameList = new ArrayList<>();
+        for(int i = 0; i < loginIdList.size(); i++){
+        	String nameSQL = "SELECT name FROM user WHERE loginID = '" + loginIdList.get(i) + "'";
+        	String str = jdbcTemplate.queryForObject(nameSQL,String.class);
+        	nameList.add(str);
+        }
+        model.addAttribute("nameList", nameList);
+		
+	}
+	
 
 }

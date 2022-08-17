@@ -31,21 +31,10 @@ public class PostMessageMainLogic {
 
 			// ハッシュタグの設定
 			String hashTag = "";
-			String str = null;
-			List<String> list = new ArrayList<>();
-			list.add("#趣味");
-			list.add("#休日");
-			list.add("#ランチ");
-			if (str == form.getHashtag()) {
-				if (form.getHashtagSelect().equals("2")) {
-					hashTag = list.get(0);
-				} else if (form.getHashtagSelect().equals("3")) {
-					hashTag = list.get(1);
-				} else {
-					hashTag = list.get(2);
-				}
-			} else {
+			if(form.getHashtagSelect().equals("0")) {
 				hashTag = form.getHashtag();
+			}else {
+				hashTag = form.getHashtagSelect();
 			}
 
 			// 画像のファイル名生成 同じ画像をアップロードする可能性もあるため、被らないようランダムでファイル名を設定する
@@ -70,19 +59,14 @@ public class PostMessageMainLogic {
 
 				if (form.getImage().isEmpty()) {
 					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
-							+ form.getPostText() + "',' " + hashTag + "', '','" + fdate1 + "', '0')";
+							+ form.getPostText() + "','" + hashTag + "', '','" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				} else {
 					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
 							+ form.getPostText() + "', '" + hashTag + "', '" + path + "', '" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				}
-				
-				// top画面を表示させるためにDB内容取得
-				TopMainLogic tc = new TopMainLogic();
-				tc.topHashTag(model, jdbcTemplate);
-				tc.topImagePath(model, jdbcTemplate);
-				tc.topNo(model, jdbcTemplate);
+
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -91,12 +75,14 @@ public class PostMessageMainLogic {
 		} else {
 			//エラーメッセージの設定
 			model.addAttribute("errorMsg", errorMsg);
-			// top画面を表示させるためにDB内容取得
-			TopMainLogic tc = new TopMainLogic();
-			tc.topHashTag(model, jdbcTemplate);
-			tc.topImagePath(model, jdbcTemplate);
-			tc.topNo(model, jdbcTemplate);
+			
 		}
+		// top画面を表示させるためにDB内容取得
+					TopMainLogic tc = new TopMainLogic();
+					tc.topHashTag(model, jdbcTemplate);
+					tc.topImagePath(model, jdbcTemplate);
+					tc.topNo(model, jdbcTemplate);
+					tc.topCategory(model, jdbcTemplate);
 	}
 
 }

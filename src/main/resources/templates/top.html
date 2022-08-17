@@ -46,10 +46,8 @@
            <font size="1">※ハッシュタグ「#」は半角で入力してください</font>
            <br/>
              <select name="hashtagSelect" id="hashtagSelect" style="margin-left:120px;">
-               <option value="1">上記で入力</option>
-               <option value="2">#趣味</option>
-               <option value="3">#休日</option>
-               <option value="4">#ランチ</option>
+               <option value="0">上記で入力</option>
+               <option th:each="category : ${categoryList}" th:value="${category}" th:text="${category}">[[${category}]]</option>
              </select>
            <br/>
           <input type="file" name="image" id="input" accept="image/jpeg, image/png">
@@ -520,7 +518,7 @@
        		<th:block th:each="category : ${categoryList}">
        		<form method="post" style="display: inline" name="FORMCATEGORY" action="/categorySearch">
        			<input type="hidden" name="category" th:value="${category}"/>
-       		    <a href="javascript:FORMCATEGORY.submit()"  style="color:black; margin-left: 45px;"><span th:text="${category}"></span></a>
+       		    <button style="border: none; outline: none; background: transparent; margin-left: 20px; text-decoration: underline;"><span th:text="${category}"></span></button>
        		</form>
        		</th:block>
      </div>

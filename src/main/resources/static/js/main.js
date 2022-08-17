@@ -41,19 +41,12 @@ document.querySelector('#input').addEventListener('change', (event) => {
 
 var select = document.getElementById("hashtagSelect");
 select.onchange = function() {
-	if (this.value == 1) {
+	if (this.value == 0) {
 		document.getElementById("hashtag").disabled = false;
 		document.getElementById("hashtag").value = "";
 	} else {
 		document.getElementById("hashtag").disabled = true;
-
-		if (this.value == 2) {
-			document.getElementById("hashtag").value = "#趣味";
-		} else if (this.value == 3) {
-			document.getElementById("hashtag").value = "#休日";
-		} else {
-			document.getElementById("hashtag").value = "#ランチ";
-		}
+		document.getElementById("hashtag").value = this.value;
 	}
 }
 
@@ -63,7 +56,7 @@ function inputCheck() {
 	if (document.postMsg.postText.value == "") {
 		alert('投稿内容を入力してください');
 		return false;
-	} else if (document.postMsg.hashtagSelect.value == "1") {
+	} else if (document.postMsg.hashtagSelect.value == "0") {
 		if (document.postMsg.hashtag.value == "") {
 			alert('ハッシュタグを入力、もしくはセレクトボックスで選択ください');
 			return false;
