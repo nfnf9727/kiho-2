@@ -6,8 +6,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -73,16 +71,16 @@ public class PostMessageMainLogic {
 			}
 
 		} else {
-			//エラーメッセージの設定
-			model.addAttribute("errorMsg", errorMsg);
+		//エラーメッセージの設定
+		model.addAttribute("errorMsg", errorMsg);
 			
 		}
 		// top画面を表示させるためにDB内容取得
-					TopMainLogic tc = new TopMainLogic();
-					tc.topHashTag(model, jdbcTemplate);
-					tc.topImagePath(model, jdbcTemplate);
-					tc.topNo(model, jdbcTemplate);
-					tc.topCategory(model, jdbcTemplate);
+		TopMainLogic tc = new TopMainLogic();
+		tc.topHashTag(model, jdbcTemplate);
+		tc.topImagePath(model, jdbcTemplate);
+		tc.topNo(model, jdbcTemplate);
+		tc.topCategory(model, jdbcTemplate);
 	}
 
 }
