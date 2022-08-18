@@ -1,536 +1,609 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>タイトル</title>
-    <link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)"/>
-    <link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)"/>
-    <link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)"/> 
-    <link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)"/>
+	<title>タイトル</title>
+	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
+	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
+	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
+	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
 </head>
 <header class="header">
-<div class="site">
-   <img src="ICON.png" alt="アイコン画像">
-  
-  <div class="head">
-  <form style="display: inline" action="/top">
-    <button id="top" class="button">　TOP　</button>
-  </form>
-  <button id="modalOpen" class="button">投稿する</button>
-  <form style="display: inline" method="post" action="/wordSearch">
-  	<input type="text" id="wordText" name="wordText"/>
-  	<button id="search" class="button">検索</button>
-  </form>
-  </div>
-  
-  <div id="easyModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1><font color="white">投稿</font></h1>
-        <span class="modalClose">×</span>
-      </div>
-      <form method="post" enctype="multipart/form-data" name="postMsg" onSubmit="return inputCheck()">
-      <div class="modal-body">
-        <b>投稿者</b>
-          <b><span th:text="${userName}" style="margin-left:62px;"></spanth:text=></b>
-        <div>
-          <b>投稿内容</b>
-          <textarea id="postText" name="postText" type="text" wrap="soft" style="width:20em; height:7em; margin-left:50px;" maxlength="120"></textarea>
-        </div>
-        
-       <div class="input-row">
-           <span>
-              <b>#ハッシュタグ</b>
-           </span>
-           <input id="hashtag" name="hashtag" type="text" style="margin-left:6px;"/>
-           <br/>
-           <font size="1">※ハッシュタグ「#」は半角で入力してください</font>
-           <br/>
-             <select name="hashtagSelect" id="hashtagSelect" style="margin-left:120px;">
-               <option value="0">上記で入力</option>
-               <option th:each="category : ${categoryList}" th:value="${category}" th:text="${category}">[[${category}]]</option>
-             </select>
-           <br/>
-          <input type="file" name="image" id="input" accept="image/jpeg, image/png">
-          <br/>
-          <img id="img" />
-        </div>
-        <br/>
-        <div align="center">
-          <button id="toukou" class="button" formaction="/postMessage">投稿</button>
-        </div>
-      </div>
-      </form>
-    </div>
-  </div>
-  </div>
+	<div class="site">
+		<img src="ICON.png" alt="アイコン画像">
+
+		<div class="head">
+			<form style="display: inline" action="/top">
+				<button id="top" class="button">　TOP　</button>
+			</form>
+			<button id="modalOpen" class="button">投稿する</button>
+			<form style="display: inline" method="post" action="/wordSearch">
+				<input type="text" id="wordText" name="wordText" />
+				<button id="search" class="button">検索</button>
+			</form>
+		</div>
+
+
+
+		<div id="easyModal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1>
+						<font color="white">投稿</font>
+					</h1>
+					<span class="modalClose">×</span>
+				</div>
+				<form method="post" enctype="multipart/form-data" name="postMsg" onSubmit="return inputCheck()">
+					<div class="modal-body">
+						<table class="toukou">
+							<tr>
+								<td class="toukou1">
+									<b>投稿者</b>
+								</td>
+								<td class="toukou2">
+									<b><span th:text="${userName}"></span></b>
+								</td>
+							</tr>
+							<tr>
+								<td class="toukou1">
+									<div style="display: inline;">
+										<b>投稿内容</b>
+									</div>
+								</td>
+								<td class="toukou2">
+									<textarea id="postText" name="postText" type="text" wrap="soft" style="height:7em;"
+										maxlength="120"></textarea>
+								</td>
+							</tr>
+							<tr class="toukouHashTag">
+								<div class="input-row">
+									<td class="toukou1">
+										<span>
+											<b>#ハッシュタグ</b>
+										</span>
+									</td>
+									<td class="toukou2">
+										<input id="hashtag" name="hashtag" type="text" />
+										<br/>
+										<select name="hashtagSelect" id="hashtagSelect">
+											<option value="0">上記で入力</option>
+											<option th:each="category : ${categoryList}" th:value="${category}"
+												th:text="${category}">[[${category}]]</option>
+										</select>
+										<br/>
+										<span style="font-size: 1px;">※ハッシュタグ「#」は半角で入力してください</span>
+									</td>
+								</div>
+							</tr>
+							<tr>
+								<td>
+									<img id="img" />
+								</td>
+							</tr>
+							<tr>
+								<div align="center">
+									<td class="toukouImage">
+									</td>
+									<td class="toukouButton"> 
+										<label style="vertical-align: middle;">
+											<img class="imageLogo" id="imageLogo"
+												style="width: 40px; display: inline; margin-right: auto;"
+												src="/commonImages/imageLogo.PNG">
+											<input style="display: none;" type="file" name="image" id="input"
+												accept="image/jpeg, image/png">
+										</label>
+										<button id="toukou" class="button-54" role="button" formaction="/postMessage">投稿</button>
+									</td>
+								</div>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </header>
+
 <body>
-<script type="text/javascript" th:src="@{/js/main.js}"></script> 
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 
 	<span style="color:red" th:text="${errorMsg}"></span>
 
 
-  <th:block th:if="${flg == 0}">
-     <table>
-     <tr>
-       <td bgcolor="#cccccc">
-         <div class="oneone">
-         <form method="post" name="FORM1" action="/postDetail">
-           <div th:if="${imagePathList[1] == ''}">
-             <a href="javascript:FORM1.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[1]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[1] != ''}">
-             <input type="image" th:src="${imagePathList[1]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[1]}"/>
-         </form>
-         </div>
-       </td>
-       <td rowSpan="2" bgcolor="#faf0e6">
-         <div class="onetwo">
-         <form method="post" name="FORM2" action="/postDetail">
-           <div th:if="${imagePathList[8] == ''}">
-             <a href="javascript:FORM2.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[8]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[8] != ''}">
-             <input type="image" th:src="${imagePathList[8]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[8]}"/>
-         </form>
-         </div>
-       </td>
-       <td colSpan="2" bgcolor="#b0c4de">
-         <div class="onethree">  
-         <form method="post" name="FORM3" action="/postDetail">  
-           <div th:if="${imagePathList[7] == ''}">
-             <a href="javascript:FORM3.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[7]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[7] != ''}">
-             <input type="image" th:src="${imagePathList[7]}"/>
-           </div> 
-           <input type="hidden" name="no" th:value="${noList[7]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#e6e6fa" rowSpan="2">
-         <div class="onefour"> 
-         <form method="post" name="FORM4" action="/postDetail">   
-           <div th:if="${imagePathList[0] == ''}">
-             <a href="javascript:FORM4.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[0]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[0] != ''}">
-             <input type="image" th:src="${imagePathList[0]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[0]}"/>
-         </form>
-         </div>
-       </td>
-     </tr>
-    
-     
-     <tr>
-       <td  bgcolor="#f0e68c">
-       <div class="twoone">
-       <form method="post" name="FORM5" action="/postDetail">
-           <div th:if="${imagePathList[4] == ''}">
-             <a href="javascript:FORM5.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[4]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[4] != ''}">
-             <input type="image" th:src="${imagePathList[4]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[4]}"/>
-       </form>
-       </div>
-       </td>
-       <td  bgcolor="#ffb6c1">
-         <div class="twotwo">
-         <form method="post" name="FORM6" action="/postDetail">
-           <div th:if="${imagePathList[9] == ''}">
-             <a href="javascript:FORM6.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[9]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[9] != ''}">
-             <input type="image" th:src="${imagePathList[9]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[9]}"/>
-         </form>
-         </div>
-       </td>
-       <td  bgcolor="#ffebcd">
-         <div class="twothree">
-         <form method="post" name="FORM7" action="/postDetail">
-           <div th:if="${imagePathList[3] == ''}">
-             <a href="javascript:FORM7.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[3]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[3] != ''}">
-             <input type="image" th:src="${imagePathList[3]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[3]}"/>
-         </form>
-         </div>
-       </td>
-     </tr>
-    
-     
-     <tr>
-       <td bgcolor="#7fffd4" colSpan="3">
-       <div class="threeone">
-       <form method="post" name="FORM8" action="/postDetail">
-           <div th:if="${imagePathList[5] == ''}">
-             <a href="javascript:FORM8.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[5]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[5] != ''}">
-             <input type="image" th:src="${imagePathList[5]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[5]}"/>
-       </form>
-       </div>
-       </td>
-       <td bgcolor="#fffacd">
-         <div class="threetwo">
-         <form method="post" name="FORM9" action="/postDetail">
-           <div th:if="${imagePathList[6] == ''}">
-             <a href="javascript:FORM9.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[6]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[6] != ''}">
-             <input type="image" th:src="${imagePathList[6]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[6]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#e0ffff">
-         <div class="threethree">
-         <form method="post" name="FORM10" action="/postDetail">
-           <div th:if="${imagePathList[2] == ''}">
-             <a href="javascript:FORM10.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[2]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[2] != ''}">
-             <input type="image" th:src="${imagePathList[2]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[2]}"/>
-         </form>
-         </div>
-       </td>
-     </tr>
-  </table>
-  </th:block>
+	<th:block th:if="${flg == 0}">
+		<table>
+			<tr>
+				<td bgcolor="#cccccc">
+					<div class="oneone">
+						<form method="post" name="FORM1" action="/postDetail">
+							<div th:if="${imagePathList[1] == ''}">
+								<a href="javascript:FORM1.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[1]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[1] != ''}">
+								<input type="image" th:src="${imagePathList[1]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[1]}" />
+						</form>
+					</div>
+				</td>
+				<td rowSpan="2" bgcolor="#faf0e6">
+					<div class="onetwo">
+						<form method="post" name="FORM2" action="/postDetail">
+							<div th:if="${imagePathList[8] == ''}">
+								<a href="javascript:FORM2.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[8]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[8] != ''}">
+								<input type="image" th:src="${imagePathList[8]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[8]}" />
+						</form>
+					</div>
+				</td>
+				<td colSpan="2" bgcolor="#b0c4de">
+					<div class="onethree">
+						<form method="post" name="FORM3" action="/postDetail">
+							<div th:if="${imagePathList[7] == ''}">
+								<a href="javascript:FORM3.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[7]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[7] != ''}">
+								<input type="image" th:src="${imagePathList[7]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[7]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#e6e6fa" rowSpan="2">
+					<div class="onefour">
+						<form method="post" name="FORM4" action="/postDetail">
+							<div th:if="${imagePathList[0] == ''}">
+								<a href="javascript:FORM4.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[0]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[0] != ''}">
+								<input type="image" th:src="${imagePathList[0]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[0]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
 
-       
-       
-    
 
-   <th:block th:if="${flg == 2}">
-    <table>
-     <tr>
-       <td bgcolor="#ffb6c1">
-         <div class="layout3_oneone">
-         <form method="post" name="FORM11" action="/postDetail">
-           <div th:if="${imagePathList[3] == ''}">
-             <a href="javascript:FORM11.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[3]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[3] != ''}">
-             <input type="image" th:src="${imagePathList[3]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[3]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#b0c4de">
-         <div class="layout3_onetwo">
-         <form method="post" name="FORM12" action="/postDetail">
-           <div th:if="${imagePathList[8] == ''}">
-             <a href="javascript:FORM12.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[8]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[8] != ''}">
-             <input type="image" th:src="${imagePathList[8]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[8]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#f0e68c">
-        <div class="layout3_onethree">   
-        <form method="post" name="FORM13" action="/postDetail"> 
-           <div th:if="${imagePathList[4] == ''}">
-             <a href="javascript:FORM13.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[4]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[4] != ''}">
-             <input type="image" th:src="${imagePathList[4]}"/>
-           </div>  
-           <input type="hidden" name="no" th:value="${noList[4]}"/>
-        </form>
-         </div>
-       </td>
-       <td bgcolor="#e0ffff">
-        <div class="layout3_onethree">    
-        <form method="post" name="FORM14" action="/postDetail">
-           <div th:if="${imagePathList[9] == ''}">
-             <a href="javascript:FORM14.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[9]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[9] != ''}">
-             <input type="image" th:src="${imagePathList[9]}"/>
-           </div>  
-           <input type="hidden" name="no" th:value="${noList[9]}"/>
-        </form>
-         </div>
-       </td>
-     </tr>
-   
-     
-     <tr>
-       <td colSpan="2" bgcolor="#7fffd4">
-         <div class="layout3_twotwo">
-         <form method="post" name="FORM15" action="/postDetail">
-           <div th:if="${imagePathList[5] == ''}">
-             <a href="javascript:FORM15.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[5]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[5] != ''}">
-             <input type="image" th:src="${imagePathList[5]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[5]}"/>
-         </form>
-         </div>
-       </td>
-       <td colSpan="2" bgcolor="#e6e6fa">
-         <div class="layout3_twofour">
-         <form method="post" name="FORM16" action="/postDetail">
-           <div th:if="${imagePathList[0] == ''}">
-             <a href="javascript:FORM16.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[0]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[0] != ''}">
-             <input type="image" th:src="${imagePathList[0]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[0]}"/>
-         </form>
-         </div>
-       </td>
-     </tr>
-   
-     
-     <tr>
-       <td bgcolor="#ffebcd">
-         <div class="layout3_threeone">
-         <form method="post" name="FORM17" action="/postDetail">
-           <div th:if="${imagePathList[6] == ''}">
-             <a href="javascript:FORM17.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[6]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[6] != ''}">
-             <input type="image" th:src="${imagePathList[6]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[6]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#faf0e6">
-         <div class="layout3_threetwo">
-         <form method="post" name="FORM18" action="/postDetail">
-           <div th:if="${imagePathList[7] == ''}">
-             <a href="javascript:FORM18.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[7]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[7] != ''}">
-             <input type="image" th:src="${imagePathList[7]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[7]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#cccccc">
-         <div class="layout3_threethree">
-         <form method="post" name="FORM19" action="/postDetail">
-           <div th:if="${imagePathList[2] == ''}">
-             <a href="javascript:FORM19.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[2]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[2] != ''}">
-             <input type="image" th:src="${imagePathList[2]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[2]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#ffe4e1">
-         <div class="layout3_threethree">
-         <form method="post" name="FORM20" action="/postDetail">
-           <div th:if="${imagePathList[1] == ''}">
-             <a href="javascript:FORM20.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[1]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[1] != ''}">
-             <input type="image" th:src="${imagePathList[1]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[1]}"/>
-         </form>
-         </div>
-       </td>
-     </tr>
-   </table>
-   </th:block>
+			<tr>
+				<td bgcolor="#f0e68c">
+					<div class="twoone">
+						<form method="post" name="FORM5" action="/postDetail">
+							<div th:if="${imagePathList[4] == ''}">
+								<a href="javascript:FORM5.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[4]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[4] != ''}">
+								<input type="image" th:src="${imagePathList[4]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[4]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#ffb6c1">
+					<div class="twotwo">
+						<form method="post" name="FORM6" action="/postDetail">
+							<div th:if="${imagePathList[9] == ''}">
+								<a href="javascript:FORM6.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[9]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[9] != ''}">
+								<input type="image" th:src="${imagePathList[9]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[9]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#ffebcd">
+					<div class="twothree">
+						<form method="post" name="FORM7" action="/postDetail">
+							<div th:if="${imagePathList[3] == ''}">
+								<a href="javascript:FORM7.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[3]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[3] != ''}">
+								<input type="image" th:src="${imagePathList[3]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[3]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
 
-   
 
-   
-   <th:block th:if="${flg == 1}">
-     <table>
-     <tr>
-       <td rowSpan="2" bgcolor="#ffb6c1">
-         <div class="layout2_oneone">
-         <form method="post" name="FORM21" action="/postDetail">
-           <div th:if="${imagePathList[2] == ''}">
-             <a href="javascript:FORM21.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[2]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[2] != ''}">
-             <input type="image" th:src="${imagePathList[2]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[2]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#fffacd">
-         <div class="layout2_onetwo">
-         <form method="post" name="FORM22" action="/postDetail">
-           <div th:if="${imagePathList[5] == ''}">
-             <a href="javascript:FORM22.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[5]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[5] != ''}">
-             <input type="image" th:src="${imagePathList[5]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[5]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#b0c4de">
-        <div class="layout2_onethree">    
-        <form method="post" name="FORM23" action="/postDetail">
-           <div th:if="${imagePathList[6] == ''}">
-             <a href="javascript:FORM23.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[6]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[6] != ''}">
-             <input type="image" th:src="${imagePathList[6]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[6]}"/>
-        </form>
-         </div>
-       </td>
-       <td colSpan="2" bgcolor="#f0e68c">
-        <div class="layout2_onefour">  
-        <form method="post" name="FORM24" action="/postDetail">  
-           <div th:if="${imagePathList[9] == ''}">
-             <a href="javascript:FORM24.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[9]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[9] != ''}">
-             <input type="image" th:src="${imagePathList[9]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[9]}"/>
-        </form>
-         </div>
-       </td>
-     </tr>
-   
-     
-     <tr>
-       <td colSpan="2"  bgcolor="#7fffd4">
-         <div class="layout2_twoone">
-         <form method="post" name="FORM25" action="/postDetail">
-           <div th:if="${imagePathList[3] == ''}">
-             <a href="javascript:FORM25.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[3]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[3] != ''}">
-             <input type="image"  th:src="${imagePathList[3]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[3]}"/>
-         </form>
-         </div>
-       </td>
-       <td rowSpan="2" bgcolor="#cccccc">
-         <div class="layout2_twotwo">
-         <form method="post" name="FORM26" action="/postDetail">
-           <div th:if="${imagePathList[4] == ''}">
-             <a href="javascript:FORM26.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[4]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[4] != ''}">
-             <input type="image" th:src="${imagePathList[4]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[4]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#ffebcd">
-         <div class="layout2_twothree">
-         <form method="post" name="FORM27" action="/postDetail">
-           <div th:if="${imagePathList[1] == ''}">
-             <a href="javascript:FORM27.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[1]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[1] != ''}">
-             <input type="image" th:src="${imagePathList[1]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[1]}"/>
-         </form>
-         </div>
-       </td>
-     </tr>
-   
-     
-     <tr>
-       <td colSpan="2" bgcolor="#e0ffff">
-         <div class="layout2_threeone">
-         <form method="post" name="FORM28" action="/postDetail">
-           <div th:if="${imagePathList[0] == ''}">
-             <a href="javascript:FORM28.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[0]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[0] != ''}">
-             <input type="image" th:src="${imagePathList[0]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[0]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#e6e6fa">
-         <div class="layout2_threetwo">
-         <form method="post" name="FORM29" action="/postDetail">
-           <div th:if="${imagePathList[7] == ''}">
-             <a href="javascript:FORM29.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[7]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[7] != ''}">
-             <input type="image" th:src="${imagePathList[7]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[7]}"/>
-         </form>
-         </div>
-       </td>
-       <td bgcolor="#faf0e6">
-         <div class="layout2_threethree">
-         <form method="post" name="FORM30" action="/postDetail">
-           <div th:if="${imagePathList[8] == ''}">
-             <a href="javascript:FORM30.submit()"  style="text-decoration: none; color:black;"><span th:text="${hashTagList[8]}"></span></a>
-           </div>
-           <div th:if="${imagePathList[8] != ''}">
-             <input type="image" th:src="${imagePathList[8]}"/>
-           </div>
-           <input type="hidden" name="no" th:value="${noList[8]}"/>
-         </form>
-         </div>
-       </td>
-     </tr>
-   </table>
-   </th:block>
-   <div class="parent">
-     <div class="child1">
-       <span>カテゴリ</span>
-       <br/>
-       		<th:block th:each="category : ${categoryList}">
-       		<form method="post" style="display: inline" name="FORMCATEGORY" action="/categorySearch">
-       			<input type="hidden" name="category" th:value="${category}"/>
-       		    <button style="border: none; outline: none; background: transparent; margin-left: 20px; text-decoration: underline;"><span th:text="${category}"></span></button>
-       		</form>
-       		</th:block>
-     </div>
-     <div class="child2">
-     </div>
-     <div class="child3">
-     	<form method="post" name="FORMALL" action="/allPost">
-     		<div class="button009">
-				<a href="javascript:FORMALL.submit()">その他の投稿も見る</a>
-			</div>
-     	</form>
-     </div>
-   </div>
+			<tr>
+				<td bgcolor="#7fffd4" colSpan="3">
+					<div class="threeone">
+						<form method="post" name="FORM8" action="/postDetail">
+							<div th:if="${imagePathList[5] == ''}">
+								<a href="javascript:FORM8.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[5]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[5] != ''}">
+								<input type="image" th:src="${imagePathList[5]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[5]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#fffacd">
+					<div class="threetwo">
+						<form method="post" name="FORM9" action="/postDetail">
+							<div th:if="${imagePathList[6] == ''}">
+								<a href="javascript:FORM9.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[6]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[6] != ''}">
+								<input type="image" th:src="${imagePathList[6]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[6]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#e0ffff">
+					<div class="threethree">
+						<form method="post" name="FORM10" action="/postDetail">
+							<div th:if="${imagePathList[2] == ''}">
+								<a href="javascript:FORM10.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[2]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[2] != ''}">
+								<input type="image" th:src="${imagePathList[2]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[2]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</th:block>
+
+
+
+
+
+	<th:block th:if="${flg == 2}">
+		<table>
+			<tr>
+				<td bgcolor="#ffb6c1">
+					<div class="layout3_oneone">
+						<form method="post" name="FORM11" action="/postDetail">
+							<div th:if="${imagePathList[3] == ''}">
+								<a href="javascript:FORM11.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[3]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[3] != ''}">
+								<input type="image" th:src="${imagePathList[3]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[3]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#b0c4de">
+					<div class="layout3_onetwo">
+						<form method="post" name="FORM12" action="/postDetail">
+							<div th:if="${imagePathList[8] == ''}">
+								<a href="javascript:FORM12.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[8]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[8] != ''}">
+								<input type="image" th:src="${imagePathList[8]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[8]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#f0e68c">
+					<div class="layout3_onethree">
+						<form method="post" name="FORM13" action="/postDetail">
+							<div th:if="${imagePathList[4] == ''}">
+								<a href="javascript:FORM13.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[4]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[4] != ''}">
+								<input type="image" th:src="${imagePathList[4]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[4]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#e0ffff">
+					<div class="layout3_onethree">
+						<form method="post" name="FORM14" action="/postDetail">
+							<div th:if="${imagePathList[9] == ''}">
+								<a href="javascript:FORM14.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[9]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[9] != ''}">
+								<input type="image" th:src="${imagePathList[9]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[9]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
+
+
+			<tr>
+				<td colSpan="2" bgcolor="#7fffd4">
+					<div class="layout3_twotwo">
+						<form method="post" name="FORM15" action="/postDetail">
+							<div th:if="${imagePathList[5] == ''}">
+								<a href="javascript:FORM15.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[5]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[5] != ''}">
+								<input type="image" th:src="${imagePathList[5]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[5]}" />
+						</form>
+					</div>
+				</td>
+				<td colSpan="2" bgcolor="#e6e6fa">
+					<div class="layout3_twofour">
+						<form method="post" name="FORM16" action="/postDetail">
+							<div th:if="${imagePathList[0] == ''}">
+								<a href="javascript:FORM16.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[0]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[0] != ''}">
+								<input type="image" th:src="${imagePathList[0]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[0]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
+
+
+			<tr>
+				<td bgcolor="#ffebcd">
+					<div class="layout3_threeone">
+						<form method="post" name="FORM17" action="/postDetail">
+							<div th:if="${imagePathList[6] == ''}">
+								<a href="javascript:FORM17.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[6]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[6] != ''}">
+								<input type="image" th:src="${imagePathList[6]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[6]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#faf0e6">
+					<div class="layout3_threetwo">
+						<form method="post" name="FORM18" action="/postDetail">
+							<div th:if="${imagePathList[7] == ''}">
+								<a href="javascript:FORM18.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[7]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[7] != ''}">
+								<input type="image" th:src="${imagePathList[7]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[7]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#cccccc">
+					<div class="layout3_threethree">
+						<form method="post" name="FORM19" action="/postDetail">
+							<div th:if="${imagePathList[2] == ''}">
+								<a href="javascript:FORM19.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[2]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[2] != ''}">
+								<input type="image" th:src="${imagePathList[2]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[2]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#ffe4e1">
+					<div class="layout3_threethree">
+						<form method="post" name="FORM20" action="/postDetail">
+							<div th:if="${imagePathList[1] == ''}">
+								<a href="javascript:FORM20.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[1]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[1] != ''}">
+								<input type="image" th:src="${imagePathList[1]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[1]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</th:block>
+
+
+
+
+	<th:block th:if="${flg == 1}">
+		<table>
+			<tr>
+				<td rowSpan="2" bgcolor="#ffb6c1">
+					<div class="layout2_oneone">
+						<form method="post" name="FORM21" action="/postDetail">
+							<div th:if="${imagePathList[2] == ''}">
+								<a href="javascript:FORM21.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[2]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[2] != ''}">
+								<input type="image" th:src="${imagePathList[2]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[2]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#fffacd">
+					<div class="layout2_onetwo">
+						<form method="post" name="FORM22" action="/postDetail">
+							<div th:if="${imagePathList[5] == ''}">
+								<a href="javascript:FORM22.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[5]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[5] != ''}">
+								<input type="image" th:src="${imagePathList[5]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[5]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#b0c4de">
+					<div class="layout2_onethree">
+						<form method="post" name="FORM23" action="/postDetail">
+							<div th:if="${imagePathList[6] == ''}">
+								<a href="javascript:FORM23.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[6]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[6] != ''}">
+								<input type="image" th:src="${imagePathList[6]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[6]}" />
+						</form>
+					</div>
+				</td>
+				<td colSpan="2" bgcolor="#f0e68c">
+					<div class="layout2_onefour">
+						<form method="post" name="FORM24" action="/postDetail">
+							<div th:if="${imagePathList[9] == ''}">
+								<a href="javascript:FORM24.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[9]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[9] != ''}">
+								<input type="image" th:src="${imagePathList[9]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[9]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
+
+
+			<tr>
+				<td colSpan="2" bgcolor="#7fffd4">
+					<div class="layout2_twoone">
+						<form method="post" name="FORM25" action="/postDetail">
+							<div th:if="${imagePathList[3] == ''}">
+								<a href="javascript:FORM25.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[3]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[3] != ''}">
+								<input type="image" th:src="${imagePathList[3]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[3]}" />
+						</form>
+					</div>
+				</td>
+				<td rowSpan="2" bgcolor="#cccccc">
+					<div class="layout2_twotwo">
+						<form method="post" name="FORM26" action="/postDetail">
+							<div th:if="${imagePathList[4] == ''}">
+								<a href="javascript:FORM26.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[4]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[4] != ''}">
+								<input type="image" th:src="${imagePathList[4]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[4]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#ffebcd">
+					<div class="layout2_twothree">
+						<form method="post" name="FORM27" action="/postDetail">
+							<div th:if="${imagePathList[1] == ''}">
+								<a href="javascript:FORM27.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[1]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[1] != ''}">
+								<input type="image" th:src="${imagePathList[1]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[1]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
+
+
+			<tr>
+				<td colSpan="2" bgcolor="#e0ffff">
+					<div class="layout2_threeone">
+						<form method="post" name="FORM28" action="/postDetail">
+							<div th:if="${imagePathList[0] == ''}">
+								<a href="javascript:FORM28.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[0]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[0] != ''}">
+								<input type="image" th:src="${imagePathList[0]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[0]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#e6e6fa">
+					<div class="layout2_threetwo">
+						<form method="post" name="FORM29" action="/postDetail">
+							<div th:if="${imagePathList[7] == ''}">
+								<a href="javascript:FORM29.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[7]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[7] != ''}">
+								<input type="image" th:src="${imagePathList[7]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[7]}" />
+						</form>
+					</div>
+				</td>
+				<td bgcolor="#faf0e6">
+					<div class="layout2_threethree">
+						<form method="post" name="FORM30" action="/postDetail">
+							<div th:if="${imagePathList[8] == ''}">
+								<a href="javascript:FORM30.submit()" style="text-decoration: none; color:black;"><span
+										th:text="${hashTagList[8]}"></span></a>
+							</div>
+							<div th:if="${imagePathList[8] != ''}">
+								<input type="image" th:src="${imagePathList[8]}" />
+							</div>
+							<input type="hidden" name="no" th:value="${noList[8]}" />
+						</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</th:block>
+	<div class="parent">
+		<div class="child1">
+			<span>カテゴリ</span>
+			<br />
+			<th:block th:each="category : ${categoryList}">
+				<form method="post" style="display: inline" name="FORMCATEGORY" action="/categorySearch">
+					<input type="hidden" name="category" th:value="${category}" />
+					<button
+						style="border: none; outline: none; background: transparent; margin-left: 20px; text-decoration: underline;"><span
+							th:text="${category}"></span></button>
+				</form>
+			</th:block>
+		</div>
+		<div class="child2">
+		</div>
+		<div class="child3">
+			<form method="post" name="FORMALL" action="/allPost">
+				<div class="button009">
+					<a href="javascript:FORMALL.submit()">その他の投稿も見る</a>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
+
 </html>

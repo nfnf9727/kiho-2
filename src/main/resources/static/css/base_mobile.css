@@ -128,7 +128,7 @@ main {
 }
  
 .modal-header {
-  background: lightblue;
+  background: black;
   padding: 3px 15px;
   display: flex;
   justify-content: space-between;
