@@ -146,3 +146,34 @@ main {
   padding: 10px 60px;
   color: black;
 }
+
+main {
+ 
+  display: flex;
+ 
+  flex-wrap: wrap;
+ 
+}
+ 
+.main {
+ 
+    padding:  10px;           
+ 
+}
+ 
+ 
+.mypage {
+ 
+  width: 30%;
+  padding: 10px;
+  color:  #000000;          
+  margin:  10px;          
+  border-radius:  5px;      
+  background-color: #f5f5f5
+}
+ 
+.mypage img {
+  max-width: 100%;
+  height: auto;
+  width /**/:auto;
+}

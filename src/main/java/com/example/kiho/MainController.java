@@ -1,5 +1,7 @@
 package com.example.kiho;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.example.kiho.mypage.MyPageMainLogic;
 import com.example.kiho.postMessage.PostForm;
 import com.example.kiho.postMessage.PostMessageMainLogic;
 import com.example.kiho.top.TopMainLogic;
@@ -87,6 +89,9 @@ public class MainController {
     // 接続URL：http://localhost:8080/top
     /**
      * トップ画面出力
+     * PCとモバイルで見え方変更
+     * PC：10件テーブルレイアウト　top_pc.html
+     * モバイル：スライド式10件　　top_mobile.html
      * @param model
      * @param httpSession
      * @return
@@ -99,14 +104,15 @@ public class MainController {
     	tc.topImagePath(model, jdbcTemplate);
     	tc.topNo(model, jdbcTemplate);
     	tc.topCategory(model, jdbcTemplate);
-    	//ログイン時にユーザ情報をsessionに保存するはず
-    	//sessionからログイン情報取りに行く　後で追加
-    	httpSession.setAttribute("userName", "しぶたに");
-    	model.addAttribute("userName", httpSession.getAttribute("userName"));
+
     	Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
-
-    	return "top";
+		
+		return "top";
+		
+//		モバイルはこっち
+//		ログイン画面で画面幅jsで取得する
+//    	return "top_mobile";
 
     }
     
@@ -127,8 +133,6 @@ public class MainController {
     	form.setHashtag(hashtag);
     	form.setHashtagSelect(hashtagSelect);
     	form.setImage(image);
-    	System.out.println(hashtag);
-    	System.out.println(hashtagSelect);
     	
     	PostMessageMainLogic pmc = new PostMessageMainLogic();
     	
@@ -136,7 +140,6 @@ public class MainController {
     	
     	Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
-    	model.addAttribute("userName", "しぶたに");
     	
     	return "top";
       
@@ -198,6 +201,24 @@ public class MainController {
     	tml.topName(model, jdbcTemplate);
     	
     	return "test2";
+    }
+
+    
+    /**
+     * マイページ
+     * @param model
+     * @return
+     */
+    @RequestMapping(path = "/mypage")
+    public String mypage(Model model, HttpSession httpSession) {
+
+    	//sessionからログイン情報取りに行く　後で追加
+    	httpSession.setAttribute("loginId", "test1");
+    	String loginId = (String) httpSession.getAttribute("loginId");
+    	MyPageMainLogic mpml = new MyPageMainLogic();
+    	mpml.mypage(model, jdbcTemplate, loginId);
+    	
+    	return "mypage";
     }
 
 }

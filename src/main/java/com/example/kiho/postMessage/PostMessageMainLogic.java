@@ -54,6 +54,8 @@ public class PostMessageMainLogic {
 					OutputStream stream = Files.newOutputStream(path);
 					stream.write(bytes);
 				}
+				
+				String imagePath = "/images/" + sb + ".png";
 
 				if (form.getImage().isEmpty()) {
 					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
@@ -61,7 +63,7 @@ public class PostMessageMainLogic {
 					jdbcTemplate.update(sql1);
 				} else {
 					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
-							+ form.getPostText() + "', '" + hashTag + "', '" + path + "', '" + fdate1 + "', '0')";
+							+ form.getPostText() + "', '" + hashTag + "', '" + imagePath + "', '" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				}
 

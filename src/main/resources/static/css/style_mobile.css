@@ -1,513 +1,5 @@
 @charset "Shift_JIS";
-table{
-  width: 90%;
-  height: 50%;
-  table-layout: fixed;
-  margin: 5px 5px 5px 5px;
-}
- 
-tr{
-  height: 60px;
-}
-td{
-  text-align: center;
-}
- 
- 
- 
-.oneone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
 
-.oneone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
-.onetwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 120px;
-}
-
-.onetwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
-.onethree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.onethree img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.onethree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.onefour{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 120px;
-}
-.onefour img{
-  max-height: 120px;
-  cursor: pointer;
-}
-.onefour:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
-.twoone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.twoone img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.twoone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.twotwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.twotwo img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.twotwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
-.twothree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.twothree img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.twothree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.threeone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.threeone img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.threeone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.threetwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.threetwo img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.threetwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.threethree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.threethree img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.threethree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.layout2_oneone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 120px;
-}
-.layout2_oneone img{
-  max-height: 120px;
-  cursor: pointer;
-}
-.layout2_oneone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
-.layout2_onetwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_onetwo img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.layout2_onetwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.layout2_onethree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_onethree img{
-  max-height: 60px;
-  cursor: pointer;
-}
-.layout2_onethree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.layout2_onefour{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_onefour:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.layout2_twoone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_twoone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout2_twotwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 120px;
-}
-.layout2_twotwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout2_twothree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_twothree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout2_threeone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_threeone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout2_threetwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_threetwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
- 
-.layout2_threethree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout2_threethree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
-
-
-
-
-
- 
-.layout3_oneone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_oneone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
-.layout3_onetwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_onetwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.layout3_onethree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_onethree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
-.layout3_twoone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_twoone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout3_twotwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_twotwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout3_twothree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_twothree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
-
-
-.layout3_twofour{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_twofour:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout3_threeone{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_threeone:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
- 
- 
- 
- 
-.layout3_threetwo{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_threetwo:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
- 
-.layout3_threethree{
-  object-fit: cover;
-  overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 60px;
-}
-.layout3_threethree:hover{
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  transform: translateY(-10px);
-  transition-duration: 0.5s;
-}
 
 
 
@@ -618,7 +110,51 @@ table.toukou td.toukouButton {
 
 
 
+.slide {
+  position: relative;
+  overflow: hidden;
+  width: 350px;
+  height: 200px;
+  margin: auto;
+  background: #fff;
+}
+.slide form {
+  display: block;
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  left: 100%;
+  animation: slide-anime 30s ease infinite;
+}
+.slide form:nth-of-type(1) {animation-delay: 0s;}
+.slide form:nth-of-type(2) {animation-delay: 3s;}
+.slide form:nth-of-type(3) {animation-delay: 6s;}
+.slide form:nth-of-type(4) {animation-delay: 9s;}
+.slide form:nth-of-type(5) {animation-delay: 12s;}
+.slide form:nth-of-type(6) {animation-delay: 15s;}
+.slide form:nth-of-type(7) {animation-delay: 18s;}
+.slide form:nth-of-type(8) {animation-delay: 21s;}
+.slide form:nth-of-type(9) {animation-delay: 24s;}
+.slide form:nth-of-type(10) {animation-delay: 27s;}
+ 
+@keyframes slide-anime{
+  0% {left: 100%;}
+  2% {left: 0;}
+  10% {left: 0;}
+  13% {left: -150%;}
+  100% {left: -150%;}
+}
 
+.alltoukou {
+  display: flex;
+  justify-content: end;
+  position: relative;
+  overflow: hidden;
+  width: 350px;
+  height: 200px;
+  margin: auto;
+  background: #fff;
+}
 
 
 

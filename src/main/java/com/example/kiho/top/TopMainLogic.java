@@ -27,8 +27,7 @@ public class TopMainLogic {
     		if(imagePathSQLList.get(i) == null ||imagePathSQLList.get(i).isEmpty() || imagePathSQLList.get(i).isBlank()) {
     			imagePathList.add("");
     		}else {
-    			String result = imagePathSQLList.get(i).substring(25);
-        		imagePathList.add(result);
+        		imagePathList.add(imagePathSQLList.get(i));
     		}
     	}
         model.addAttribute("imagePathList", imagePathList);
