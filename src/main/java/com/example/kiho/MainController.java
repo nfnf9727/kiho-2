@@ -1,7 +1,5 @@
 package com.example.kiho;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -27,71 +25,15 @@ import com.example.kiho.wordSearch.SearchMainLogic;
 public class MainController {
 	@Autowired
     private JdbcTemplate jdbcTemplate;
+
 	
 	
-	// テスト用です。このメソッド後で消します。
-	// 本来はshowIndex()を経由してトップ画面を表示します
-	// postmsgテーブル（投稿内容を格納するテーブル）未作成であれば情報取れずエラーになりますので、postmsgテーブルを作成してください
-	// 投稿する場合も、postmsgテーブルを作成してから入力ください
-	// 接続URL：http://localhost:8080/
-    @RequestMapping(path = "/")
-    public String test(Model model) {
-    	
-    	//top画面を表示させるために無理やり値入れてます
-    	List<String> imagePathList = new ArrayList<>();
-    	List<String> loginIdList = new ArrayList<>();
-    	List<String> hashTagList = new ArrayList<>();
-    	imagePathList.add("/images/WeX3PTyUSzmPEEuleRX2.png");
-    	imagePathList.add("/images/iVKbmeqLt7uB1tRBEnNB.png");
-    	imagePathList.add("");
-    	imagePathList.add("");
-    	imagePathList.add("/images/IvdDeloUfZYgqj0YTL1H.png");
-    	imagePathList.add("");
-    	imagePathList.add("");
-    	imagePathList.add("/images/iCsHDGylZU56yfEH83y5.png");
-    	imagePathList.add("");
-    	imagePathList.add("/images/HRtFLCxcBbpOiujcMSIc.png");
-    	
-    	loginIdList.add("test1");
-    	loginIdList.add("test2");
-    	loginIdList.add("test3");
-    	loginIdList.add("test4");
-    	loginIdList.add("test5");
-    	loginIdList.add("test6");
-    	loginIdList.add("test7");
-    	loginIdList.add("test8");
-    	loginIdList.add("test9");
-    	loginIdList.add("test10");
-    	
-    	hashTagList.add("#ハッシュタグ");
-    	hashTagList.add("#今日の１枚");
-    	hashTagList.add("#今日のご飯");
-    	hashTagList.add("#ランチ");
-    	hashTagList.add("#夜食");
-    	hashTagList.add("#おにぎり");
-    	hashTagList.add("#おすすめ");
-    	hashTagList.add("#書くことなくなってきたよ");
-    	hashTagList.add("#なににしよーかなー");
-    	hashTagList.add("#ラスト");
-    	
-    	model.addAttribute("hashTagList", hashTagList);
-    	model.addAttribute("imagePathList", imagePathList);
-    	model.addAttribute("loginIdList", loginIdList);
-    	model.addAttribute("userName", "しぶたに");
-    	Random rnd = new Random();
-		model.addAttribute("flg", rnd.nextInt(3));
-    	
-    	return "top";
-    }
-	
-    // 本来はこっち(top画面を表示するメソッド)    
-    // postmsgテーブル作成後、接続してください
-    // 接続URL：http://localhost:8080/top
     /**
-     * トップ画面出力
+     * トップ画面出力(postmsgテーブル作成後、接続してください)
      * PCとモバイルで見え方変更
      * PC：10件テーブルレイアウト　top_pc.html
      * モバイル：スライド式10件　　top_mobile.html
+     * 接続URL：http://localhost:8080/top
      * @param model
      * @param httpSession
      * @return
@@ -108,11 +50,15 @@ public class MainController {
     	Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
 		
-		return "top";
-		
-//		モバイルはこっち
-//		ログイン画面で画面幅jsで取得する
-//    	return "top_mobile";
+//		//sessionより画面幅取得
+//		//画面幅に応じて出力する画面を変える
+//		int width = (int) httpSession.getAttribute("width");
+//		if(width > 400) {
+//			return "top_pc";
+//		}else {
+//			return "top_mobile";
+//		}
+		return "top_pc";
 
     }
     
@@ -141,7 +87,15 @@ public class MainController {
     	Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
     	
-    	return "top";
+//		//sessionより画面幅取得
+//		//画面幅に応じて出力する画面を変える
+//		int width = (int) httpSession.getAttribute("width");
+//		if(width > 400) {
+//			return "top_pc";
+//		}else {
+//			return "top_mobile";
+//		}
+    	return "top_pc";
       
     }
     
@@ -217,6 +171,7 @@ public class MainController {
     	String loginId = (String) httpSession.getAttribute("loginId");
     	MyPageMainLogic mpml = new MyPageMainLogic();
     	mpml.mypage(model, jdbcTemplate, loginId);
+    	
     	
     	return "mypage";
     }

@@ -156,5 +156,35 @@ table.toukou td.toukouButton {
   background: #fff;
 }
 
+h2 {
+  position: relative;
+  padding: 1rem .5rem;
+  color: #979292;
+}
+
+h1:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: '';
+  border-radius: 3px;
+  background-image: -webkit-linear-gradient(20deg, yellow, blue, orange, purple, green, red);
+  background-image: linear-gradient(70deg, yellow, blue, orange, purple, green, red);
+}
+
+h1 {
+  position: relative;
+  padding: 1rem .5rem;
+  color: #979292;
+}
+
+h1.toukou {
+	color: white;
+}
+h1.toukou:after {
+	height: 0px;
+}
 
 

@@ -16,7 +16,7 @@
 			<form style="display: inline" action="/top">
 				<button id="top" class="button">　TOP　</button>
 			</form>
-			<form style="display: inline" action="/mypage">
+			<form style="display: inline" action="/mypage" method="post">
 				<button id="top" class="button">　MyPage　</button>
 			</form>
 			<button id="modalOpen" class="button">投稿する</button>
@@ -101,12 +101,10 @@
 </header>
 
 <body>
-
-
-
-
-
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+
+
 	<span style="color:red" th:text="${errorMsg}"></span>
 	<br />
 	<div class="slide">
@@ -229,7 +227,6 @@
 			</div>
 		</form>
 	</div>
-
 
 
 

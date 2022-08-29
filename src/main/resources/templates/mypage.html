@@ -31,7 +31,7 @@
 		<div id="easyModal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1>
+					<h1 class="toukou">
 						<font color="white">投稿</font>
 					</h1>
 					<span class="modalClose">×</span>
@@ -102,22 +102,27 @@
 
 <body>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<h1>MY PAGE</h1>
 
+	<h2>過去の投稿</h2>
 	<main>
-		
+	
+
 		<th:block th:each="myPageList : ${myPageList}">
-		<div class="mypage">
-			<form method="post" action="/mypage">
-				<th:block th:if="${myPageList.image != ''}">
-					<input style="max-width: 100%; height: auto; width /**/:auto;" type="image" th:src="${myPageList.image}" />
-				</th:block>
-				<th:block th:if="${myPageList.image == ''}">
-					<input style="max-width: 100%; height: auto; width /**/:auto;" type="image" src="/commonImages/noimage.png" />
-				</th:block>
-			</form>
-			<p th:text="${myPageList.hashTag}"></p>
-			<p th:text="${myPageList.postText}"></p>
-		</div>
+			<div class="mypage">
+				<form method="post" action="/mypage">
+					<th:block th:if="${myPageList.image != ''}">
+						<input style="max-width: 100%; height: auto; width /**/:auto;" type="image"
+							th:src="${myPageList.image}" />
+					</th:block>
+					<th:block th:if="${myPageList.image == ''}">
+						<input style="max-width: 100%; height: auto; width /**/:auto;" type="image"
+							src="/commonImages/noimage.png" />
+					</th:block>
+				</form>
+				<p th:text="${myPageList.hashTag}"></p>
+				<p th:text="${myPageList.postText}"></p>
+			</div>
 		</th:block>
 
 

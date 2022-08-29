@@ -31,7 +31,7 @@
 		<div id="easyModal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1>
+					<h1 class="toukou">
 						<font color="white">投稿</font>
 					</h1>
 					<span class="modalClose">×</span>
@@ -59,13 +59,13 @@
 									</td>
 									<td class="toukou2">
 										<input id="hashtag" name="hashtag" type="text" />
-										<br/>
+										<br />
 										<select name="hashtagSelect" id="hashtagSelect">
 											<option value="0">上記で入力</option>
 											<option th:each="category : ${categoryList}" th:value="${category}"
 												th:text="${category}">[[${category}]]</option>
 										</select>
-										<br/>
+										<br />
 										<span style="font-size: 1px;">※ハッシュタグ「#」は半角で入力してください</span>
 									</td>
 								</div>
@@ -79,7 +79,7 @@
 								<div align="center">
 									<td class="toukouImage">
 									</td>
-									<td class="toukouButton"> 
+									<td class="toukouButton">
 										<label style="vertical-align: middle;">
 											<img class="imageLogo" id="imageLogo"
 												style="width: 40px; display: inline; margin-right: auto;"
@@ -87,7 +87,8 @@
 											<input style="display: none;" type="file" name="image" id="input"
 												accept="image/jpeg, image/png">
 										</label>
-										<button id="toukou" class="button-54" role="button" formaction="/postMessage">投稿</button>
+										<button id="toukou" class="button-54" role="button"
+											formaction="/postMessage">投稿</button>
 									</td>
 								</div>
 							</tr>
@@ -101,6 +102,8 @@
 
 <body>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<h1>TOP</h1>
+	<h2>最新投稿</h2>
 
 	<span style="color:red" th:text="${errorMsg}"></span>
 
