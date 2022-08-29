@@ -103,10 +103,22 @@
 <body>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<h1>MY PAGE</h1>
+	<h2>プロフィール</h2>
+
+	<table class="mypage">
+		<tr>
+			<th>ニックネーム</th>
+			<td th:text="${name}"></td>
+		</tr>
+		<tr>
+			<th>最終ログイン日時</th>
+			<td th:text="${createdTime}"></td>
+		</tr>
+	</table>
 
 	<h2>過去の投稿</h2>
 	<main>
-	
+
 
 		<th:block th:each="myPageList : ${myPageList}">
 			<div class="mypage">

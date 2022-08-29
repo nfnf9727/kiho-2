@@ -142,7 +142,7 @@ public class MainController {
     }
     
     /**
-     * 「その他の投稿」ボタンから全件出力
+     * 「すべての投稿」ボタンから全件出力
      * @param model
      * @return
      */

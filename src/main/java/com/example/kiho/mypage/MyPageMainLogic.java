@@ -14,6 +14,14 @@ public class MyPageMainLogic {
 		String myPageSQL = "SELECT * FROM postmsg WHERE loginId = '" + loginId + "' ORDER BY createdTime DESC";
 		List<Map<String,Object>> myPageList = jdbcTemplate.queryForList(myPageSQL);
 		model.addAttribute("myPageList", myPageList);
+		
+		String nameSQL = "SELECT name FROM user WHERE loginId = '" + loginId + "'";
+		String name = jdbcTemplate.queryForObject(nameSQL, String.class);
+		model.addAttribute("name", name);
+		
+		String createdTimeSQL = "SELECT lastlogin FROM user WHERE loginId = '" + loginId + "'";
+		String createdTime = jdbcTemplate.queryForObject(createdTimeSQL, String.class);
+		model.addAttribute("createdTime", createdTime);
 	}
 
 }
