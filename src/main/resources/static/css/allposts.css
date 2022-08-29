@@ -1,0 +1,180 @@
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+.container {
+    /*max-width: 1170px;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.btn {
+  padding: 8px 24px;
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+.btn:hover {
+  opacity: 1;
+}
+
+header {
+  height: 65px;
+  width: 100%;
+  background-color: rgba(34, 49, 52, 0.9);
+  position :fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  width: 124px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.5s;
+}
+
+.header-right:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.header-right a {
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+}
+
+.header-right0 {
+  float: right;
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+}
+
+/*追加*/
+.post-container {
+    width: 100%;
+    overflow: hidden;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    */float: left;*/
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+}
+
+.post-wrapper {
+  height: auto;
+  box-sizeing: border-box
+  background-color: #f7f7f7;
+  text-align: center;
+  overflow: hidden;
+  width: 82%;
+  margin: 0;
+}
+
+
+
+.heading {
+  padding-top: 80px;
+  padding-bottom: 50px;
+  color: #5f5d60;
+}
+
+.heading h2 {
+  font-weight: normal;
+}
+
+/*追加*/
+.posts{
+  flex-wrap: wrap;
+  display: flex;
+  padding-right: 16px;
+  /*width: auto;*/
+  /*width: 82%;*/
+}
+
+
+.post{
+  float: left;
+  width: 33%;
+  padding-bottom: 50px;
+}
+
+.post-icon {
+  position: relative;
+}
+
+/*追加*/
+.post-icon img{
+  object-fit: cover;
+  width: 85%;
+  height: 150px;
+}
+
+.post-icon p {
+  position: absolute;
+  top: 44%;
+  width: 100%;
+  color: white;
+}
+
+.text-contents {
+  width: 80%;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #b3aeb5;
+}
+  
+  /*追加*/
+.side {
+  padding-top: 80px;
+  width: 18%;
+  background-color: #c4dfe6;
+  float: right;
+}
+
+.tag-contents {
+  width: 95%;
+  display: inline-block;
+  margin-top: 4px;
+  margin-left: 4px;
+  font-size: 13px;
+  color: #b3aeb5;
+}
+
+  
+  
+}
