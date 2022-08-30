@@ -7,8 +7,38 @@
 	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
 	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
+	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css"/>
 </head>
 <header class="header">
+
+	<div class="container">
+		<div class="header-left">
+			<form style="display: inline" action="/top">
+				<!--<input type="image" class="logo" th:src="">-->
+			</form>
+		</div>
+		<div class="header-right0">
+			<form style="display: inline" method="post" action="/wordSearch">
+				<label for="serch"></label>
+				<input type="text" id="wordText" name="wordText">
+				<button id="search" class="button">検索</button>
+			</form>
+		</div>
+		<div class="header-right">
+			<a id="modalOpen" class="up">投稿する</a>
+		</div>
+		<div class="header-right">
+			<form method="POST" name="mypage" style="display: inline" action="/mypage">
+				<a href="javascript:mypage.submit()" style="text-decoration: nome; color: white;">MY PAGE</a>
+			</form>
+		</div>
+	</div>
+
+
+
+
+
+<!--
 	<div class="site">
 		<img src="ICON.png" alt="アイコン画像">
 
@@ -25,6 +55,8 @@
 				<button id="search" class="button">検索</button>
 			</form>
 		</div>
+		
+		-->
 
 
 
@@ -72,7 +104,7 @@
 							</tr>
 							<tr>
 								<td>
-									<img id="img" />
+									<img id="img" style="height: 150px; text-align: center;" />
 								</td>
 							</tr>
 							<tr>
@@ -102,10 +134,10 @@
 
 <body>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
-	<h1>MY PAGE</h1>
-	<h2>プロフィール</h2>
+	<h1 class="h1indent">MY PAGE</h1>
+	<h2 class="h2indent">プロフィール</h2>
 
-	<table class="mypage">
+	<table class="mypage" style="margin-left: 20px;">
 		<tr>
 			<th>ニックネーム</th>
 			<td th:text="${name}"></td>
@@ -116,7 +148,8 @@
 		</tr>
 	</table>
 
-	<h2>過去の投稿</h2>
+	<br/>
+	<h2 class="h2indent">過去の投稿</h2>
 	<main>
 
 

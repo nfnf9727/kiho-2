@@ -646,6 +646,14 @@ h1.toukou:after {
 }
 
 
+h1.h1indent {
+	margin-top: 100px;
+	margin-left: 20px;
+}
+
+h2.h2indent {
+	margin-left: 20px;
+}
 
 
 
