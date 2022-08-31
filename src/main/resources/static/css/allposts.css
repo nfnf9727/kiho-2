@@ -89,7 +89,7 @@ header {
     overflow: hidden;
     /*margin-left: auto;*/
     /*margin-right: auto;*/
-    */float: left;*/
+    /*float: left;*/
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
@@ -97,7 +97,7 @@ header {
 
 .post-wrapper {
   height: auto;
-  box-sizeing: border-box
+  /*box-sizeing: border-box*/
   background-color: #f7f7f7;
   text-align: center;
   overflow: hidden;
