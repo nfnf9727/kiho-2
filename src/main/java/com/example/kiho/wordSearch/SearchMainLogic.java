@@ -28,11 +28,9 @@ public class SearchMainLogic {
 			String hashTagSQL = "SELECT hashTag FROM postmsg WHERE no = '" + noList.get(i) + "'";
 			String hashTagStr = jdbcTemplate.queryForObject(hashTagSQL, String.class);
 			hashTagList.add(hashTagStr);
-
 			String imageSQL = "SELECT image FROM postmsg WHERE no = '" + noList.get(i) + "'";
 			String imageStr = jdbcTemplate.queryForObject(imageSQL, String.class);
 			imagePathList.add(imageStr);
-
 			String nameSQL = "SELECT name FROM user WHERE loginId = '" + loginIdList.get(i) + "'";
 			String nameStr = jdbcTemplate.queryForObject(nameSQL, String.class);
 			nameList.add(nameStr);
