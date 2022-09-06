@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+ <head>
+  <title>ログイン画面</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/style_login_pc.css">
+  <script type="text/javascript" src="../js/inputcheck.js"></script>
+ </head>
+
+ <body>
+
+  <div>
+   <img src="../image/ICON.PNG">
+  </div>
+
+  <form method="post" name="uid">
+   <p>ユーザーＩＤ：
+    <input type="text" id="uid" name="uid">
+   </p>
+  </form>
+
+  <form method="post" name="pass">
+   <p>パスワード：
+    <input type="password" id="password" name="password">
+   </p>
+  </form>
+  <form>
+   <p>
+    <a href="../html/syoki.html">初期設定（ＩＤ登録）</a>
+   </p>
+   <p>パスワードをお忘れの方は
+    <a href="../html/kakunin.html">こちら</a>
+   </p>
+  </form>
+
+  <form method="post" name="submit">
+    <input type="submit" value="ログイン" onclick="return check()">
+    <input type="submit" value="パスワード変更" onclick="return check()">
+  </form>  
+
+ </body>
+
+</html>
