@@ -78,6 +78,8 @@ public class MainController {
     	form.setHashtag(hashtag);
     	form.setHashtagSelect(hashtagSelect);
     	form.setImage(image);
+    	TopMainLogic tc = new TopMainLogic();
+    	tc.topCategory(model, jdbcTemplate);
     	
     	PostMessageMainLogic pmc = new PostMessageMainLogic();
     	
@@ -110,6 +112,8 @@ public class MainController {
     public String wordSearch(Model model,@RequestParam String wordText) {
     	SearchMainLogic sml = new SearchMainLogic();
     	sml.wordSearch(model, jdbcTemplate, wordText);
+    	TopMainLogic tc = new TopMainLogic();
+    	tc.topCategory(model, jdbcTemplate);
     	
     	return "test2";
     }
@@ -124,6 +128,8 @@ public class MainController {
     public String categorySearch(Model model,@RequestParam String category) {
     	SearchMainLogic sml = new SearchMainLogic();
     	sml.categorySearch(model, jdbcTemplate, category);
+    	TopMainLogic tc = new TopMainLogic();
+    	tc.topCategory(model, jdbcTemplate);
     	
     	return "test2";
     }
@@ -135,11 +141,10 @@ public class MainController {
      */
     @PostMapping(path = "/allPost")
     public String allPost(Model model) {
-    	TopMainLogic tml = new TopMainLogic();
-    	tml.topHashTag(model, jdbcTemplate);
-    	tml.topImagePath(model, jdbcTemplate);
-    	tml.topNo(model, jdbcTemplate);
-    	tml.topName(model, jdbcTemplate);
+    	SearchMainLogic sml = new SearchMainLogic();
+    	sml.allPost(model, jdbcTemplate);
+    	TopMainLogic tc = new TopMainLogic();
+    	tc.topCategory(model, jdbcTemplate);
     	
     	return "test2";
     }
@@ -158,6 +163,8 @@ public class MainController {
     	String loginId = (String) httpSession.getAttribute("loginId");
     	MyPageMainLogic mpml = new MyPageMainLogic();
     	mpml.mypage(model, jdbcTemplate, loginId);
+    	TopMainLogic tc = new TopMainLogic();
+    	tc.topCategory(model, jdbcTemplate);
     	
     	
     	return "mypage";
@@ -170,6 +177,7 @@ public class MainController {
 	    //httpSession.setAttribute("createdTime", "2022-08-03 00:00:00");
 	    //String loginId = (String) httpSession.getAttribute("loginId");
 	    //String createdTime = (String) httpSession.getAttribute("createdTime");
+    	
 	    PostResultMainLogic prml = new PostResultMainLogic();
 	    prml.postresult(model, jdbcTemplate, no);
 
