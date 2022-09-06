@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>投稿内容画面</title>
+    <link th:href="@{/css/postresult.css}" rel="stylesheet"/>
+    <link th:href="@{/css/base_pc.css}" rel="stylesheet"/>
+</head>
+
+<header class="header">
+ <div class="site">
+   <img th:src="@{/commonImages/ICON.png}" alt="アイコン画像">
+   
+  <div class="head">
+  <button id="top" class="button">　TOP　</button>
+  <button id="modalOpen" class="button">投稿する</button>
+  <input type="text" id="serch" value="">
+  <button id="search" class="button">検索</button>
+  </div>
+   
+  <div id="easyModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1><font color="white">投稿</font></h1>
+        <span class="modalClose">×</span>
+      </div>
+      <div class="modal-body">
+        <b>投稿者　　しぶたに</b>
+        
+      <form>
+        <div class="input-row">
+           <span>
+              <b>投稿内容</b>
+           </span>
+           <input id="postText" type="text" value="" style="width:20em; height:10em" maxlength="200"/>
+        </div>
+       <div class="input-row">
+           <span>
+              <b>#ハッシュタグ</b>
+           </span>
+           <input id="hashtag" type="text" value="" />
+           <br/>
+           
+           
+           <select name="" id="hashtagSelect">
+             <option value="1">上記で入力</option>
+             <option value="2">#趣味</option>
+             <option value="3">#休日</option>
+             <option value="4">#ランチ</option>
+           </select>
+           
+           <!-- 
+           <label><input id="hashtag_hobby" name="hashtagSelect" type="radio" value="1" onClick="setValue(this.value)"/>#趣味</label>
+           <label><input id="hashtag_holiday" name="hashtagSelect" type="radio" value="2" onClick="setValue(this.value)"/>#休日</label>
+           <label><input id="hashtag_lunch" name="hashtagSelect" type="radio" value="3" onClick="setValue(this.value)"/>#ランチ</label>
+           -->
+        </div>
+        <br/>
+        <div align="center">
+          <button id="toukou" class="button" onClick="disp()">投稿</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</header>
+<body>
+
+
+<main>
+
+<div class="key">
+<
+    <div class="key-name">
+     <p>投稿者：おおかわ</p>
+    </div>
+    <div class="key-time">
+     <p>2022/8/1 12:00</p>
+    </div>
+</div>
+
+<div class="kekka">
+    <div class="kekka-message">
+     <p>散歩してたらワンコ発見。</p>
+     <p>柴犬かわいすぎてどうしよう。</p>
+     <p>もふりたいなぁ・・・。</p>
+     <p>もふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふもふーーーー</p>
+    </div>
+    <div class="kekka-img">
+　   <img src="WANCO.jpg" alt="犬の写真">
+    </div>
+</div>
+
+
+<div class="iine">
+    <div class="iine-message">
+     <p>いいね！</p>
+    </div>
+    <div class="iine-img">
+     <input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪">
+    </div>
+    <div class="iine-count">
+     <p>10</p>
+    </div>
+</div>
+
+
+
+<div class="comment-in">
+
+   <input id="postText" type="text" value="" style="width:700px; height:auto" maxlength="200"/>
+   <button id="comment" class="button">コメント投稿</button>
+
+</div>
+ 
+
+<div class="comment-out">
+　 <b>コメント</b>
+ <div class="comment-out-kekka">
+   <p>okita：かわいいですね！</p>
+   <p>おおかわ：激カワやった！</p>
+ </div>
+</div>
+
+
+</main>
+
+
+  
+   
+   
+   
+  <script src="main.js"></script>  
+</body>
+</htmlxmlns:th="http://www.thymeleaf.org">

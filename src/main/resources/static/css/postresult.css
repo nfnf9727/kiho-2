@@ -1,0 +1,125 @@
+@charset "Shift_JIS";
+
+.key {
+
+  width: 900px;
+  height: 30px;
+  margin:  10px;
+}
+
+
+.key-name{
+  width: 200px;
+  display: inline-block;
+  vertical-align:top;
+}
+
+
+.key-time{
+  width: 200px;
+  display: inline-block;
+  vertical-align:top;
+}
+
+
+.kekka {
+
+  width: 900px;
+
+    padding: 10px;
+
+    color:  #fff;               /* 文字色 */
+
+    margin:  5px;              /* 外側の余白 */
+
+    border-radius:  5px;        /* 角丸指定 */
+
+    background-color:  #5BC8AC; /* 背景色指定 */
+}
+
+
+.kekka-message{
+  width: 40%;
+  display: inline-block;
+  vertical-align:top;
+}
+
+
+.kekka-img{
+
+  display: inline-block;
+  vertical-align:top;
+
+}
+
+
+
+.iine {
+
+  margin: 5px 0px 0px 780px;
+
+}
+
+.iine-message,.iine-img,.iine-count{
+
+  display: inline-block;
+  vertical-align:middle;
+
+}
+
+
+.iine-img:hover {
+    border-bottom: 0;
+    transform: translateY(4px);
+    margin-bottom: 4px;
+}
+
+
+.yureru-j {
+    animation: yureru-j 2s infinite;
+}
+@keyframes yureru-j {
+    0% {
+        transform: translate(0px, 2px);
+    }
+    5% {
+        transform: translate(0px, -2px);
+    }
+    10% {
+        transform: translate(0px, 2px);
+    }
+    15% {
+        transform: translate(0px, -2px);
+    }
+    20% {
+        transform: translate(0px, 2px);
+    }
+    25% {
+        transform: translate(0px, -2px);
+    }
+    30% {
+        transform: translate(0px, 0px);
+    }
+}
+
+
+.comment-in {
+
+  margin: 0px 0px 0px 20px;
+
+}
+
+
+.comment-out {
+
+  width: 800px;
+  margin: 20px 0px 0px 20px;
+
+}
+
+.comment-out-kekka {
+
+  width: 750px;
+  margin: 10px 0px 0px 30px;
+
+}
