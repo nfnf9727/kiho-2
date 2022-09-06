@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.kiho.mypage.MyPageMainLogic;
 import com.example.kiho.postMessage.PostForm;
 import com.example.kiho.postMessage.PostMessageMainLogic;
+import com.example.kiho.postresult.PostResultMainLogic;
 import com.example.kiho.top.TopMainLogic;
 import com.example.kiho.wordSearch.SearchMainLogic;
 
@@ -99,19 +100,7 @@ public class MainController {
       
     }
     
-    /**
-     * 最新10件より詳細画面へ飛ぶ処理
-     * @param model
-     * @param no
-     * @return
-     */
-    @PostMapping(path = "/postDetail")
-    public String postDetail(Model model,@RequestParam String no) {
-    	
-    	
-    	
-    	return "test";
-    }
+ 
     
     /**
      * ワード検索
@@ -175,5 +164,17 @@ public class MainController {
     	
     	return "mypage";
     }
-
+    @PostMapping(path = "/postDetail")
+    public String postresult(Model model, String no) {
+		
+	    //sessionから投稿内容取りに行く　後で追加
+	    //httpSession.setAttribute("loginId", "test1");
+	    //httpSession.setAttribute("createdTime", "2022-08-03 00:00:00");
+	    //String loginId = (String) httpSession.getAttribute("loginId");
+	    //String createdTime = (String) httpSession.getAttribute("createdTime");
+	    PostResultMainLogic prml = new PostResultMainLogic();
+	    prml.postresult(model, jdbcTemplate, no);
+		
+	return "postresult";
+    }
 }
