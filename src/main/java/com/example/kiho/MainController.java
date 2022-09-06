@@ -172,7 +172,7 @@ public class MainController {
 	    //String createdTime = (String) httpSession.getAttribute("createdTime");
 	    PostResultMainLogic prml = new PostResultMainLogic();
 	    prml.postresult(model, jdbcTemplate, no);
-	
+
 	return "postresult";
     }
 }
