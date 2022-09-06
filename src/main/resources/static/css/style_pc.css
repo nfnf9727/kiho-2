@@ -664,7 +664,7 @@ table.mypage{
 
 table.mypage tr{
   border-bottom: solid 2px white;
-  height: 100px;
+  height: 70px;
 }
 
 table.mypage tr:last-child{
@@ -674,7 +674,7 @@ table.mypage tr:last-child{
 table.mypage th{
   position: relative;
   text-align: left;
-  width: 20%;
+  width: 30%;
   background-color: #52c2d0;
   color: white;
   text-align: center;
