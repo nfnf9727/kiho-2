@@ -3,16 +3,12 @@
   <meta charset="utf-8">
   <title>企Ｓみんなのコミュニティアプリ</title>
   <link rel="stylesheet" href="allposts.css">
-  <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
 </head>
 
 <body>
-<!--div class="container"-->
-  <header>
-    <!--div class="header-container"-->
+  <!--header>
     <div class="container">
       <div class="header-left">
-        <!--img class="logo" src="https://prog-8.com/images/html/advanced/main_logo.png"-->
         <img class="logo" img src="./img/ICON.PNG" alt="ロゴ">
       </div>
       <div class="header-right0">
@@ -20,16 +16,139 @@
          <label for="serch"></label>
           <input type="text" id="serch" serch="serch">
        <!-- serch="serch"の意味がよく分かっていない-->
-          <button>検索</button>
+          <!--button>検索</button>
         </form>
       </div>
       <div class="header-right">
         <a href="#" class="up">投稿する</a>
       </div>
     </div>
-  </header>
-      <!--a href="#" class="btn facebook"><span class="fa fa-facebook"></span>Facebookで登録</a>
-      <a href="#" class="btn twitter"><span class="fa fa-twitter"></span>Twitterで登録</a-->
+  </header-->
+  
+  <header class="header">
+
+	<div class="container">
+		<div class="header-left">
+			<form style="display: inline" action="/top">
+				<input type="image" class="logo" src="/commonImages/ICON.PNG" />
+			</form>
+		</div>
+		<div class="header-right0">
+			<form style="display: inline" method="post" action="/wordSearch">
+				<label for="serch"></label>
+				<input type="text" id="wordText" name="wordText">
+				<button id="search" class="button">検索</button>
+			</form>
+		</div>
+		<div class="header-right">
+			<a id="modalOpen" class="up">投稿する</a>
+		</div>
+		<div class="header-right">
+			<form method="POST" name="mypage" style="display: inline" action="/mypage">
+				<a href="javascript:mypage.submit()" style="text-decoration: nome; color: white;">MY PAGE</a>
+			</form>
+		</div>
+	</div>
+
+
+
+
+
+<!--
+	<div class="site">
+		<img src="ICON.png" alt="アイコン画像">
+
+		<div class="head">
+			<form style="display: inline" action="/top">
+				<button id="top" class="button">　TOP　</button>
+			</form>
+			<form style="display: inline" action="/mypage">
+				<button id="top" class="button">　MyPage　</button>
+			</form>
+			<button id="modalOpen" class="button">投稿する</button>
+			<form style="display: inline" method="post" action="/wordSearch">
+				<input type="text" id="wordText" name="wordText" />
+				<button id="search" class="button">検索</button>
+			</form>
+		</div>
+		
+		-->
+
+
+
+		<div id="easyModal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="toukou">
+						<font color="white">投稿</font>
+					</h1>
+					<span class="modalClose">×</span>
+				</div>
+				<form method="post" enctype="multipart/form-data" name="postMsg" onSubmit="return inputCheck()">
+					<div class="modal-body">
+						<table class="toukou">
+							<tr>
+								<td class="toukou1">
+									<div style="display: inline;">
+										<b>投稿内容</b>
+									</div>
+								</td>
+								<td class="toukou2">
+									<textarea id="postText" name="postText" type="text" wrap="soft" style="height:7em;"
+										maxlength="120"></textarea>
+								</td>
+							</tr>
+							<tr class="toukouHashTag">
+								<div class="input-row">
+									<td class="toukou1">
+										<span>
+											<b>#ハッシュタグ</b>
+										</span>
+									</td>
+									<td class="toukou2">
+										<input id="hashtag" name="hashtag" type="text" />
+										<br />
+										<select name="hashtagSelect" id="hashtagSelect">
+											<option value="0">上記で入力</option>
+											<option th:each="category : ${categoryList}" th:value="${category}"
+												th:text="${category}">[[${category}]]</option>
+										</select>
+										<br />
+										<span style="font-size: 1px;">※ハッシュタグ「#」は半角で入力してください</span>
+									</td>
+								</div>
+							</tr>
+							<tr>
+								<td>
+									<img id="img" style="height: 150px; text-align: center;" />
+								</td>
+							</tr>
+							<tr>
+								<div align="center">
+									<td class="toukouImage">
+									</td>
+									<td class="toukouButton">
+										<label style="vertical-align: middle;">
+											<img class="imageLogo" id="imageLogo"
+												style="width: 40px; display: inline; margin-right: auto;"
+												src="/commonImages/imageLogo.PNG">
+											<input style="display: none;" type="file" name="image" id="input"
+												accept="image/jpeg, image/png">
+										</label>
+										<button id="toukou" class="button-54" role="button"
+											formaction="/postMessage">投稿</button>
+									</td>
+								</div>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</header>
+
+    
 
  <div class="post-container">
   <div class="post-wrapper">
@@ -37,13 +156,33 @@
         <h2>すべての投稿</h2>
       </div>
       <div class="posts">
-        <div class="post">
+        <!--div class="post">
           <div class="post-icon">
             <img src="./img/HASHIBIRO.jpg">
             <p>タイトル１</p>
           </div>
           <p class="text-contents">ハシビロコウは中央アフリカに生息する大型の鳥類です。その眼付の悪さが逆に魅力となり、私に人気があります。神戸の動物園などで会うことができます。</p>
-        </div>
+        </div-->
+        <th:block th:each="postList : ${postList}">
+			<div class="post">
+				<form method="post" action="/allposts">
+				<div class="post-icon">
+					<th:block th:if="${postList.image != ''}">
+						<input type="image"
+							th:src="${postList.image}" />
+					</th:block>
+					<th:block th:if="${postList.image == ''}">
+						<input type="image"
+							src="/commonImages/noimage.png" />
+					</th:block>
+					<p th:text="${postList.hashTag}"></p>
+				</div>
+				</form>
+				<!--p th:text="${myPageList.hashTag}"></p-->
+				<!--p th:text="${myPageList.postText}"></p-->
+			</div>
+		</th:block>
+        
         <div class="post">
           <div class="post-icon">
             <img src="./img/nyanco.jpg">
@@ -69,9 +208,17 @@
   </div>
        <!--追加-->
     <div class="side">
-     <a href="#" class="tag-contents">#ペット</a>
+     <!--a href="#" class="tag-contents">#ペット</a>
      <a href="#" class="tag-contents">#休日</a>
-     <a href="#" class="tag-contents">#長めのハッシュタグ長めのハッシュタグ長めのハッシュタグ</a>
+     <a href="#" class="tag-contents">#長めのハッシュタグ長めのハッシュタグ長めのハッシュタグ</a-->
+     <th:block th:each="category : ${categoryList}">
+				<form method="post" name="FORMCATEGORY" action="/categorySearch">
+					<input type="hidden" name="category" th:value="${category}" />
+					<button
+						style="border: none; outline: none; background: transparent; margin-left: 20px; text-decoration: underline;"><span
+							th:text="${category}"></span></button>
+				</form>
+			</th:block>
     </div>
  
  </div>
