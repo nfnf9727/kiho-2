@@ -14,17 +14,17 @@
    <img src="../image/ICON.PNG">
   </div>
 
-  <form method="post" name="uid">
+  <form method="post" name="uid" action="/click">
    <p>ユーザーＩＤ：
     <input type="text" id="uid" name="uid">
    </p>
-  </form>
-
-  <form method="post" name="pass">
    <p>パスワード：
     <input type="password" id="password" name="password">
    </p>
+   <input type="submit" name="login" value="ログイン">
+   <input type="submit" name="pwchange" value="パスワード変更">
   </form>
+  
   <form>
    <p>
     <a href="../html/syoki.html">初期設定（ＩＤ登録）</a>
@@ -33,11 +33,8 @@
     <a href="../html/kakunin.html">こちら</a>
    </p>
   </form>
-
-  <form method="post" name="submit">
-    <input type="submit" value="ログイン" onclick="return check()">
-    <input type="submit" value="パスワード変更" onclick="return check()">
-  </form>  
+  
+  <h4 th:text="${message}"></h4>
   
  </body>
 

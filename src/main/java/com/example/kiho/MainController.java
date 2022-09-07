@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.kiho.mypage.MyPageMainLogic;
@@ -115,7 +116,7 @@ public class MainController {
     	TopMainLogic tc = new TopMainLogic();
     	tc.topCategory(model, jdbcTemplate);
     	
-    	return "test2";
+    	return "allposts";
     }
     
     /**
@@ -131,7 +132,7 @@ public class MainController {
     	TopMainLogic tc = new TopMainLogic();
     	tc.topCategory(model, jdbcTemplate);
     	
-    	return "test2";
+    	return "allposts";
     }
     
     /**
@@ -146,7 +147,7 @@ public class MainController {
     	TopMainLogic tc = new TopMainLogic();
     	tc.topCategory(model, jdbcTemplate);
     	
-    	return "test2";
+    	return "allposts";
     }
 
     
@@ -183,4 +184,39 @@ public class MainController {
 
 	return "postresult";
     }
+    
+    @RequestMapping(path = "/login")
+    public String login(Model model) {
+	
+	return "login";
+	
+    }
+    
+    @RequestMapping(path = "/click",method= RequestMethod.POST, params="login")
+    public String click(Model model, String uid, String password) {
+	
+    	if(uid != "197739") {
+    		System.out.println("ユーザＩＤがあっていません");
+    		model.addAttribute("message","ユーザＩＤがあっていません");
+    		return "login";
+    	}else{
+    	
+    	System.out.println(uid);
+    	System.out.println(password);
+
+	return "top_pc";
+    	}
+	
+    }
+    
+    @RequestMapping(path = "/click",method= RequestMethod.POST, params="pwchange")
+    public String click2(Model model, String uid, String password) {
+	
+    	System.out.println(uid);
+    	System.out.println(password);
+
+	return "top_pc";
+	
+    }
+    
 }
