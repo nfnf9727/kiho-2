@@ -188,32 +188,179 @@ public class MainController {
     @RequestMapping(path = "/login")
     public String login(Model model) {
 	
+	    //ログイン画面呼び出し
 	return "login";
 	
     }
     
-    @RequestMapping(path = "/click",method= RequestMethod.POST, params="login")
-    public String click(Model model, String uid, String password) {
-	
-    	if(uid != "197739") {
-    		System.out.println("ユーザＩＤがあっていません");
-    		model.addAttribute("message","ユーザＩＤがあっていません");
-    		return "login";
-    	}else{
+    @RequestMapping(path = "/click1",method= RequestMethod.POST, params="login")
+    public String click1(Model model, String uid, String password) {
     	
+    	int errsw1 = 0;
+    	int errsw2 = 0;
+    	
+    	//ログイン画面インプットチェック（初期値チェック）
+    	
+    	//１－ａ：ユーザＩＤ未入力（初期値）チェック
+	   	if(uid == "") {
+    		System.out.println("ユーザＩＤが未入力です");
+    		model.addAttribute("message1","ユーザＩＤが未入力です");
+    		errsw1 = 1;
+    	}	   	
+    	
+    	//１－ｂ：パスワード未入力（初期値）チェック
+	   	if(password == "") {
+    		System.out.println("パスワードが未入力です");
+    		model.addAttribute("message2","パスワードが未入力です");
+    		errsw1 = 1;
+    	}
+	   	
+	   	if(errsw1 == 1) {
+	    	System.out.println(uid);
+	    	System.out.println(password);
+    		return "login";
+    	}
+	   		   	
+    	//ログイン画面インプットチェック（２：パスワード） 	
+	   	
+	   	//２－ａ：ユーザＩＤｕｓｅｒテーブルとの突き合わせチェック
+	   	if(!uid.equals("197739")){
+    		System.out.println("ユーザＩＤが一致しません");
+    		model.addAttribute("message1","ユーザＩＤが一致しません");
+    		errsw2 = 1;  	
+    	}
+	   	
+	   	//２－ｂ：パスワードｕｓｅｒテーブルとの突き合わせチェック
+	   	if(!password.equals("kihos")) {
+    		System.out.println("パスワードが一致しません");
+    		model.addAttribute("message2","パスワードが一致しません");
+    		errsw2 = 1;
+    	}
+
+	   	if(errsw2 == 1) {
+	    	System.out.println(uid);
+	    	System.out.println(password);
+    		return "login";
+    	}
+	   	
+	   	//３：初期パスワードの強制変更
+	   	if(password.equals("kihos")) {
+    		System.out.println("初期パスワードのため、パスワード変更を行ってください");
+    		model.addAttribute("message","初期パスワードのため、パスワード変更を行ってください");
+    		return "password";
+    	}
+	   	
     	System.out.println(uid);
     	System.out.println(password);
 
 	return "top_pc";
+
+    	}	
+    
+    @RequestMapping(path = "/click2",method= RequestMethod.POST, params="pwchange")
+    public String click2(Model model, String uid, String password) {
+    	
+    	int errsw1 = 0;
+    	int errsw2 = 0;
+    	
+    	//ログイン画面インプットチェック（初期値チェック）
+    	
+    	//１－ａ：ユーザＩＤ未入力（初期値）チェック
+	   	if(uid == "") {
+    		System.out.println("ユーザＩＤが未入力です");
+    		model.addAttribute("message1","ユーザＩＤが未入力です");
+    		errsw1 = 1;
+    	}	   	
+    	
+    	//１－ｂ：パスワード未入力（初期値）チェック
+	   	if(password == "") {
+    		System.out.println("パスワードが未入力です");
+    		model.addAttribute("message2","パスワードが未入力です");
+    		errsw1 = 1;
     	}
+	   	
+	   	if(errsw1 == 1) {
+	    	System.out.println(uid);
+	    	System.out.println(password);
+    		return "login";
+    	}
+	   		   	
+    	//ログイン画面インプットチェック（２：パスワード） 	
+	   	
+	   	//２－ａ：ユーザＩＤｕｓｅｒテーブルとの突き合わせチェック
+	   	if(!uid.equals("197739")){
+    		System.out.println("ユーザＩＤが一致しません");
+    		model.addAttribute("message1","ユーザＩＤが一致しません");
+    		errsw2 = 1;  	
+    	}
+	   	
+	   	//２－ｂ：パスワードｕｓｅｒテーブルとの突き合わせチェック
+	   	if(!password.equals("kihos")) {
+    		System.out.println("パスワードが一致しません");
+    		model.addAttribute("message2","パスワードが一致しません");
+    		errsw2 = 1;
+    	}
+
+	   	if(errsw2 == 1) {
+	    	System.out.println(uid);
+	    	System.out.println(password);
+    		return "login";
+    	}
+
+    	System.out.println(uid);
+    	System.out.println(password);
+
+	return "password";
+
+    	}    
+    
+    @RequestMapping(path = "/password")
+    public String password(Model model) {
+	
+	    //パスワード変更画面呼び出し
+	return "password";
 	
     }
     
-    @RequestMapping(path = "/click",method= RequestMethod.POST, params="pwchange")
-    public String click2(Model model, String uid, String password) {
-	
-    	System.out.println(uid);
-    	System.out.println(password);
+    @RequestMapping(path = "/click",method= RequestMethod.POST, params="change")
+    public String click(Model model, String newpass, String newpass2) {
+    	int errsw1 = 0;
+    	int errsw2 = 0;
+    	
+    	//ログイン画面インプットチェック（初期値チェック）
+    	
+    	//１－ａ：新パスワード未入力（初期値）チェック
+	   	if(newpass == "") {
+    		System.out.println("変更後のパスワードを入力してください");
+    		model.addAttribute("message1","変更後のパスワードを入力してください");
+    		errsw1 = 1;
+    	}	   	
+    	
+    	//１－ｂ：新パスワード（再入力）未入力（初期値）チェック
+	   	if(newpass2 == "") {
+    		System.out.println("変更後のパスワードを再入力してください");
+    		model.addAttribute("message2","変更後のパスワードを再入力してください");
+    		errsw1 = 1;
+    	}
+	   	
+	   	if(errsw1 == 1) {
+	    	System.out.println(newpass);
+	    	System.out.println(newpass2);
+    		return "password";
+    	}
+	   	
+	   	//２：入力パスワードの一致チェック
+	   	if(!newpass.equals(newpass2)) {
+    		System.out.println("再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
+    		model.addAttribute("message1","再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
+    		errsw2 = 1;
+    	}
+	   	
+	   	if(errsw2 == 1) {
+	    	System.out.println(newpass);
+	    	System.out.println(newpass2);
+    		return "password";
+    	}
 
 	return "top_pc";
 	
