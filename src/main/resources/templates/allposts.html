@@ -153,7 +153,7 @@
  <div class="post-container">
   <div class="post-wrapper">
       <div class="heading">
-        <h2>すべての投稿</h2>
+        <h2　th:text="${searchmessage}"</h2>
       </div>
       <div class="posts">
         <!--div class="post">
@@ -175,7 +175,15 @@
 						<input type="image"
 							src="/commonImages/noimage.png" />
 					</th:block>
-					<p th:text="${postList.hashTag}"></p>
+					<div class="iine">
+   　　　　　　　　　　　　　　　　 <div class="iine-img">
+     　　　　　　　　　　　　　　　　<input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪">
+    　　　　　　　　　　　　　　　　</div>
+    　　　　　　　　　　　　　　　　<div class="iine-count">
+    　　　　　　　　　　　　　　　　 <p th:text="${postList.iine}"></p>
+    　　　　　　　　　　　　　　　　</div>
+　　　　　　　　　　　　　　　　　　　</div>
+					　<p th:text="${postList.hashTag}"></p>
 				</div>
 				</form>
 				<!--p th:text="${myPageList.hashTag}"></p-->
@@ -183,34 +191,11 @@
 			</div>
 		</th:block>
         
-        <div class="post">
-          <div class="post-icon">
-            <img src="./img/nyanco.jpg">
-            <p>タイトル２</p>
-          </div>
-          <p class="text-contents">投稿の内容は自由です。仕事だけのシンプルな付き合いも素敵ですが、その人の知らなかった一面をみてキュンとするかもしれません。キュンです！</p>
-        </div>
-        <div class="post">
-          <div class="post-icon">
-            <img src="./img/taiwan.jpg">
-            <p>タイトル３</p>
-          </div>
-          <p class="text-contents">画面制作は単純そうでなかなか思うようにいきません。根気強く！頑張るのだ！諦めるな！諦めたらそこで試合終了ですよ。</p>
-        </div>
-        <div class="post">
-          <div class="post-icon">
-            <img src="./img/wanco2.jpg">
-            <p>タイトル４</p>
-          </div>
-          <p class="text-contents">米津のライブ抽選に申し込みました。当たれ～～～～当たったらクリスタルそばの大阪城ホールでライブです！（ホールで足りるの？ドームじゃないの？と思わなくもない…）コロナでライブに行けない期間が続きましたが最近は復活の兆しが見えますね！……はずれた！！</p>
-        </div>
       </div>
   </div>
        <!--追加-->
     <div class="side">
-     <!--a href="#" class="tag-contents">#ペット</a>
-     <a href="#" class="tag-contents">#休日</a>
-     <a href="#" class="tag-contents">#長めのハッシュタグ長めのハッシュタグ長めのハッシュタグ</a-->
+    　<p>人気のカテゴリ</p>
      <th:block th:each="category : ${categoryList}">
 				<form method="post" name="FORMCATEGORY" action="/categorySearch">
 					<input type="hidden" name="category" th:value="${category}" />
