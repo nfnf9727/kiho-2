@@ -3,6 +3,8 @@ package com.example.kiho.top;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.springframework.ui.Model;
@@ -62,6 +64,18 @@ public class TopMainLogic {
         }
         model.addAttribute("nameList", nameList);
 		
+	}
+	
+	public String sessionCheck(HttpSession httpSession) {
+		
+		String flg = "0";
+		String str = null;
+		String loginId = (String) httpSession.getAttribute("loginId");
+		if(str == loginId) {
+			flg = "1";
+		}
+		
+		return flg;
 	}
 	
 

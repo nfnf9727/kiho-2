@@ -7,7 +7,7 @@
 	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
 	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
-	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" />
 </head>
 <header class="header">
 
@@ -15,6 +15,11 @@
 		<div class="header-left">
 			<form style="display: inline" action="/top">
 				<input type="image" class="logo" src="/commonImages/ICON.PNG" />
+			</form>
+		</div>
+		<div class="header-right">
+			<form method="POST" name="logout" style="display: inline" action="/logout">
+				<a href="javascript:logout.submit()" style="text-decoration: nome; color: white;">ログアウト</a>
 			</form>
 		</div>
 		<div class="header-right0">
@@ -38,7 +43,7 @@
 
 
 
-<!--
+	<!--
 	<div class="site">
 		<img src="ICON.png" alt="アイコン画像">
 
@@ -60,82 +65,82 @@
 
 
 
-		<div id="easyModal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="toukou">
-						<font color="white">投稿</font>
-					</h1>
-					<span class="modalClose">×</span>
-				</div>
-				<form method="post" enctype="multipart/form-data" name="postMsg" onSubmit="return inputCheck()">
-					<div class="modal-body">
-						<table class="toukou">
-							<tr>
+	<div id="easyModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="toukou">
+					<font color="white">投稿</font>
+				</h1>
+				<span class="modalClose">×</span>
+			</div>
+			<form method="post" enctype="multipart/form-data" name="postMsg" onSubmit="return inputCheck()">
+				<div class="modal-body">
+					<table class="toukou">
+						<tr>
+							<td class="toukou1">
+								<div style="display: inline;">
+									<b>投稿内容</b>
+								</div>
+							</td>
+							<td class="toukou2">
+								<textarea id="postText" name="postText" type="text" wrap="soft" style="height:7em;"
+									maxlength="120"></textarea>
+							</td>
+						</tr>
+						<tr class="toukouHashTag">
+							<div class="input-row">
 								<td class="toukou1">
-									<div style="display: inline;">
-										<b>投稿内容</b>
-									</div>
+									<span>
+										<b>#ハッシュタグ</b>
+									</span>
 								</td>
 								<td class="toukou2">
-									<textarea id="postText" name="postText" type="text" wrap="soft" style="height:7em;"
-										maxlength="120"></textarea>
+									<input id="hashtag" name="hashtag" type="text" />
+									<br />
+									<select name="hashtagSelect" id="hashtagSelect">
+										<option value="0">上記で入力</option>
+										<option th:each="category : ${categoryList}" th:value="${category}"
+											th:text="${category}">[[${category}]]</option>
+									</select>
+									<br />
+									<span style="font-size: 1px;">※ハッシュタグ「#」は半角で入力してください</span>
 								</td>
-							</tr>
-							<tr class="toukouHashTag">
-								<div class="input-row">
-									<td class="toukou1">
-										<span>
-											<b>#ハッシュタグ</b>
-										</span>
-									</td>
-									<td class="toukou2">
-										<input id="hashtag" name="hashtag" type="text" />
-										<br />
-										<select name="hashtagSelect" id="hashtagSelect">
-											<option value="0">上記で入力</option>
-											<option th:each="category : ${categoryList}" th:value="${category}"
-												th:text="${category}">[[${category}]]</option>
-										</select>
-										<br />
-										<span style="font-size: 1px;">※ハッシュタグ「#」は半角で入力してください</span>
-									</td>
-								</div>
-							</tr>
-							<tr>
-								<td>
-									<img id="img" style="height: 150px; text-align: center;" />
+							</div>
+						</tr>
+						<tr>
+							<td>
+								<img id="img" style="height: 150px; text-align: center;" />
+							</td>
+						</tr>
+						<tr>
+							<div align="center">
+								<td class="toukouImage">
 								</td>
-							</tr>
-							<tr>
-								<div align="center">
-									<td class="toukouImage">
-									</td>
-									<td class="toukouButton">
-										<label style="vertical-align: middle;">
-											<img class="imageLogo" id="imageLogo"
-												style="width: 40px; display: inline; margin-right: auto;"
-												src="/commonImages/imageLogo.PNG">
-											<input style="display: none;" type="file" name="image" id="input"
-												accept="image/jpeg, image/png">
-										</label>
-										<button id="toukou" class="button-54" role="button"
-											formaction="/postMessage">投稿</button>
-									</td>
-								</div>
-							</tr>
-						</table>
-					</div>
-				</form>
-			</div>
+								<td class="toukouButton">
+									<label style="vertical-align: middle;">
+										<img class="imageLogo" id="imageLogo"
+											style="width: 40px; display: inline; margin-right: auto;"
+											src="/commonImages/imageLogo.PNG">
+										<input style="display: none;" type="file" name="image" id="input"
+											accept="image/jpeg, image/png">
+									</label>
+									<button id="toukou" class="button-54" role="button"
+										formaction="/postMessage">投稿</button>
+								</td>
+							</div>
+						</tr>
+					</table>
+				</div>
+			</form>
 		</div>
+	</div>
 	</div>
 </header>
 
 <body>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<h1 class="h1indent">TOP</h1>
-	<br/>
+	<br />
 	<h2 class="h2indent">最新投稿</h2>
 
 	<span style="color:red" th:text="${errorMsg}"></span>
@@ -635,6 +640,7 @@
 			</form>
 		</div>
 	</div>
+
 </body>
 
 </html>
