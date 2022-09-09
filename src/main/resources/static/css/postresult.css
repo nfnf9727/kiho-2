@@ -1,5 +1,39 @@
 @charset "Shift_JIS";
 
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display: flex;
+    min-height: 100vh;
+    margin: 10px 10px 10px 10px;
+}
+
+.postid {
+ 
+  width: 30%;
+  padding: 10px;
+  color:  #000000;          
+  margin:  10px;          
+  border-radius:  5px;      
+  background-color: #f5f5f5
+}
+
+.postmsg{
+    flex: 1;
+    background-color: #eee;
+    text-align: left;
+    width: 10px;
+}
+.image{
+    text-align: center;
+    color: #fff;
+    width: 500px;
+}
+
+
 .key {
 
   width: 900px;

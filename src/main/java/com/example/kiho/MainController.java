@@ -182,13 +182,9 @@ public class MainController {
 
 	@PostMapping(path = "/postDetail")
 	public String postresult(Model model, String no) {
-
-		// sessionから投稿内容取りに行く 後で追加
-		// httpSession.setAttribute("loginId", "test1");
-		// httpSession.setAttribute("createdTime", "2022-08-03 00:00:00");
-		// String loginId = (String) httpSession.getAttribute("loginId");
-		// String createdTime = (String) httpSession.getAttribute("createdTime");
-
+		
+		TopMainLogic tc = new TopMainLogic();
+		tc.topCategory(model, jdbcTemplate);
 		PostResultMainLogic prml = new PostResultMainLogic();
 		prml.postresult(model, jdbcTemplate, no);
 
