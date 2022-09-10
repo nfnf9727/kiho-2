@@ -332,5 +332,67 @@ public class MainController {
 		return "password";
 
 	}
+	
+	// パスワード変更画面
+	@RequestMapping(path = "/password")
+	public String password(HttpSession httpSession) {
+
+		return "password";
+	}
+	
+	@RequestMapping(path = "/password", method = RequestMethod.POST, params = "change")
+	public String password(Model model, String newpass, String newpass2) {
+
+		// エラーＳＷ変数定義
+		int errsw1 = 0;
+
+		// １：インプットチェック１（初期値チェック）
+
+		// １－ａ：新パスワード未入力（初期値）チェック
+		if (newpass == "") {
+			System.out.println("変更後のパスワードを入力してください");
+			model.addAttribute("message1", "変更後のパスワードを入力してください");
+			errsw1 = 1;
+		}
+
+		// １－ｂ：再入力パスワード未入力（初期値）チェック
+		if (newpass2 == "") {
+			System.out.println("変更後のパスワードを再入力してください");
+			model.addAttribute("message2", "変更後のパスワードを再入力してください");
+			errsw1 = 1;
+		}
+
+		if (errsw1 == 1) {
+			System.out.println(newpass);
+			System.out.println(newpass2);
+			return "password";
+		}
+
+		// ２：インプットチェック（userテーブル突き合わせチェック）
+
+		// ２－ａ：新パスワード テーブルとの突き合わせチェック　※新旧一致していたらエラー
+		if (newpass.equals("kitashi1")) {
+			System.out.println("変更後のパスワードが旧パスワードと一致しています。");
+			model.addAttribute("message1", "変更後のパスワードが旧パスワードと一致しています。");
+			System.out.println(newpass);
+			System.out.println(newpass2);
+			return "password";
+		}
+
+		// ２－ｂ：新パスワードの再入力　突き合わせチェック　※２回入れたパスワードが同じであること
+		if (!newpass.equals(newpass2)) {
+			System.out.println("再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
+			model.addAttribute("message1", "再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
+			System.out.println(newpass);
+			System.out.println(newpass2);
+			return "password";
+		}
+
+		System.out.println(newpass);
+		System.out.println(newpass2);
+
+		return "top_pc";
+
+	}
 
 }
