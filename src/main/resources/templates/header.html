@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>タイトル</title>
+	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
+	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
+	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
+	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
+	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" />
+</head>
+<header class="header">
+
+	<div class="container">
+		<div class="header-left">
+			<form style="display: inline" action="/top">
+				<input type="image" class="logo" src="/commonImages/ICON.PNG" />
+			</form>
+		</div>
+		<div class="header-right">
+			<form method="POST" name="logout" style="display: inline" action="/logout">
+				<a href="javascript:logout.submit()" style="text-decoration: nome; color: white;">ログアウト</a>
+			</form>
+		</div>
+		<div class="header-right0">
+			<form style="display: inline" method="post" action="/wordSearch">
+				<label for="serch"></label>
+				<input type="text" id="wordText" name="wordText">
+				<button id="search" class="button">検索</button>
+			</form>
+		</div>
+		<div class="header-right">
+			<a id="modalOpen" class="up">投稿する</a>
+		</div>
+		<div class="header-right">
+			<form method="POST" name="mypage" style="display: inline" action="/mypage">
+				<a href="javascript:mypage.submit()" style="text-decoration: nome; color: white;">MY PAGE</a>
+			</form>
+		</div>
+	</div>
+
+
+
+
+
+	<!--
+	<div class="site">
+		<img src="ICON.png" alt="アイコン画像">
+
+		<div class="head">
+			<form style="display: inline" action="/top">
+				<button id="top" class="button">　TOP　</button>
+			</form>
+			<form style="display: inline" action="/mypage">
+				<button id="top" class="button">　MyPage　</button>
+			</form>
+			<button id="modalOpen" class="button">投稿する</button>
+			<form style="display: inline" method="post" action="/wordSearch">
+				<input type="text" id="wordText" name="wordText" />
+				<button id="search" class="button">検索</button>
+			</form>
+		</div>
+		
+		-->
+
+
+
+	<div id="easyModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="toukou">
+					<font color="white">投稿</font>
+				</h1>
+				<span class="modalClose">×</span>
+			</div>
+			<form method="post" enctype="multipart/form-data" name="postMsg" onSubmit="return inputCheck()">
+				<div class="modal-body">
+					<table class="toukou">
+						<tr>
+							<td class="toukou1">
+								<div style="display: inline;">
+									<b>投稿内容</b>
+								</div>
+							</td>
+							<td class="toukou2">
+								<textarea id="postText" name="postText" type="text" wrap="soft" style="height:7em;"
+									maxlength="120"></textarea>
+							</td>
+						</tr>
+						<tr class="toukouHashTag">
+							<div class="input-row">
+								<td class="toukou1">
+									<span>
+										<b>#ハッシュタグ</b>
+									</span>
+								</td>
+								<td class="toukou2">
+									<input id="hashtag" name="hashtag" type="text" />
+									<br />
+									<select name="hashtagSelect" id="hashtagSelect">
+										<option value="0">上記で入力</option>
+										<option th:each="category : ${categoryList}" th:value="${category}"
+											th:text="${category}">[[${category}]]</option>
+									</select>
+									<br />
+									<span style="font-size: 1px;">※ハッシュタグ「#」は半角で入力してください</span>
+								</td>
+							</div>
+						</tr>
+						<tr>
+							<td>
+								<img id="img" style="height: 150px; text-align: center;" />
+							</td>
+						</tr>
+						<tr>
+							<div align="center">
+								<td class="toukouImage">
+								</td>
+								<td class="toukouButton">
+									<label style="vertical-align: middle;">
+										<img class="imageLogo" id="imageLogo"
+											style="width: 40px; display: inline; margin-right: auto;"
+											src="/commonImages/imageLogo.PNG">
+										<input style="display: none;" type="file" name="image" id="input"
+											accept="image/jpeg, image/png">
+									</label>
+									<button id="toukou" class="button-54" role="button"
+										formaction="/postMessage">投稿</button>
+								</td>
+							</div>
+						</tr>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+</header>
+
+</html>

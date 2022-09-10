@@ -17,7 +17,7 @@ public class SearchMainLogic {
 	 */
 	public void wordSearch(Model model, JdbcTemplate jdbcTemplate, String wordText) {
 
-		String noSQL = "SELECT * FROM postmsg WHERE postText LIKE '%" + wordText + "%'";
+		String noSQL = "SELECT * FROM postmsg WHERE postText LIKE '%" + wordText + "%' OR hashTag LIKE '%" + wordText +"%'";
 		List<Map<String,Object>> postList = jdbcTemplate.queryForList(noSQL);
 		//沖田追加↓
 		int hit = postList.size();
