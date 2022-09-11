@@ -25,11 +25,8 @@
       <span th:text="${createdTime}"></span>
     </div>
 
-    
+   
     <div class="kekka">
-      <div class="kekka-message">
-        <p th:text="${postText}"></p>
-      </div>
       <div class="kekka-img">
         <div class="image">
           <th:block th:if="${image != ''}">
@@ -40,6 +37,27 @@
             <img style="max-width: 100%; height: auto; width /**/:auto;" type="image" 
                  src="/commonImages/noimage.png" />
           </th:block>
+        </div>
+      </div>
+      <div class="kekka-message">
+        <p th:text="${postText}"></p>
+        <div class="comment-area">
+          <b>コメント</b>
+          <div class="comment-out">
+            <th:block th:each="commentList : ${commentList}">
+              <div class="comment-out-kekka">
+                <span>◆</span>
+                <span th:text="${commentList.commenter}"></span>
+                <span>◆</span>
+                <p th:text="${commentList.comments}"></p>
+              </div>
+            </th:block>
+          </div>
+        </div>     
+        <div class="comment-in">
+          <input id="comments" type="text" onkeyup="ShowLength(value)" value="" style="width:100%; height:auto" maxlength="100"/>
+          <button id="comments" class="button">コメント投稿</button>
+          <span id="inputlength" font-size="6px">0文字／100文字</span>      
         </div>
       </div>
     </div>
@@ -54,23 +72,6 @@
       <div class="iine-count">
         <p th:text="${iine}"></p>
       </div>
-    </div>
-    
-    <div class="comment-in">
-      <input id="comments" type="text" onkeyup="ShowLength(value)" value="" style="width:600px; height:auto" maxlength="100"/>
-      <button id="comments" class="button">コメント投稿</button>
-      <span id="inputlength" font-size="6px">0文字／100文字</span>      
-    </div>
-    
-    <div class="comment-out">
-      <b>コメント</b>
-      <th:block th:each="commentList : ${commentList}">
-        <div class="comment-out-kekka">
-          <span th:text="${commentList.commenter}"></span>
-          <span>：</span>
-          <span th:text="${commentList.comments}"></span>
-        </div>
-      </th:block>
     </div>
     
   </main> 

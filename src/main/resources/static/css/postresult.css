@@ -1,7 +1,7 @@
 @charset "Shift_JIS";
 
 main{
-
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -21,6 +21,52 @@ main{
     margin:  5px;              /* 外側の余白 */
     border-radius:  5px;        /* 角丸指定 */
     background-color:  #5BC8AC; /* 背景色指定 */
+    display:flex;
+}
+
+.kekka-img{
+	flex-basis:60%;
+	margin: 10px;
+}
+
+.kekka-message{
+    flex-basis:40%;
+	margin: 10px;
+    padding: 15px;
+    color:  rgb(0, 0, 0);               /* 文字色 */
+    background-color:  rgb(255, 255, 198, 0.5); /* 背景色指定 */
+    display: flex;
+    flex-direction: column;    
+}
+
+.comment-area {
+  margin: 20px 0px 0px 5px;
+}
+
+
+.comment-out {
+
+  margin: 5px 0px 0px 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height:400px;
+  background-color:rgb(255, 255, 255);
+  /*スクロールバー非表示（IE(Internet Explorer)・Microsoft Edgeへの対応）*/
+  -ms-overflow-style: none;
+  /*スクロールバー非表示（Firefoxへの対応）*/
+  scrollbar-width: none;
+}
+  
+  /*スクロールバー非表示（Google Chrome、Safariへの対応）*/
+.comment-out::-webkit-scrollbar{
+  display: none;
+}
+
+
+.comment-in {
+
+  margin: 5px 10px 0px 5px;
+
 }
 
 
@@ -69,20 +115,3 @@ main{
 }
 
 
-.comment-in {
-
-  margin: 0px 0px 0px 20px;
-
-}
-
-
-.comment-out {
-
-  margin: 20px 0px 0px 20px;
-
-}
-
-.comment-out-kekka {
-
-  margin: 5px 0px 0px 30px;
-}
