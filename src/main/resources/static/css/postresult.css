@@ -8,7 +8,7 @@ body{
 main{
     display: flex;
     min-height: 100vh;
-    margin: 10px 10px 10px 10px;
+    margin: 0 10px 0 30px;
 }
 
 .postid {
@@ -34,33 +34,16 @@ main{
 }
 
 
-.key {
-
-  width: 900px;
-  height: 30px;
+.createdtime {
   margin:  10px;
-}
-
-
-.key-name{
-  width: 200px;
-  display: inline-block;
-  vertical-align:top;
-}
-
-
-.key-time{
-  width: 200px;
-  display: inline-block;
-  vertical-align:top;
 }
 
 
 .kekka {
 
-  width: 900px;
+  width: 1000px;
 
-    padding: 10px;
+    padding: 15px;
 
     color:  #fff;               /* 文字色 */
 
@@ -89,8 +72,9 @@ main{
 
 
 .iine {
+  height:50px;
 
-  margin: 5px 0px 0px 780px;
+  margin: 5px 5px 5px 870px;
 
 }
 
@@ -146,14 +130,13 @@ main{
 
 .comment-out {
 
-  width: 800px;
+  width: 900px;
   margin: 20px 0px 0px 20px;
 
 }
 
 .comment-out-kekka {
 
-  width: 750px;
-  margin: 10px 0px 0px 30px;
-
+  width: 900px;
+  margin: 5px 0px 0px 30px;
 }
