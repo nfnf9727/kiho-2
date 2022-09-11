@@ -262,6 +262,7 @@ public class MainController {
 		if (password.equals("kihos")) {
 			System.out.println("初期パスワードのため、パスワード変更を行ってください");
 			model.addAttribute("message", "初期パスワードのため、パスワード変更を行ってください");
+			model.addAttribute("loginId", uid);
 			return "password";
 		}
 
@@ -326,10 +327,43 @@ public class MainController {
 			return "login";
 		}
 
+		model.addAttribute("loginId", uid);
 		System.out.println(uid);
 		System.out.println(password);
 
 		return "password";
+
+	}
+	
+	// ログイン画面
+	// パスワード再登録確認リンク入力時の動作
+
+	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "kakunin")
+	public String kakunin(Model model, String uid, String name) {
+
+		// エラーＳＷ変数定義
+		int errsw1 = 0;
+
+		// １：インプットチェック１（初期値チェック）
+
+		// １－ａ：ユーザＩＤ未入力（初期値）チェック
+		if (uid == "") {
+			System.out.println("ユーザＩＤが未入力です");
+			model.addAttribute("message1", "ユーザＩＤが未入力です");
+			return "login";
+		}
+
+		// １－ｂ：ユーザＩＤ テーブルとの突き合わせチェック
+		if (!uid.equals("197739")) {
+			System.out.println("ユーザＩＤが一致しません");
+			model.addAttribute("message1", "ユーザＩＤが一致しません");
+			return "login";
+		}
+
+		model.addAttribute("loginId", uid);
+		System.out.println(uid);
+
+		return "kakunin";
 
 	}
 	
@@ -404,8 +438,9 @@ public class MainController {
 
 	// パスワード再登録確認画面　⇒　パスワード変更画面呼び出し
 	@RequestMapping(path = "/pwclear", method = RequestMethod.POST, params = "pwclear")
-	public String pwclear(Model model) {
+	public String pwclear(Model model, String loginId) {
 
+		model.addAttribute("loginId", loginId);
 		return "password";
 	}
 
