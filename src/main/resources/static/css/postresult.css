@@ -1,36 +1,11 @@
 @charset "Shift_JIS";
 
-body{
+main{
+
     display: flex;
     flex-direction: column;
-}
-
-main{
-    display: flex;
     min-height: 100vh;
     margin: 0 10px 0 30px;
-}
-
-.postid {
- 
-  width: 30%;
-  padding: 10px;
-  color:  #000000;          
-  margin:  10px;          
-  border-radius:  5px;      
-  background-color: #f5f5f5
-}
-
-.postmsg{
-    flex: 1;
-    background-color: #eee;
-    text-align: left;
-    width: 10px;
-}
-.image{
-    text-align: center;
-    color: #fff;
-    width: 500px;
 }
 
 
@@ -41,47 +16,20 @@ main{
 
 .kekka {
 
-  width: 1000px;
-
     padding: 15px;
-
     color:  #fff;               /* 文字色 */
-
     margin:  5px;              /* 外側の余白 */
-
     border-radius:  5px;        /* 角丸指定 */
-
     background-color:  #5BC8AC; /* 背景色指定 */
 }
 
 
-.kekka-message{
-  width: 40%;
-  display: inline-block;
-  vertical-align:top;
-}
-
-
-.kekka-img{
-
-  display: inline-block;
-  vertical-align:top;
-
-}
-
-
-
 .iine {
-  height:50px;
-
-  margin: 5px 5px 5px 870px;
-
-}
-
-.iine-message,.iine-img,.iine-count{
-
-  display: inline-block;
-  vertical-align:middle;
+  height:40px;
+  margin: 0 20px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
 }
 
@@ -130,13 +78,11 @@ main{
 
 .comment-out {
 
-  width: 900px;
   margin: 20px 0px 0px 20px;
 
 }
 
 .comment-out-kekka {
 
-  width: 900px;
   margin: 5px 0px 0px 30px;
 }
