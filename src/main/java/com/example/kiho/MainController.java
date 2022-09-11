@@ -394,5 +394,19 @@ public class MainController {
 		return "top_pc";
 
 	}
+	
+	// パスワード再登録確認画面呼び出し
+	@RequestMapping(path = "/kakunin")
+	public String kakunin(Model model) {
+		
+		return "kakunin";
+	}
+
+	// パスワード再登録確認画面　⇒　パスワード変更画面呼び出し
+	@RequestMapping(path = "/pwclear", method = RequestMethod.POST, params = "pwclear")
+	public String pwclear(Model model) {
+
+		return "password";
+	}
 
 }
