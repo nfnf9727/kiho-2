@@ -20,6 +20,7 @@ public class SearchMainLogic {
 		String noSQL = "SELECT * FROM postmsg WHERE postText LIKE '%" + wordText + "%' OR hashTag LIKE '%" + wordText +"%'";
 		List<Map<String,Object>> postList = jdbcTemplate.queryForList(noSQL);
 		//沖田追加↓
+		model.addAttribute("midashimessage","検索結果");
 		int hit = postList.size();
 		model.addAttribute("searchmessage","「" + wordText  + "」で" + hit + "件の投稿がみつかりました");
 		//沖田追加↑
@@ -37,6 +38,7 @@ public class SearchMainLogic {
 		String noSQL = "SELECT * FROM postmsg WHERE hashTag = '" + category + "'";
 		List<Map<String,Object>> postList = jdbcTemplate.queryForList(noSQL);
 		//沖田追加↓
+		model.addAttribute("midashimessage","検索結果");
 		int hit = postList.size();
 		model.addAttribute("searchmessage",category + "は" + hit + "件投稿されています");
 		//沖田追加↑
@@ -53,7 +55,7 @@ public class SearchMainLogic {
 		String SQL = "SELECT * FROM postmsg";
 		List<Map<String,Object>> postList = jdbcTemplate.queryForList(SQL);
 		//沖田追加↓
-		model.addAttribute("searchmessage","すべての投稿");
+		model.addAttribute("midashimessage","すべての投稿");
 		//沖田追加↑
 		model.addAttribute("postList", postList);
 	}

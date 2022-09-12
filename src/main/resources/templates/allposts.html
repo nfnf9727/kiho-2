@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>>企Ｓみんなのコミュニティアプリ</title>
+    <title>企Ｓみんなのコミュニティアプリ</title>
 	<link th:href="@{/css/postresult.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
@@ -10,12 +10,16 @@
 
 <body>
     <div th:replace="header::header"></div>
-
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <h1 class="h1indent" th:text="${midashimessage}"></h1>
+    <br/>
+    <h2　class="h2indent" th:text="${searchmessage}"></h2>
+    
  <div class="post-container">
   <div class="post-wrapper">
-      <div class="heading">
-        <h2　th:text="${searchmessage}"</h2>
-      </div>
+      <!--div class="heading">
+        <h2　class="h2indent" th:text="${searchmessage}"></h2>
+      </div-->
       <div class="posts">
         <!--div class="post">
           <div class="post-icon">
