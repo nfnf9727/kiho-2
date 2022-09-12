@@ -309,6 +309,7 @@ public class MainController {
 
 		// ２：インプットチェック（userテーブル突き合わせチェック）
 
+		
 		// ２－ａ：ユーザＩＤ テーブルとの突き合わせチェック
 		if (!uid.equals("197739")) {
 			System.out.println("ユーザＩＤが一致しません");
@@ -340,11 +341,8 @@ public class MainController {
 	// ログイン画面
 	// パスワード再登録確認リンク入力時の動作
 
-	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "kakunin")
-	public String kakunin(Model model, String uid, String name) {
-
-		// エラーＳＷ変数定義
-		int errsw1 = 0;
+	@RequestMapping("/click")
+	public String kakunin(Model model,@RequestParam String uid, String name) {
 
 		// １：インプットチェック１（初期値チェック）
 
@@ -406,7 +404,15 @@ public class MainController {
 
 		// ２：インプットチェック（userテーブル突き合わせチェック）
 
-		// ２－ａ：新パスワード テーブルとの突き合わせチェック　※新旧一致していたらエラー
+		// ２－ａ：初期パスワードチェック　※新パスワード＝"kihos"はエラー
+		if (newpass.equals("kihos")) {
+			System.out.println("変更後パスワードが初期パスワードと一致しています。別のパスワードを設定してください。");
+			model.addAttribute("message1", "変更後パスワードが初期パスワードと一致しています。別のパスワードを設定してください。");
+			System.out.println(newpass);
+			System.out.println(newpass2);
+			return "password";
+		}
+		// ２－ｂ：新パスワード テーブルとの突き合わせチェック　※新旧一致していたらエラー
 		if (newpass.equals("kitashi1")) {
 			System.out.println("変更後のパスワードが旧パスワードと一致しています。");
 			model.addAttribute("message1", "変更後のパスワードが旧パスワードと一致しています。");
@@ -415,7 +421,7 @@ public class MainController {
 			return "password";
 		}
 
-		// ２－ｂ：新パスワードの再入力　突き合わせチェック　※２回入れたパスワードが同じであること
+		// ２－ｃ：新パスワードの再入力　突き合わせチェック　※２回入れたパスワードが同じであること
 		if (!newpass.equals(newpass2)) {
 			System.out.println("再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
 			model.addAttribute("message1", "再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");

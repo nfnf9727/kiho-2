@@ -26,6 +26,7 @@
   </p>
 
   <form method="post" name="submit" action="/pwclear">
+    <input type="hidden" name="loginId" th:value="${loginId}">
     <input type="submit" name="pwclear" value="パスワード再登録">
   </form>  
 
