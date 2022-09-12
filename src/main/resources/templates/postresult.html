@@ -19,13 +19,20 @@
     </h1>
 	
   <main>
-  
-    <div class="createdtime">
-      <span>投稿日時：</span>
-      <span th:text="${createdTime}"></span>
-    </div>
 
-   
+    <div class="postresulttop">  
+      <div class="createdtime">
+        <span>投稿日時：</span>
+        <span th:text="${createdTime}"></span>
+      </div>
+      <div class="delete" th:if="${sessionloginId == loginId}">
+	    <form method="post" action="/">
+		  <input type="hidden" name="no" th:value="${no}">
+		  <button id="del" class="button">削除</button>
+	    </form>
+	  </div>
+	</div>
+ 
     <div class="kekka">
       <div class="kekka-img">
         <div class="image">
@@ -41,6 +48,8 @@
       </div>
       <div class="kekka-message">
         <p th:text="${postText}"></p>
+        <br>
+        <p th:text="${hashTag}"></p>
         <div class="comment-area">
           <b>コメント</b>
           <div class="comment-out">

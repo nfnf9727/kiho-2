@@ -181,15 +181,17 @@ public class MainController {
 	}
 
 	@PostMapping(path = "/postDetail")
-	public String postresult(Model model, String no) {
+	public String postresult(Model model, HttpSession httpSession, String no) {
 		
 		TopMainLogic tc = new TopMainLogic();
 		tc.topCategory(model, jdbcTemplate);
+		String sessionloginId = (String) httpSession.getAttribute("loginId");
 		PostResultMainLogic prml = new PostResultMainLogic();
-		prml.postresult(model, jdbcTemplate, no);
+		prml.postresult(model, jdbcTemplate, sessionloginId, no);
 
 		return "postresult";
 	}
+	
 
 	@RequestMapping(path = "/logout")
 	public String logout(HttpSession httpSession) {

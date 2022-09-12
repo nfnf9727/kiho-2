@@ -9,8 +9,10 @@ main{
 }
 
 
-.createdtime {
-  margin:  10px;
+.postresulttop {
+	margin:  10px;
+	display: flex;
+	justify-content: space-between;
 }
 
 
@@ -22,6 +24,7 @@ main{
     border-radius:  5px;        /* 角丸指定 */
     background-color:  #5BC8AC; /* 背景色指定 */
     display:flex;
+    align-items: center;
 }
 
 .kekka-img{

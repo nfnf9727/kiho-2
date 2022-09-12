@@ -9,8 +9,12 @@ import org.springframework.ui.Model;
 
 public class PostResultMainLogic {
 
-	public void postresult(Model model, JdbcTemplate jdbcTemplate, String no) {
+	public void postresult(Model model, JdbcTemplate jdbcTemplate, String sessionloginId, String no) {
 
+	  //no,セッションＩＤを渡す
+			model.addAttribute("no", no);
+			model.addAttribute("sessionloginId", sessionloginId);
+		
 	 //postmsgテーブルからの取得（これ、まとめて持ってくればよくない？と後から思ったけど、もういいや・・・。）
 		//投稿者ＩＤの取得
 		String loginIdSQL = "SELECT loginId FROM postmsg WHERE no = '" + no + "'";
@@ -21,6 +25,11 @@ public class PostResultMainLogic {
 		String postTextSQL = "SELECT postText FROM postmsg WHERE no = '" + no + "'";
 		String postText = jdbcTemplate.queryForObject(postTextSQL, String.class);
 		model.addAttribute("postText", postText);
+
+		//ハッシュタグの取得
+		String hashTagSQL = "SELECT hashTag FROM postmsg WHERE no = '" + no + "'";
+		String hashTag = jdbcTemplate.queryForObject(hashTagSQL, String.class);
+		model.addAttribute("hashTag", hashTag);
 		
 		//投稿画像の取得
 		String imageSQL = "SELECT image FROM postmsg WHERE no = '" + no + "'";
@@ -51,11 +60,14 @@ public class PostResultMainLogic {
 	//実装確認用
 		System.out.println(loginId);
 		System.out.println(postText);
+		System.out.println(hashTag);
 		System.out.println(image);
 		System.out.println(createdTime);
 		System.out.println(iine);
 		System.out.println(commentList); //これだと１つしか出せない？まぁいっか。
 		System.out.println(name);
+		System.out.println(no);
+		System.out.println(sessionloginId);
 	}
 
 }
