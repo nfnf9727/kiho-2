@@ -17,7 +17,7 @@ public class SearchMainLogic {
 	 */
 	public void wordSearch(Model model, JdbcTemplate jdbcTemplate, String wordText) {
 
-		String noSQL = "SELECT * FROM postmsg WHERE postText LIKE '%" + wordText + "%' OR hashTag LIKE '%" + wordText +"%'";
+		String noSQL = "SELECT * FROM postmsg WHERE postText LIKE '%" + wordText + "%' OR hashTag LIKE '%" + wordText +"%' ORDER BY createdTime DESC";
 		List<Map<String,Object>> postList = jdbcTemplate.queryForList(noSQL);
 		//沖田追加↓
 		model.addAttribute("midashimessage","検索結果");
@@ -35,7 +35,7 @@ public class SearchMainLogic {
 	 */
 	public void categorySearch(Model model, JdbcTemplate jdbcTemplate, String category) {
 
-		String noSQL = "SELECT * FROM postmsg WHERE hashTag = '" + category + "'";
+		String noSQL = "SELECT * FROM postmsg WHERE hashTag = '" + category + "' ORDER BY createdTime DESC";
 		List<Map<String,Object>> postList = jdbcTemplate.queryForList(noSQL);
 		//沖田追加↓
 		model.addAttribute("midashimessage","検索結果");
@@ -52,7 +52,7 @@ public class SearchMainLogic {
 	 */
 	public void allPost(Model model, JdbcTemplate jdbcTemplate) {
 
-		String SQL = "SELECT * FROM postmsg";
+		String SQL = "SELECT * FROM postmsg ORDER BY createdTime DESC";
 		List<Map<String,Object>> postList = jdbcTemplate.queryForList(SQL);
 		//沖田追加↓
 		model.addAttribute("midashimessage","すべての投稿");
