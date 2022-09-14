@@ -1,11 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>企Ｓみんなのコミュニティアプリ</title>
 	<link th:href="@{/css/postresult.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
-	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)"/>
 </head>
 
 <body>
@@ -15,59 +16,49 @@
     <br/>
     <h2　class="h2indent" th:text="${searchmessage}"></h2>
     
- <div class="post-container">
-  <div class="post-wrapper">
-      <!--div class="heading">
-        <h2　class="h2indent" th:text="${searchmessage}"></h2>
-      </div-->
+ <div class="post-wrapper">
+  <div class="post-container">
       <div class="posts">
-        <!--div class="post">
-          <div class="post-icon">
-            <img src="./img/HASHIBIRO.jpg">
-            <p>タイトル１</p>
-          </div>
-          <p class="text-contents">ハシビロコウは中央アフリカに生息する大型の鳥類です。その眼付の悪さが逆に魅力となり、私に人気があります。神戸の動物園などで会うことができます。</p>
-        </div-->
+
         <th:block th:each="postList : ${postList}">
 			<div class="post">
 				<form method="post" action="/postDetail">
 				<input type="hidden" name="no" th:value="${postList.no}">
 				<div class="post-icon">
 					<th:block th:if="${postList.image != ''}">
-						<input type="image"
+						<input style="max-width: 100%; height: auto; width /**/:auto;" type="image"
 							th:src="${postList.image}" />
 					</th:block>
 					<th:block th:if="${postList.image == ''}">
-						<input type="image"
+						<input style="max-width: 100%; height: auto; width /**/:auto;" type="image"
 							src="/commonImages/noimage.png" />
-					</th:block>
-					<div class="iine">
+					</th:block>	
+					<p th:text="${postList.hashTag}"></p>
+				 </div>
+				 <div class="iine">
    　　　　　　　　　　　　　　　　 <div class="iine-img">
      　　　　　　　　　　　　　　　　<input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪">
     　　　　　　　　　　　　　　　　</div>
     　　　　　　　　　　　　　　　　<div class="iine-count">
-    　　　　　　　　　　　　　　　　 <p th:text="${postList.iine}"></p>
+    　　　　　　　　　　　　　　　　　<p th:text="${postList.iine}"></p>
     　　　　　　　　　　　　　　　　</div>
-　　　　　　　　　　　　　　　　　　　</div>
-					　<p th:text="${postList.hashTag}"></p>
-				   </div>
-				   
+　　　　　　　　　　　　　　　　</div>  
 				</form>
 			</div>
 		</th:block>
+		
       </div>
   </div>
        <!--追加-->
     <div class="side">
     　<p>人気のカテゴリ</p>
      <th:block th:each="category : ${categoryList}">
-				<form method="post" name="FORMCATEGORY" action="/categorySearch">
-					<input type="hidden" name="category" th:value="${category}" />
-					<button
-						style="border: none; outline: none; background: transparent; margin-left: 20px; text-decoration: underline;"><span
-							th:text="${category}"></span></button>
-				</form>
-			</th:block>
+		<form method="post" name="FORMCATEGORY" action="/categorySearch">
+			<input type="hidden" name="category" th:value="${category}" />
+			<button style="border: none; outline: none; background: transparent; margin-left: 20px; text-decoration: underline;"><span
+					th:text="${category}"></span></button>
+		</form>
+		</th:block>
     </div>
  
  </div>

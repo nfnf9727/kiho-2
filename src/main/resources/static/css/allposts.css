@@ -1,9 +1,11 @@
-html, body,
+@charset "Shift_JIS";
+
+/*旧html, body,
 ul, ol, li,
 h1, h2, h3, h4, h5, h6, p, div {
   margin: 0;
   padding: 0;
-}
+}旧*/
 
 body {
   font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
@@ -84,25 +86,25 @@ header {
 }
 
 /*追加*/
-.post-container {
+.post-wrapper {
     width: 100%;
     overflow: hidden;
     /*margin-left: auto;*/
     /*margin-right: auto;*/
     /*float: left;*/
-    padding-left: 16px;
-    padding-right: 16px;
+    /*padding-left: 16px;*/
+    /*padding-right: 16px;*/
     display: flex;
 }
 
-.post-wrapper {
+.post-container {
   height: auto;
   /*box-sizeing: border-box*/
   background-color: #f7f7f7;
   text-align: center;
-  overflow: hidden;
+  /*overflow: hidden;*/
   width: 82%;
-  margin: 0;
+  /*margin: 0;*/
 }
 
 
@@ -113,36 +115,37 @@ header {
   color: #5f5d60;
 }
 
-.heading h2 {
+/*.heading h2 {
   font-weight: normal;
-}
+}*/
 
-/*追加*/
+
 .posts{
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   display: flex;
   padding-right: 16px;
   /*width: auto;*/
   /*width: 82%;*/
+  flex-direction:column-reverse;
 }
 
-
+/*
 .post{
   float: left;
   width: 33%;
   padding-bottom: 50px;
-}
+}*/
 
 .post-icon {
   position: relative;
 }
 
-/*追加*/
+/*
 .post-icon img{
   object-fit: cover;
   width: 85%;
   height: 150px;
-}
+}一旦コメント*/
 
 .post-icon p {
   position: absolute;
@@ -159,9 +162,9 @@ header {
   color: #b3aeb5;
 }
   
-  /*追加*/
+
 .side {
-  padding-top: 80px;
+  padding-top: 10px;
   width: 18%;
   background-color: #c4dfe6;
   float: right;
@@ -176,5 +179,40 @@ header {
   color: #b3aeb5;
 }
 
-  
+
+/*以下追加*/
+  .modal-body {
+  padding: 10px 0px;
+  color: black;
+}
+
+posts {
+ 
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+ 
+.posts {
+ 
+    padding:  10px;           
+ 
+}
+ 
+ 
+.post {
+ 
+  width: 30%;
+  padding: 10px;
+  color:  #000000;          
+  margin:  10px;          
+  border-radius:  5px;      
+  background-color: #f5f5f5
+}
+ 
+.post-icon img {
+  max-width: 100%;
+  height: auto;
+  width /**/:auto;
+}
   
