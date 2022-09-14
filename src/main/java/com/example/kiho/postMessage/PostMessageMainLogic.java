@@ -14,7 +14,7 @@ import com.example.kiho.top.TopMainLogic;
 
 public class PostMessageMainLogic {
 
-	public void postMessage(Model model, JdbcTemplate jdbcTemplate, PostForm form) {
+	public void postMessage(Model model, JdbcTemplate jdbcTemplate, PostForm form, String loginId) {
 
 		// 項目チェック（jsとサーブレットのダブルチェック）
 		PostCheck pc = new PostCheck();
@@ -56,13 +56,12 @@ public class PostMessageMainLogic {
 				}
 				
 				String imagePath = "/images/" + sb + ".png";
-
 				if (form.getImage().isEmpty()) {
-					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
+					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('" + loginId + "', '"
 							+ form.getPostText() + "','" + hashTag + "', '','" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				} else {
-					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('test1', '"
+					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('" + loginId + "', '"
 							+ form.getPostText() + "', '" + hashTag + "', '" + imagePath + "', '" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				}

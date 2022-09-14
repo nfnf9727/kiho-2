@@ -89,7 +89,8 @@ public class MainController {
 			form.setImage(image);
 			tc.topCategory(model, jdbcTemplate);
 			PostMessageMainLogic pmc = new PostMessageMainLogic();
-			pmc.postMessage(model, jdbcTemplate, form);
+			String loginId = (String) httpSession.getAttribute("loginId");
+			pmc.postMessage(model, jdbcTemplate, form, loginId);
 			Random rnd = new Random();
 			model.addAttribute("flg", rnd.nextInt(3));
 
