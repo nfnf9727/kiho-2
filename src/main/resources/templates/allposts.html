@@ -32,9 +32,10 @@
 					<th:block th:if="${postList.image == ''}">
 						<input style="max-width: 100%; height: auto; width /**/:auto;" type="image"
 							src="/commonImages/noimage.png" />
-					</th:block>	
+					</th:block>
+				 </div>	
 					<p th:text="${postList.hashTag}"></p>
-				 </div>
+					<p th:text="${postList.postText}"></p>
 				 <div class="iine">
    　　　　　　　　　　　　　　　　 <div class="iine-img">
      　　　　　　　　　　　　　　　　<input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪">
