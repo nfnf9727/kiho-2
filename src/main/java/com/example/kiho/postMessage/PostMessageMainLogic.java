@@ -66,7 +66,6 @@ public class PostMessageMainLogic {
 					jdbcTemplate.update(sql1);
 				}
 
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
