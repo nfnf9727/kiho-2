@@ -1,5 +1,7 @@
 package com.example.kiho.login;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -103,7 +105,7 @@ public class LoginMainLogic {
 		return errsw2;
 
 	}
-	
+
 	public int uidCheck2(Model model, JdbcTemplate jdbcTemplate, String uid) {
 
 		// エラーＳＷ変数定義
@@ -155,5 +157,19 @@ public class LoginMainLogic {
 		return errsw3;
 	}
 
+	public void LastLogin(Model model, JdbcTemplate jdbcTemplate, String uid) {
+
+		// 現在時刻の設定
+		LocalDateTime date1 = LocalDateTime.now();
+		DateTimeFormatter dtformat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		String fdate1 = dtformat.format(date1);
+		
+		// ログイン時刻の更新
+		
+		System.out.println(fdate1);
+		String LoginTime = "UPDATE user SET lastlogin = '" + fdate1 + "' WHERE loginID = '" + uid + "'";
+		jdbcTemplate.update(LoginTime);
+
+	}
 
 }

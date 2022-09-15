@@ -237,8 +237,11 @@ public class MainController {
 			return "password";
 		}
 
+		LoginMainLogic lml3 = new LoginMainLogic();
+		lml3.LastLogin(model, jdbcTemplate, uid);
 		System.out.println(uid);
 		System.out.println(password);
+		
 		return "top_pc";
 
 	}
