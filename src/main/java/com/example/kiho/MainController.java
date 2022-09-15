@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.kiho.login.LoginMainLogic;
 import com.example.kiho.mypage.MyPageMainLogic;
 import com.example.kiho.postMessage.PostForm;
 import com.example.kiho.postMessage.PostMessageMainLogic;
@@ -212,65 +214,21 @@ public class MainController {
 
 	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "login")
 	public String click1(Model model, String uid, String password) {
-
-		// エラーＳＷ変数定義
-		int errsw1 = 0;
-		int errsw2 = 0;
-
-		// １：インプットチェック１（初期値チェック）
-
-		// １－ａ：ユーザＩＤ未入力（初期値）チェック
-		if (uid == "") {
-			System.out.println("ユーザＩＤが未入力です");
-			model.addAttribute("message1", "ユーザＩＤが未入力です");
-			errsw1 = 1;
-		}
-
-		// １－ｂ：パスワード未入力（初期値）チェック
-		if (password == "") {
-			System.out.println("パスワードが未入力です");
-			model.addAttribute("message2", "パスワードが未入力です");
-			errsw1 = 1;
-		}
+		
+		LoginMainLogic lml = new LoginMainLogic();
+		int errsw1 = lml.uidCheck(model, jdbcTemplate, uid,password);
 
 		if (errsw1 == 1) {
 			System.out.println(uid);
 			System.out.println(password);
 			return "login";
 		}
-
-		// ２：インプットチェック（userテーブル突き合わせチェック）
-
-		// ２－ａ：ユーザＩＤ テーブルとの突き合わせチェック
-		if (!uid.equals("197739")) {
-			System.out.println("ユーザＩＤが一致しません");
-			model.addAttribute("message1", "ユーザＩＤが一致しません");
-			errsw2 = 1;
-		}
-
-		// ２－ｂ：パスワード テーブルとの突き合わせチェック
-		if (!password.equals("kitashi1")) {
-			System.out.println("パスワードが一致しません");
-			model.addAttribute("message2", "パスワードが一致しません");
-			errsw2 = 1;
-		}
-
-		if (errsw2 == 1) {
+		
+		if (errsw1 == 2) {
 			System.out.println(uid);
 			System.out.println(password);
-			return "login";
-		}
-
-		// ３：初期パスワードの強制変更
-		if (password.equals("kihos")) {
-			System.out.println("初期パスワードのため、パスワード変更を行ってください");
-			model.addAttribute("message", "初期パスワードのため、パスワード変更を行ってください");
-			model.addAttribute("loginId", uid);
 			return "password";
 		}
-
-		System.out.println(uid);
-		System.out.println(password);
 
 		return "top_pc";
 
@@ -337,6 +295,7 @@ public class MainController {
 
 		return "password";
 
+		
 	}
 	
 	// ログイン画面
