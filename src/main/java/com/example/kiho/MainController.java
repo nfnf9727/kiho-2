@@ -290,7 +290,7 @@ public class MainController {
 
 	}
 
-	// パスワード変更画面
+	// パスワード変更画面呼び出し
 	@RequestMapping(path = "/password")
 	public String password(HttpSession httpSession) {
 

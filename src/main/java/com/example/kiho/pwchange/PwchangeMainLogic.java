@@ -61,6 +61,10 @@ public class PwchangeMainLogic {
 
 		if (errsw1 == 0) {
 			
+			String pwCheckSQL2 = "SELECT COUNT(*) FROM user WHERE loginID = '" + loginId + "'";
+			String pwCheck2 = jdbcTemplate.queryForObject(pwCheckSQL2, String.class);
+			System.out.println(pwCheck2);
+			
 			String pwCheckSQL = "SELECT password FROM user WHERE loginID = '" + loginId + "'";
 			String pwCheck = jdbcTemplate.queryForObject(pwCheckSQL, String.class);
 			System.out.println(pwCheck);
