@@ -185,7 +185,7 @@ public class MainController {
 
 	@PostMapping(path = "/postDetail")
 	public String postresult(Model model, HttpSession httpSession, String no) {
-		
+
 		TopMainLogic tc = new TopMainLogic();
 		tc.topCategory(model, jdbcTemplate);
 		String sessionloginId = (String) httpSession.getAttribute("loginId");
@@ -194,7 +194,6 @@ public class MainController {
 
 		return "postresult";
 	}
-	
 
 	@RequestMapping(path = "/logout")
 	public String logout(HttpSession httpSession) {
@@ -214,22 +213,31 @@ public class MainController {
 
 	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "login")
 	public String click1(Model model, String uid, String password) {
-		
+
+		// インプットチェック
+
 		LoginMainLogic lml = new LoginMainLogic();
-		int errsw1 = lml.uidCheck(model, jdbcTemplate, uid,password);
+		int errsw1 = lml.uidCheck(model, jdbcTemplate, uid, password);
 
 		if (errsw1 == 1) {
 			System.out.println(uid);
 			System.out.println(password);
 			return "login";
 		}
-		
-		if (errsw1 == 2) {
+
+		// 初期パスワード強制変更
+
+		LoginMainLogic lml2 = new LoginMainLogic();
+		int errsw2 = lml2.prePass(model, jdbcTemplate, uid, password);
+
+		if (errsw2 == 1) {
 			System.out.println(uid);
 			System.out.println(password);
 			return "password";
 		}
 
+		System.out.println(uid);
+		System.out.println(password);
 		return "top_pc";
 
 	}
@@ -240,50 +248,12 @@ public class MainController {
 	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "pwchange")
 	public String click(Model model, String uid, String password) {
 
-		// エラーＳＷ変数定義
-		int errsw1 = 0;
-		int errsw2 = 0;
+		// インプットチェック
 
-		// １：インプットチェック１（初期値チェック）
-
-		// １－ａ：ユーザＩＤ未入力（初期値）チェック
-		if (uid == "") {
-			System.out.println("ユーザＩＤが未入力です");
-			model.addAttribute("message1", "ユーザＩＤが未入力です");
-			errsw1 = 1;
-		}
-
-		// １－ｂ：パスワード未入力（初期値）チェック
-		if (password == "") {
-			System.out.println("パスワードが未入力です");
-			model.addAttribute("message2", "パスワードが未入力です");
-			errsw1 = 1;
-		}
+		LoginMainLogic lml = new LoginMainLogic();
+		int errsw1 = lml.uidCheck(model, jdbcTemplate, uid, password);
 
 		if (errsw1 == 1) {
-			System.out.println(uid);
-			System.out.println(password);
-			return "login";
-		}
-
-		// ２：インプットチェック（userテーブル突き合わせチェック）
-
-		
-		// ２－ａ：ユーザＩＤ テーブルとの突き合わせチェック
-		if (!uid.equals("197739")) {
-			System.out.println("ユーザＩＤが一致しません");
-			model.addAttribute("message1", "ユーザＩＤが一致しません");
-			errsw2 = 1;
-		}
-
-		// ２－ｂ：パスワード テーブルとの突き合わせチェック
-		if (!password.equals("kitashi1")) {
-			System.out.println("パスワードが一致しません");
-			model.addAttribute("message2", "パスワードが一致しません");
-			errsw2 = 1;
-		}
-
-		if (errsw2 == 1) {
 			System.out.println(uid);
 			System.out.println(password);
 			return "login";
@@ -292,48 +262,40 @@ public class MainController {
 		model.addAttribute("loginId", uid);
 		System.out.println(uid);
 		System.out.println(password);
-
 		return "password";
 
-		
 	}
-	
+
 	// ログイン画面
 	// パスワード再登録確認リンク入力時の動作
 
 	@RequestMapping("/click")
-	public String kakunin(Model model,@RequestParam String uid, String name) {
+	public String kakunin(Model model, @RequestParam String uid) {
 
-		// １：インプットチェック１（初期値チェック）
+		// インプットチェック
 
-		// １－ａ：ユーザＩＤ未入力（初期値）チェック
-		if (uid == "") {
-			System.out.println("ユーザＩＤが未入力です");
-			model.addAttribute("message1", "ユーザＩＤが未入力です");
+		LoginMainLogic lml = new LoginMainLogic();
+		int errsw3 = lml.uidCheck2(model, jdbcTemplate, uid);
+
+		if (errsw3 == 1) {
+			System.out.println(uid);
 			return "login";
 		}
-
-		// １－ｂ：ユーザＩＤ テーブルとの突き合わせチェック
-		if (!uid.equals("197739")) {
-			System.out.println("ユーザＩＤが一致しません");
-			model.addAttribute("message1", "ユーザＩＤが一致しません");
-			return "login";
-		}
-
+		
 		model.addAttribute("loginId", uid);
 		System.out.println(uid);
 
 		return "kakunin";
 
 	}
-	
+
 	// パスワード変更画面
 	@RequestMapping(path = "/password")
 	public String password(HttpSession httpSession) {
 
 		return "password";
 	}
-	
+
 	@RequestMapping(path = "/password", method = RequestMethod.POST, params = "change")
 	public String password(Model model, String newpass, String newpass2) {
 
@@ -364,7 +326,7 @@ public class MainController {
 
 		// ２：インプットチェック（userテーブル突き合わせチェック）
 
-		// ２－ａ：初期パスワードチェック　※新パスワード＝"kihos"はエラー
+		// ２－ａ：初期パスワードチェック ※新パスワード＝"kihos"はエラー
 		if (newpass.equals("kihos")) {
 			System.out.println("変更後パスワードが初期パスワードと一致しています。別のパスワードを設定してください。");
 			model.addAttribute("message1", "変更後パスワードが初期パスワードと一致しています。別のパスワードを設定してください。");
@@ -372,7 +334,7 @@ public class MainController {
 			System.out.println(newpass2);
 			return "password";
 		}
-		// ２－ｂ：新パスワード テーブルとの突き合わせチェック　※新旧一致していたらエラー
+		// ２－ｂ：新パスワード テーブルとの突き合わせチェック ※新旧一致していたらエラー
 		if (newpass.equals("kitashi1")) {
 			System.out.println("変更後のパスワードが旧パスワードと一致しています。");
 			model.addAttribute("message1", "変更後のパスワードが旧パスワードと一致しています。");
@@ -381,7 +343,7 @@ public class MainController {
 			return "password";
 		}
 
-		// ２－ｃ：新パスワードの再入力　突き合わせチェック　※２回入れたパスワードが同じであること
+		// ２－ｃ：新パスワードの再入力 突き合わせチェック ※２回入れたパスワードが同じであること
 		if (!newpass.equals(newpass2)) {
 			System.out.println("再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
 			model.addAttribute("message1", "再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
@@ -396,15 +358,15 @@ public class MainController {
 		return "top_pc";
 
 	}
-	
+
 	// パスワード再登録確認画面呼び出し
 	@RequestMapping(path = "/kakunin")
 	public String kakunin(Model model) {
-		
+
 		return "kakunin";
 	}
 
-	// パスワード再登録確認画面　⇒　パスワード変更画面呼び出し
+	// パスワード再登録確認画面 ⇒ パスワード変更画面呼び出し
 	@RequestMapping(path = "/pwclear", method = RequestMethod.POST, params = "pwclear")
 	public String pwclear(Model model, String loginId) {
 
