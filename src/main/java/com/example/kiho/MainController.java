@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.kiho.login.LoginMainLogic;
 import com.example.kiho.mypage.MyPageMainLogic;
 import com.example.kiho.postMessage.PostForm;
 import com.example.kiho.postMessage.PostMessageMainLogic;
+import com.example.kiho.postresult.IineAddMainLogic;
+import com.example.kiho.postresult.PostDeleteMainLogic;
 import com.example.kiho.postresult.PostResultMainLogic;
 import com.example.kiho.pwchange.PwchangeMainLogic;
 import com.example.kiho.top.TopMainLogic;
@@ -333,6 +336,54 @@ public class MainController {
 
 		model.addAttribute("loginId", loginId);
 		return "password";
+	}
+	
+	/**
+	 * 投稿内容削除 --2022.9.9 hatano Add--
+	 * 
+	 * @parm model
+	 * @parm no
+	 * @return
+	 */
+	@PostMapping(path = "/postdelete")
+	public String postDelete(Model model, @RequestParam int no) {
+		System.out.println("postDeleteメソッド開始");
+//		投稿内容削除の実行
+		PostDeleteMainLogic pdml = new PostDeleteMainLogic();
+		pdml.postDeleteMainLogic(model, jdbcTemplate, no);
+//		トップ画面へ遷移
+		return "top_pc";
+	}
+	
+	/**
+	 * コメント投稿　--2022.9.15 hatano Add
+	 * 
+	 * @parm comments 
+	 * @return
+	 */
+	@PostMapping("/comment-post")
+	@ResponseBody
+	public String commentPost(@RequestParam String comments) {
+		System.out.println("commentPostメソッド開始");
+//		commentテーブルの更新が必要
+		
+		return comments;
+	}
+	
+	/**
+	 * いいね！更新　--2022.9.15 hatano Add
+	 * 
+	 * @parm iine 
+	 * @return
+	 */
+	@PostMapping("/iineadd")
+	@ResponseBody
+	public int iineAdd(@RequestParam int iinenum) {
+		System.out.println("iineAddメソッド開始");
+//		postmsgテーブルのいいね数を更新が必要
+//		IineAddMainLogic iaml = new IineAddMainLogic();
+//		iaml.postDeleteMainLogic(jdbcTemplate, no);
+		return iinenum += 1;
 	}
 
 }

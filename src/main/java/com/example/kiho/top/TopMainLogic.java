@@ -26,6 +26,7 @@ public class TopMainLogic {
         List<String> imagePathSQLList = jdbcTemplate.queryForList(imageSQL,String.class);
     	List<String> imagePathList = new ArrayList<>();
     	for(int i = 0; i < 10 ; i++) {
+//    		詳細不明だが、postmsgテーブルの状態によってindexoutofboundでエラーになるときがある。
     		if(imagePathSQLList.get(i) == null ||imagePathSQLList.get(i).isEmpty() || imagePathSQLList.get(i).isBlank()) {
     			imagePathList.add("");
     		}else {

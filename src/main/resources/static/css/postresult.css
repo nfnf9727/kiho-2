@@ -117,4 +117,8 @@ main{
     }
 }
 
-
+/*いいねボタン押下後のスタイル 2022.9.15 hatano Add*/
+.iine-add {
+	font-weight: bold;
+	color: blue;
+}

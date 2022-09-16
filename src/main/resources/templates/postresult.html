@@ -7,12 +7,19 @@
 	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css"/>
+<!-- 2022.9.15 add -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 2022.9.15 add -->
 </head>
 
 <body>
     <div th:replace="header::header"></div>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/js/postresult.js}"></script>
+<!-- 2022.9.15 add -->
+	<script type="text/javascript" th:src="@{/js/commentpost.js}"></script>
+	<script type="text/javascript" th:src="@{/js/iine.js}"></script>
+<!-- 2022.9.15 add -->
 	<h1 class="h1indent">
 	  <span th:text="${name}"></span>
       <span>さんの投稿</span>
@@ -26,7 +33,9 @@
         <span th:text="${createdTime}"></span>
       </div>
       <div class="delete" th:if="${sessionloginId == loginId}">
-	    <form method="post" action="/">
+<!-- 2022.9.12 chenge -->
+	    <form method="post" action="/postdelete">
+<!-- 2022.9.12 chenge -->
 		  <input type="hidden" name="no" th:value="${no}">
 		  <button id="del" class="button">削除</button>
 	    </form>
@@ -60,12 +69,21 @@
                 <span>◆</span>
                 <p th:text="${commentList.comments}"></p>
               </div>
+<!-- 2022.9.15 add -->
+				<div class="comment-post"></div>
+<!-- 2022.9.15 add -->
             </th:block>
           </div>
         </div>     
         <div class="comment-in">
-          <input id="comments" type="text" onkeyup="ShowLength(value)" value="" style="width:100%; height:auto" maxlength="100"/>
-          <button id="comments" class="button">コメント投稿</button>
+<!-- 2022.9.15 add -->
+        	<form method="post" action="/comment-post" id="comment_form">
+<!-- 2022.9.15 add -->
+          		<input id="comments" type="text" onkeyup="ShowLength(value)" value="" style="width:100%; height:auto" maxlength="100"/>
+          		<button type="submit" id="comments" class="button">コメント投稿</button>
+<!-- 2022.9.15 add -->
+        	</form>
+<!-- 2022.9.15 add -->
           <span id="inputlength" font-size="6px">0文字／100文字</span>      
         </div>
       </div>
@@ -76,11 +94,22 @@
         <p>いいね！</p> 
       </div>
       <div class="iine-img">
-        <input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪">
+<!-- 2022.9.15 add -->
+      	<form method="post" action="/iineadd" id="iine_form">
+<!-- 2022.9.15 add -->
+			<input type="hidden" name="no" th:value="${no}">
+			<input type="hidden" id="iinenum" th:value="${iine}">
+        	<input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪" id="iinebutton">
+<!-- 2022.9.15 add -->
+      	</form>
+<!-- 2022.9.15 add -->
       </div>
       <div class="iine-count">
         <p th:text="${iine}"></p>
       </div>
+<!-- 2022.9.15 add -->
+      <div class="iine-add"></div>
+<!-- 2022.9.15 add -->
     </div>
     
   </main> 
