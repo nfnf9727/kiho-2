@@ -43,7 +43,6 @@ public class MainController {
 	public String showIndex(Model model, HttpSession httpSession) {
 
 		TopMainLogic tc = new TopMainLogic();
-		httpSession.setAttribute("loginId", "test1");
 		String flg = tc.sessionCheck(httpSession);
 		if ("1".equals(flg)) {
 			return "login";
@@ -56,15 +55,15 @@ public class MainController {
 			Random rnd = new Random();
 			model.addAttribute("flg", rnd.nextInt(3));
 
-//			//sessionより画面幅取得
-//			//画面幅に応じて出力する画面を変える
-//			int width = (int) httpSession.getAttribute("width");
-//			if(width > 400) {
-//				return "top_pc";
-//			}else {
-//				return "top_mobile";
-//			}
-			return "top_pc";
+			// sessionより画面幅取得
+			// 画面幅に応じて出力する画面を変える
+			int width = (int) httpSession.getAttribute("width");
+			if (width > 400) {
+				return "top_pc";
+			} else {
+				return "top_mobile";
+			}
+
 		}
 
 	}
@@ -100,15 +99,15 @@ public class MainController {
 			Random rnd = new Random();
 			model.addAttribute("flg", rnd.nextInt(3));
 
-//		//sessionより画面幅取得
-//		//画面幅に応じて出力する画面を変える
-//		int width = (int) httpSession.getAttribute("width");
-//		if(width > 400) {
-//			return "top_pc";
-//		}else {
-//			return "top_mobile";
-//		}
-			return "top_pc";
+			// sessionより画面幅取得
+			// 画面幅に応じて出力する画面を変える
+			int width = (int) httpSession.getAttribute("width");
+			if (width > 400) {
+				return "top_pc";
+			} else {
+				return "top_mobile";
+			}
+
 		}
 
 	}
@@ -216,8 +215,9 @@ public class MainController {
 	// ログインボタン入力時の動作
 
 	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "login")
-	public String click1(Model model, String uid, String password) {
+	public String click1(Model model, String uid, String password, int widthScreen, HttpSession httpSession) {
 
+		httpSession.setAttribute("width", widthScreen);
 		// インプットチェック
 
 		LoginMainLogic lml = new LoginMainLogic();
@@ -244,8 +244,26 @@ public class MainController {
 		lml3.LastLogin(model, jdbcTemplate, uid);
 		System.out.println(uid);
 		System.out.println(password);
+
+		httpSession.setAttribute("loginId", uid);
 		
-		return "top_pc";
+		TopMainLogic tc = new TopMainLogic();
+		tc.topHashTag(model, jdbcTemplate);
+		tc.topImagePath(model, jdbcTemplate);
+		tc.topNo(model, jdbcTemplate);
+		tc.topCategory(model, jdbcTemplate);
+
+		Random rnd = new Random();
+		model.addAttribute("flg", rnd.nextInt(3));
+
+		// sessionより画面幅取得
+		// 画面幅に応じて出力する画面を変える
+		int width = (int) httpSession.getAttribute("width");
+		if (width > 400) {
+			return "top_pc";
+		} else {
+			return "top_mobile";
+		}
 
 	}
 
@@ -253,7 +271,7 @@ public class MainController {
 	// パスワード変更ボタン入力時の動作
 
 	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "pwchange")
-	public String click(Model model, String uid, String password) {
+	public String click(Model model, String uid, String password, int widthScreen, HttpSession httpSession) {
 
 		// インプットチェック
 
@@ -269,6 +287,7 @@ public class MainController {
 		model.addAttribute("loginId", uid);
 		System.out.println(uid);
 		System.out.println(password);
+		httpSession.setAttribute("width", widthScreen);
 		return "password";
 
 	}
@@ -277,7 +296,7 @@ public class MainController {
 	// パスワード再登録確認リンク入力時の動作
 
 	@RequestMapping("/click")
-	public String kakunin(Model model, @RequestParam String uid) {
+	public String kakunin(Model model, @RequestParam String uid, int widthScreen, HttpSession httpSession) {
 
 		// インプットチェック
 
@@ -288,9 +307,10 @@ public class MainController {
 			System.out.println(uid);
 			return "login";
 		}
-		
+
 		model.addAttribute("loginId", uid);
 		System.out.println(uid);
+		httpSession.setAttribute("width", widthScreen);
 
 		return "kakunin";
 
@@ -304,12 +324,12 @@ public class MainController {
 	}
 
 	@RequestMapping(path = "/password", method = RequestMethod.POST, params = "change")
-	public String password(Model model, String loginId,String newpass, String newpass2) {
+	public String password(Model model, String loginId, String newpass, String newpass2, HttpSession httpSession) {
 
 		// インプットチェック
 
 		PwchangeMainLogic lml = new PwchangeMainLogic();
-		int errsw1 = lml.passCheck(model, jdbcTemplate, loginId,newpass, newpass2);
+		int errsw1 = lml.passCheck(model, jdbcTemplate, loginId, newpass, newpass2);
 
 		if (errsw1 == 1) {
 			System.out.println(newpass);
@@ -319,7 +339,25 @@ public class MainController {
 
 		System.out.println(newpass);
 		System.out.println(newpass2);
-		return "top_pc";
+		
+		httpSession.setAttribute("loginId", loginId);
+		TopMainLogic tc = new TopMainLogic();
+		tc.topHashTag(model, jdbcTemplate);
+		tc.topImagePath(model, jdbcTemplate);
+		tc.topNo(model, jdbcTemplate);
+		tc.topCategory(model, jdbcTemplate);
+
+		Random rnd = new Random();
+		model.addAttribute("flg", rnd.nextInt(3));
+
+		// sessionより画面幅取得
+		// 画面幅に応じて出力する画面を変える
+		int width = (int) httpSession.getAttribute("width");
+		if (width > 400) {
+			return "top_pc";
+		} else {
+			return "top_mobile";
+		}
 
 	}
 
@@ -337,7 +375,7 @@ public class MainController {
 		model.addAttribute("loginId", loginId);
 		return "password";
 	}
-	
+
 	/**
 	 * 投稿内容削除 --2022.9.9 hatano Add--
 	 * 
@@ -354,11 +392,11 @@ public class MainController {
 //		トップ画面へ遷移
 		return "top_pc";
 	}
-	
+
 	/**
-	 * コメント投稿　--2022.9.15 hatano Add
+	 * コメント投稿 --2022.9.15 hatano Add
 	 * 
-	 * @parm comments 
+	 * @parm comments
 	 * @return
 	 */
 	@PostMapping("/comment-post")
@@ -366,14 +404,14 @@ public class MainController {
 	public String commentPost(@RequestParam String comments) {
 		System.out.println("commentPostメソッド開始");
 //		commentテーブルの更新が必要
-		
+
 		return comments;
 	}
-	
+
 	/**
-	 * いいね！更新　--2022.9.15 hatano Add
+	 * いいね！更新 --2022.9.15 hatano Add
 	 * 
-	 * @parm iine 
+	 * @parm iine
 	 * @return
 	 */
 	@PostMapping("/iineadd")

@@ -26,12 +26,23 @@
 		<p>パスワードをお忘れの方は
 			<a href="javascript:pwclear.submit()">こちら
 		</p>
+		<input type="hidden" name="widthScreen" id="width">
 	</form>
 
 	　<form>
 		<h4 th:text="${message1}"></h4>
 		<h4 th:text="${message2}"></h4>
 	</form>
+	
+	<script type="text/javascript">
+	    getScreenSize();
+	    var url = "";
+	    //画面サイズを取得する
+	    function getScreenSize(){
+		    document.getElementById("width").value = window.parent.screen.width;
+		}
+	
+	</script>
 
 </body>
 
