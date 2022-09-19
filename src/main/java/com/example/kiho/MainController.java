@@ -185,6 +185,47 @@ public class MainController {
 			return "mypage";
 		}
 	}
+	
+	/**
+	 * マイページからニックネーム変更
+	 * @param model
+	 * @param httpSession
+	 * @return
+	 */
+	@RequestMapping(path = "/nickname")
+	public String nickname(Model model, HttpSession httpSession) {
+
+		TopMainLogic tc = new TopMainLogic();
+		String flg = tc.sessionCheck(httpSession);
+		if ("1".equals(flg)) {
+			return "login";
+		} else {
+			// sessionからログイン情報取りに行く 後で追加
+			String loginId = (String) httpSession.getAttribute("loginId");
+			MyPageMainLogic mpml = new MyPageMainLogic();
+			mpml.mypage(model, jdbcTemplate, loginId);
+			tc.topCategory(model, jdbcTemplate);
+
+			return "mypage";
+		}
+	}
+	
+	/**
+	 * マイページからパス変更
+	 * @param model
+	 * @param httpSession
+	 * @return
+	 */
+	@RequestMapping(path = "/changePass")
+	public String click(Model model, HttpSession httpSession) {
+
+		String loginId = (String) httpSession.getAttribute("loginId");
+		model.addAttribute("loginId", loginId);
+		System.out.println(loginId);
+		
+		return "password";
+
+	}
 
 	@PostMapping(path = "/postDetail")
 	public String postresult(Model model, HttpSession httpSession, String no) {
@@ -217,6 +258,7 @@ public class MainController {
 	@RequestMapping(path = "/click", method = RequestMethod.POST, params = "login")
 	public String click1(Model model, String uid, String password, int widthScreen, HttpSession httpSession) {
 
+		System.out.println(widthScreen);
 		httpSession.setAttribute("width", widthScreen);
 		// インプットチェック
 

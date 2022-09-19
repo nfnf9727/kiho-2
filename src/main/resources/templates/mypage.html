@@ -7,28 +7,44 @@
 	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
 	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
 	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
-	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
+
 
 	<div th:replace="header::header"></div>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<h1 class="h1indent">MY PAGE</h1>
-	<br/>
 	<h2 class="h2indent">プロフィール</h2>
-
 	<table class="mypage" style="margin-left: 20px;">
 		<tr>
 			<th>ニックネーム</th>
-			<td th:text="${name}"></td>
+			<td th:text="${name}">
+			</td>
+			<td style="background-color: white;">
+			</td>
+		</tr>
+		<tr>
+			<th>パスワード</th>
+			<td>********</td>
+			<td style="background-color: white;">
+				<div class="button27">
+					<form name="changePass" action="/changePass">
+						<a href="javascript:changePass.submit()">変更</a>
+					</form>
+				</div>
+			</td>
 		</tr>
 		<tr>
 			<th>最終ログイン日時</th>
 			<td th:text="${createdTime}"></td>
+			<td style="background-color: white;">
+			</td>
 		</tr>
 	</table>
 
-	<br/>
+	<br />
 	<h2 class="h2indent">過去の投稿</h2>
 	<main>
 
@@ -54,6 +70,8 @@
 
 
 	</main>
+
+
 </body>
 
 </html>
