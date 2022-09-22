@@ -15,11 +15,13 @@
 
 　<h2>パスワード再登録</h2>
 
- <table>
-  <tr>
-   <td>ユーザＩＤ：</td><td th:text="${loginId}"></td>
-  </tr> 
- <table>
+ <form>
+  <table>
+   <tr>
+    <td>ユーザＩＤ：</td><td th:text="${loginId}"></td>
+   </tr> 
+  <table>
+ </form>
 
   <p>
    パスワードを初期化して、再登録いたします。よろしければ、下の「パスワード再登録」を押してください。
@@ -27,7 +29,7 @@
 
   <form method="post" name="submit" action="/pwclear">
     <input type="hidden" name="loginId" th:value="${loginId}">
-    <input type="submit" name="pwclear" value="パスワード再登録">
+    <input type="submit" name="pwclear" id="pwchange" value="パスワード再登録">
   </form>  
 
  </body>

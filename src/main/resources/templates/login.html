@@ -13,6 +13,11 @@
 	<div>
 		<img src="/commonImages/ICON.PNG">
 	</div>
+	
+	<div>
+		<h4 th:text="${message1}"></h4>
+		<h4 th:text="${message2}"></h4>
+	</div>	
 
 	<form method="post" name="pwclear" action="/click">
 		<p>ユーザーＩＤ：
@@ -29,11 +34,6 @@
 		<input type="hidden" name="widthScreen" id="width">
 	</form>
 
-	　<form>
-		<h4 th:text="${message1}"></h4>
-		<h4 th:text="${message2}"></h4>
-	</form>
-	
 	<script type="text/javascript">
 	    getScreenSize();
 	    var url = "";

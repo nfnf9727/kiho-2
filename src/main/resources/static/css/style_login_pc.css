@@ -6,15 +6,21 @@ p {text-align:center;}
 
 form {text-align:center;}
 
+input#uid{height:30px;font-size: 20px;}
+
+input#password{height:30px;font-size: 20px;}
+
 input[type="submit"]{
- background:lightblue;
- color:#ffffff;
+ background:#3366CC;
+ color:white;
  border:0;
  border-radius:5px;
  position:relative;
  margin:0px 20px 0px 20px;
+ font-size: 20px;
+ height:35px;
+ width:160px;
 }
-
 
 input[type="submit"]:hover{
  background:lightcoral;
@@ -22,4 +28,4 @@ input[type="submit"]:hover{
  
 }
 
-h4 {text-align:center;}
+h4 {color: red;text-align:center;}

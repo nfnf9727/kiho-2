@@ -8,17 +8,20 @@ p {text-align:center;}
 
 form {text-align:center;}
 
-table {text-align:center;}
+td {width:"100%";table-layout: fixed;}
 
 input[type="submit"]{
- background:lightblue;
- color:#ffffff;
+ background:#3366CC;
+ color:white;
  border:0;
  border-radius:5px;
  position:relative;
  margin:0px 20px 0px 20px;
+ font-size: 20px;
+ height:35px;
 }
 
+input#pwchange {text-align:center;}
 
 input[type="submit"]:hover{
  background:lightcoral;
