@@ -8,7 +8,7 @@ p {text-align:center;}
 
 form {text-align:center;}
 
-td {width:"100%";table-layout: fixed;}
+table {margin:auto;}
 
 input[type="submit"]{
  background:#3366CC;
