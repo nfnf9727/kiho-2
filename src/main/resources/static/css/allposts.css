@@ -120,7 +120,9 @@ header {
 .post-icon {
   position: relative;
 }
-
+.iine {
+  position: relative;
+}
 
 .post-icon p {
   position: absolute;
@@ -128,6 +130,15 @@ header {
   width: 100%;
   /*color: white;*/
 }
+
+.iine-count {
+  position: absolute;
+  /*top: 44%;
+  width: 100%;*/
+  text-align: end;
+  /*color: white;*/
+}
+
 
 .text-contents {
   width: 80%;
@@ -187,11 +198,23 @@ header {
   max-width: 100%;
   height: auto;
   width /**/:auto;
-  
-    
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
   max-height: 150px;
 }
-  
+/*.iine img {
+  max-width: 100%;
+  height: auto;
+  width :auto;
+  object-fit: cover;
+  overflow: hidden;
+  transition-duration: 0.5s;
+  max-height: 150px;
+} */
+
+.iine-img:hover {
+    border-bottom: 0;
+    transform: translateY(4px);
+    margin-bottom: 4px;
+}

@@ -38,8 +38,9 @@
 					<p th:text="${postList.postText}"></p>
 				 <div class="iine">
    　　　　　　　　　　　　　　　　 <div class="iine-img">
-     　　　　　　　　　　　　　　　　<input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪">
-    　　　　　　　　　　　　　　　　</div>
+     　　　　　　　　　　　　　　　　<!--input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪"-->
+    　　　　　　　　　　　　　　　　<input style="max-width: 100%; height: auto; width /**/:auto;" type="image" th:src="@{/commonImages/iine.png}" >
+                      </div>
     　　　　　　　　　　　　　　　　<div class="iine-count">
     　　　　　　　　　　　　　　　　　<p th:text="${postList.iine}"></p>
     　　　　　　　　　　　　　　　　</div>
