@@ -21,6 +21,14 @@ a {
 
 
 
+.container {
+    /*max-width: 1170px;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
 .btn {
   padding: 8px 24px;
   color: white;
@@ -83,6 +91,21 @@ header {
   display: block;
 }
 
+/*追加*/
+.post-wrapper {
+    width: 100%;
+    display: flex;
+}
+
+.post-container {
+  height: auto;
+  background-color: #f7f7f7;
+  text-align: center;
+  width: 82%;
+}
+
+
+
 .heading {
   padding-top: 80px;
   padding-bottom: 50px;
@@ -93,29 +116,27 @@ header {
   font-weight: normal;
 }*/
 
-.container {
-    /*max-width: 1170px;*/
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 16px;
-    padding-right: 16px;
-    
+
+.post-icon {
+  position: relative;
 }
 
 
-/*追加*/
-.post-wrapper {
-    width: 100%;
-    display: flex;
-    min-height: 800px;
+.post-icon p {
+  position: absolute;
+  top: 44%;
+  width: 100%;
+  /*color: white;*/
 }
 
-.post-container {
-  height: auto;
-  background-color: #f7f7f7;
-  text-align: center;
-  width: 82%;
-}  
+.text-contents {
+  width: 80%;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #b3aeb5;
+}
+  
 
 .side {
   padding-top: 10px;
@@ -161,52 +182,16 @@ header {
   background-color: #f5f5f5;
 
 }
-
-.post-icon {
-  position: relative;
-}
-
+ 
 .post-icon img {
   max-width: 100%;
   height: auto;
   width /**/:auto;
+  
+    
   object-fit: cover;
   overflow: hidden;
   transition-duration: 0.5s;
   max-height: 150px;
 }
-
-
-.iine {
-  position: relative;
-} 
-
-
-.iine-count {
-  position: absolute;
-  text-align: end;
-  margin: 20px 0 0 0;
-}
-
-.iine-img {
-  position: absolute;
-  text-align: end;
-  margin: 0 20px 0 0;
-}
-
-.iine-img:hover {
-    border-bottom: 0;
-    transform: translateY(4px);
-    margin-bottom: 4px;
-}
-
-
-.text-contents {
-  width: 80%;
-  display: inline-block;
-  margin-top: 15px;
-  font-size: 13px;
-  color: #b3aeb5;
-}
- 
-
+  
