@@ -69,10 +69,10 @@
                 <span>◆</span>
                 <p th:text="${commentList.comments}"></p>
               </div>
+            </th:block>
 <!-- 2022.9.15 add -->
 				<div class="comment-post"></div>
 <!-- 2022.9.15 add -->
-            </th:block>
           </div>
         </div>     
         <div class="comment-in">
@@ -80,7 +80,7 @@
         	<form method="post" action="/comment-post" id="comment_form">
 <!-- 2022.9.15 add -->
           		<input id="comments" type="text" onkeyup="ShowLength(value)" value="" style="width:100%; height:auto" maxlength="100"/>
-          		<button type="submit" id="comments" class="button">コメント投稿</button>
+          		<button type="submit" class="button">コメント投稿</button>
 <!-- 2022.9.15 add -->
         	</form>
 <!-- 2022.9.15 add -->
