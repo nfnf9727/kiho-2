@@ -5,7 +5,8 @@ $(function() {
 			url: $(this).attr("action"),  // リクエストを送信するURLを指定（action属性のurlを抽出）
 			type: "POST",  // HTTPメソッドを指定（デフォルトはGET）
 			data: {
-				iinenum: $("#iinenum").val()  // 送信データ
+				iinenum: $("#iinenum").val(),  // 送信データ
+				no: $("#no").val() //送信データ
 			}
 		})
 		.done(function(data) {

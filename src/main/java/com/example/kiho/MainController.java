@@ -458,11 +458,13 @@ public class MainController {
 	 */
 	@PostMapping("/iineadd")
 	@ResponseBody
-	public int iineAdd(@RequestParam int iinenum) {
+	public int iineAdd(@RequestParam int iinenum, int no) {
 		System.out.println("iineAddメソッド開始");
-//		postmsgテーブルのいいね数を更新が必要
-//		IineAddMainLogic iaml = new IineAddMainLogic();
-//		iaml.postDeleteMainLogic(jdbcTemplate, no);
+		System.out.println(iinenum);
+		System.out.println(no);
+//		postmsgテーブルのいいね数の更新が必要
+		IineAddMainLogic iaml = new IineAddMainLogic();
+		iaml.iineAddMainLogic(jdbcTemplate, no);
 		return iinenum += 1;
 	}
 
