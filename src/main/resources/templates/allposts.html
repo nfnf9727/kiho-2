@@ -13,7 +13,6 @@
     <div th:replace="header::header"></div>
     <script type="text/javascript" th:src="@{/js/main.js}"></script>
     <h1 class="h1indent" th:text="${midashimessage}"></h1>
-    <br/>
     <h2　class="h2indent" th:text="${searchmessage}"></h2>
     
  <div class="post-wrapper">
@@ -34,12 +33,13 @@
 							src="/commonImages/noimage.png" />
 					</th:block>
 				 </div>	
-					<p th:text="${postList.hashTag}"></p>
-					<p th:text="${postList.postText}"></p>
+					<p th:text="${postList.hashTag}" style="text-align: start;"></p>
+					<p th:text="${postList.postText}" style="text-align: start;"></p>
 				 <div class="iine">
    　　　　　　　　　　　　　　　　 <div class="iine-img">
      　　　　　　　　　　　　　　　　<!--input type="image" th:src="@{/commonImages/iine.png}" class="yureru-j" alt="押してね♪"-->
-    　　　　　　　　　　　　　　　　<input style="max-width: 100%; height: auto; width /**/:auto;" type="image" th:src="@{/commonImages/iine.png}" >
+    　　　　　　　　　　　　　　　　<!--input style="max-width: 100%; height: auto; width /**/:auto;" type="image" th:src="@{/commonImages/iine.png}" -->
+                     <input type="image" th:src="@{/commonImages/iine.png}" >
                       </div>
     　　　　　　　　　　　　　　　　<div class="iine-count">
     　　　　　　　　　　　　　　　　　<p th:text="${postList.iine}"></p>
