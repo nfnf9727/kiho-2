@@ -1,5 +1,7 @@
 package com.example.kiho.postresult;
 
+import java.util.Random;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
 
@@ -14,11 +16,6 @@ public class PostDeleteMainLogic {
 		String sql1 = "DELETE FROM postmsg WHERE no = '" + no + "'";
 		jdbcTemplate.update(sql1);
 		
-		// top画面を表示させるためにDB内容取得
-//		TopMainLogic tc = new TopMainLogic();
-//		tc.topHashTag(model, jdbcTemplate);
-//		tc.topImagePath(model, jdbcTemplate);
-//		tc.topNo(model, jdbcTemplate);
-//		tc.topCategory(model, jdbcTemplate);
+		
 	}
 }

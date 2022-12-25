@@ -5,11 +5,12 @@ $(function() {
 			url: $(this).attr("action"),  // リクエストを送信するURLを指定（action属性のurlを抽出）
 			type: "POST",  // HTTPメソッドを指定（デフォルトはGET）
 			data: {
-				comments: $("#comments").val()  // 送信データ
+				comments: $("#comments").val(),  // 送信データ
+				no: $("#no").val()  // 送信データ
 			}
 		})
 		.done(function(data) {
-			$(".comment-post").append(`<div>${data}</div>`);  // HTMLを追加
+			$(".comment-post").append(`<div>◆ ${document.getElementById("loginId").value} ◆</div><br/><div>${data}</div>`);
 			$("#comments").val("");  // 入力欄を空にする
 		})
 		.fail(function() {

@@ -79,6 +79,8 @@
 <!-- 2022.9.15 add -->
         	<form method="post" action="/comment-post" id="comment_form">
 <!-- 2022.9.15 add -->
+                <input type="hidden" name="no" id="no" th:value="${no}">
+                <input type="hidden" name="loginId" id="loginId" th:value="${loginId}">
           		<input id="comments" type="text" onkeyup="ShowLength(value)" value="" style="width:100%; height:auto" maxlength="100"/>
           		<button type="submit" class="button">コメント投稿</button>
 <!-- 2022.9.15 add -->
@@ -90,9 +92,6 @@
     </div>
     
     <div class="iine">
-      <div class="iine-message">
-        <p>いいね！</p> 
-      </div>
       <div class="iine-img">
 <!-- 2022.9.15 add -->
       	<form method="post" action="/iineadd" id="iine_form">

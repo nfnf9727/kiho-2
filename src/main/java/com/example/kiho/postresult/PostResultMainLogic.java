@@ -55,7 +55,7 @@ public class PostResultMainLogic {
 		//投稿者名の取得
 		String nameSQL = "SELECT name FROM user WHERE loginId = '" + loginId + "'";
 		String name = jdbcTemplate.queryForObject(nameSQL, String.class);
-		model.addAttribute("name", name);	
+		model.addAttribute("name", name);
 		
 	//実装確認用
 		System.out.println(loginId);
@@ -68,6 +68,8 @@ public class PostResultMainLogic {
 		System.out.println(name);
 		System.out.println(no);
 		System.out.println(sessionloginId);
+		model.addAttribute("loginId", sessionloginId);
+		
 	}
 
 }

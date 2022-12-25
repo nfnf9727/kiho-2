@@ -19,6 +19,7 @@ import com.example.kiho.login.LoginMainLogic;
 import com.example.kiho.mypage.MyPageMainLogic;
 import com.example.kiho.postMessage.PostForm;
 import com.example.kiho.postMessage.PostMessageMainLogic;
+import com.example.kiho.postresult.CommentAddMainLogic;
 import com.example.kiho.postresult.IineAddMainLogic;
 import com.example.kiho.postresult.PostDeleteMainLogic;
 import com.example.kiho.postresult.PostResultMainLogic;
@@ -426,13 +427,29 @@ public class MainController {
 	 * @return
 	 */
 	@PostMapping(path = "/postdelete")
-	public String postDelete(Model model, @RequestParam int no) {
+	public String postDelete(Model model, @RequestParam int no, HttpSession httpSession) {
 		System.out.println("postDeleteメソッド開始");
 //		投稿内容削除の実行
 		PostDeleteMainLogic pdml = new PostDeleteMainLogic();
 		pdml.postDeleteMainLogic(model, jdbcTemplate, no);
 //		トップ画面へ遷移
-		return "top_pc";
+		TopMainLogic tc = new TopMainLogic();
+		tc.topHashTag(model, jdbcTemplate);
+		tc.topImagePath(model, jdbcTemplate);
+		tc.topNo(model, jdbcTemplate);
+		tc.topCategory(model, jdbcTemplate);
+
+		Random rnd = new Random();
+		model.addAttribute("flg", rnd.nextInt(3));
+
+		// sessionより画面幅取得
+		// 画面幅に応じて出力する画面を変える
+		int width = (int) httpSession.getAttribute("width");
+		if (width > 400) {
+			return "top_pc";
+		} else {
+			return "top_mobile";
+		}
 	}
 
 	/**
@@ -443,9 +460,12 @@ public class MainController {
 	 */
 	@PostMapping("/comment-post")
 	@ResponseBody
-	public String commentPost(@RequestParam String comments) {
-		System.out.println("commentPostメソッド開始");
-//		commentテーブルの更新が必要
+	public String commentPost(@RequestParam String comments, int no, HttpSession httpSession) {
+		System.out.println(no);
+        //commentテーブルの更新が必要
+		CommentAddMainLogic caml = new CommentAddMainLogic();
+		String loginId = (String) httpSession.getAttribute("loginId");
+		caml.commentAddMainLogic(jdbcTemplate, no, loginId, comments);
 
 		return comments;
 	}
