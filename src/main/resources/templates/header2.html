@@ -10,37 +10,37 @@
 	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" />
 </head>
 <header class="header">
-	<div class="navtext-container">
-		<div class="navtext">
+
+	<div class="container">
+		<div class="header-left">
 			<form style="display: inline" action="/top">
 				<input type="image" class="logo" src="/commonImages/ICON.PNG" />
 			</form>
 		</div>
-	</div>
-	<input type="checkbox" class="menu-btn" id="menu-btn">
-	<label for="menu-btn" class="menu-icon"><span class="navicon"></span></label>
-	<ul class="menu">
-		<li class="top">
-			<form method="POST" name="mypage" style="display: inline" action="/mypage">
-				<a href="javascript:mypage.submit()" style="text-decoration: nome; color: white;">MY PAGE</a>
+		<div class="header-right">
+			<form method="POST" name="logout" style="display: inline" action="/logout">
+				<a href="javascript:logout.submit()" style="text-decoration: nome; color: white;">ログアウト</a>
 			</form>
-		</li>
-		<li>
-			<a id="modalOpen" class="up">投稿する</a>
-		</li>
-		<li>
+		</div>
+		<div class="header-right1">
 			<form style="display: inline" method="post" action="/wordSearch">
 				<label for="serch"></label>
 				<input type="text" id="wordText" name="wordText">
 				<button id="search" class="button">検索</button>
 			</form>
-		</li>
-		<li>
-			<form method="POST" name="logout" style="display: inline" action="/logout">
-				<a href="javascript:logout.submit()" style="text-decoration: nome; color: white;">ログアウト</a>
+		</div>
+		<div class="header-right">
+			<a id="modalOpen" class="up">投稿する</a>
+		</div>
+		<div class="header-right">
+			<form method="POST" name="mypage" style="display: inline" action="/mypage">
+				<a href="javascript:mypage.submit()" style="text-decoration: nome; color: white;">MY PAGE</a>
 			</form>
-		</li>
-	</ul>
+		</div>
+	</div>
+
+
+
 
 	<div id="easyModal" class="modal">
 		<div class="modal-content">
@@ -60,8 +60,8 @@
 								</div>
 							</td>
 							<td class="toukou2">
-								<textarea id="postText" name="postText" type="text" wrap="soft"
-									style="height:7em; width:90%;" maxlength="120"></textarea>
+								<textarea id="postText" name="postText" type="text" wrap="soft" style="height:7em; width:90%;"
+									maxlength="120"></textarea>
 							</td>
 						</tr>
 						<tr class="toukouHashTag">
@@ -112,10 +112,6 @@
 		</div>
 	</div>
 	</div>
-
 </header>
-
-
-
 
 </html>
