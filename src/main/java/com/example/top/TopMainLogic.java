@@ -1,4 +1,4 @@
-package com.example.kiho.top;
+package com.example.top;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.kiho.login;
+package com.example.login;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

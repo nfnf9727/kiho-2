@@ -1,4 +1,4 @@
-package com.example.kiho;
+package com.example.controller;
 
 import java.util.Random;
 
@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.kiho.login.LoginMainLogic;
-import com.example.kiho.mypage.MyPageMainLogic;
-import com.example.kiho.postMessage.PostForm;
-import com.example.kiho.postMessage.PostMessageMainLogic;
-import com.example.kiho.postresult.CommentAddMainLogic;
-import com.example.kiho.postresult.IineAddMainLogic;
-import com.example.kiho.postresult.PostDeleteMainLogic;
-import com.example.kiho.postresult.PostResultMainLogic;
-import com.example.kiho.pwchange.PwchangeMainLogic;
-import com.example.kiho.top.TopMainLogic;
-import com.example.kiho.wordSearch.SearchMainLogic;
+import com.example.login.LoginMainLogic;
+import com.example.mypage.MyPageMainLogic;
+import com.example.postMessage.PostForm;
+import com.example.postMessage.PostMessageMainLogic;
+import com.example.postresult.CommentAddMainLogic;
+import com.example.postresult.IineAddMainLogic;
+import com.example.postresult.PostDeleteMainLogic;
+import com.example.postresult.PostResultMainLogic;
+import com.example.pwchange.PwchangeMainLogic;
+import com.example.top.TopMainLogic;
+import com.example.wordSearch.SearchMainLogic;
 
 @Controller
 public class MainController {

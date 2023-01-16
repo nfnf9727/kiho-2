@@ -1,11 +1,11 @@
-package com.example.kiho.postresult;
+package com.example.postresult;
 
 import java.util.Random;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
 
-import com.example.kiho.top.TopMainLogic;
+import com.example.top.TopMainLogic;
 
 public class PostDeleteMainLogic {
 	public void postDeleteMainLogic(Model model,JdbcTemplate jdbcTemplate,int no) {

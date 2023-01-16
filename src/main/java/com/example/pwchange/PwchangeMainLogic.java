@@ -1,4 +1,4 @@
-package com.example.kiho.pwchange;
+package com.example.pwchange;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

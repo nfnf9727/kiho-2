@@ -1,4 +1,4 @@
-package com.example.kiho.postMessage;
+package com.example.postMessage;
 
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,4 +1,4 @@
-package com.example.kiho.mypage;
+package com.example.mypage;
 
 import java.util.List;
 import java.util.Map;

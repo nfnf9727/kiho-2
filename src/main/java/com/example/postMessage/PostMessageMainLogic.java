@@ -1,4 +1,4 @@
-package com.example.kiho.postMessage;
+package com.example.postMessage;
 
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -10,7 +10,8 @@ import java.util.Random;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
-import com.example.kiho.top.TopMainLogic;
+
+import com.example.top.TopMainLogic;
 
 public class PostMessageMainLogic {
 

@@ -1,4 +1,4 @@
-package com.example.kiho.postresult;
+package com.example.postresult;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 

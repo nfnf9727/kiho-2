@@ -1,4 +1,4 @@
-package com.example.kiho.postMessage;
+package com.example.postMessage;
 
 
 

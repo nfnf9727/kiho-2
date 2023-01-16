@@ -1,4 +1,4 @@
-package com.example.kiho.wordSearch;
+package com.example.wordSearch;
 
 import java.util.List;
 import java.util.Map;
