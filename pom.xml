@@ -71,7 +71,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.example.Kiho2Application</mainClass>
+							<mainClass>com.example.kiho.Kiho2Application</mainClass>
 							<addClasspath>true</addClasspath>
 							<addExtensions>false</addExtensions>
 							<classpathPrefix></classpathPrefix>

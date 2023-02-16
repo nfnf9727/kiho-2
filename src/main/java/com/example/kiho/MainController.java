@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.kiho;
 
 import java.util.Random;
 
