@@ -10,7 +10,7 @@ $(function() {
 			}
 		})
 		.done(function(data) {
-			$(".comment-post").append(`<div>◆ ${document.getElementById("loginId").value} ◆</div><br/><div>${data}</div>`);
+			$(".comment-post").append(`<div>◆ ${document.getElementById("name").value} ◆</div><br/><div>${data}</div>`);
 			$("#comments").val("");  // 入力欄を空にする
 		})
 		.fail(function() {

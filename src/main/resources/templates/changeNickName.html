@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>企Ｓみんなのコミュニティアプリ</title>
+	<link th:href="@{/css/postresult.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
+	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
+	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)" />
+	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 375px)"/>
+</head>
+
+<body>
+	<div th:replace="header::header"></div>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<h1 class="h1indent">ニックネーム変更</h1>
+	<table class="mypage" style="margin-left: 20px;">
+		<tr>
+			<th>現在のニックネーム</th>
+			<td th:text="${name}">
+			</td>
+			<td style="background-color: white;">
+			</td>
+		</tr>
+		<tr>
+			<th>新しいニックネーム</th>
+			<form method="post" name="nickName" action="/nickName">
+			<td>
+			    <input type="text" id="nickName" name="nickName">
+			</td>
+			<td style="background-color: white;">
+				<button type="submit" >変更する</button>
+			</td>
+			</form>
+		</tr>
+		<tr>
+		    <td style="background-color: white;">
+		    </td>
+			<td style="background-color: white;">
+			<span style="color:red" th:text="${errMsg}"></span>
+			</td>
+			<td style="background-color: white;">
+			</td>
+		</tr>
+
+</body>
+
+</html>

@@ -487,5 +487,63 @@ public class MainController {
 		iaml.iineAddMainLogic(jdbcTemplate, no);
 		return iinenum += 1;
 	}
+	
+	/**
+	 * マイページからニックネーム変更
+	 * @param model
+	 * @param httpSession
+	 * @return
+	 */
+	@RequestMapping(path = "/changeNickName")
+	public String changeNickName(Model model, HttpSession httpSession) {
+
+		String loginId = (String) httpSession.getAttribute("loginId");
+		MyPageMainLogic mpml = new MyPageMainLogic();
+		mpml.changeNickName(model, jdbcTemplate, loginId);
+		model.addAttribute("loginId", loginId);
+		System.out.println(loginId);
+		
+		return "changeNickName";
+	}
+	
+	/**
+	 * ニックネーム変更画面からニックネーム変更
+	 * @param model
+	 * @param httpSession
+	 * @return
+	 */
+	@PostMapping(path = "/nickName")
+	public String nickNameChange(Model model, HttpSession httpSession, String nickName) {
+
+		String loginId = (String) httpSession.getAttribute("loginId");
+		MyPageMainLogic mpml = new MyPageMainLogic();
+		String errMsg = mpml.checkNickName(model, jdbcTemplate, nickName);
+		mpml.changeNickName(model, jdbcTemplate, loginId);
+		if(!errMsg.equals("")) {
+			model.addAttribute("errMsg", errMsg);
+			return "changeNickName";
+		}else {
+			mpml.updateNickName(model, jdbcTemplate, loginId, nickName);
+			
+			// トップ画面へ遷移
+			TopMainLogic tc = new TopMainLogic();
+			tc.topHashTag(model, jdbcTemplate);
+			tc.topImagePath(model, jdbcTemplate);
+			tc.topNo(model, jdbcTemplate);
+			tc.topCategory(model, jdbcTemplate);
+
+			Random rnd = new Random();
+			model.addAttribute("flg", rnd.nextInt(3));
+
+			// sessionより画面幅取得
+			// 画面幅に応じて出力する画面を変える
+			int width = (int) httpSession.getAttribute("width");
+			if (width > 400) {
+				return "top_pc";
+			} else {
+				return "top_mobile";
+			}
+		}
+	}
 
 }
