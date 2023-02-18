@@ -60,7 +60,7 @@ public class MainController {
 			// 画面幅に応じて出力する画面を変える
 			int width = (int) httpSession.getAttribute("width");
 			if (width > 400) {
-				return "top_pc";
+				return "top_mobile";
 			} else {
 				return "top_mobile";
 			}
