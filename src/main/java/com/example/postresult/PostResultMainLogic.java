@@ -1,5 +1,7 @@
 package com.example.postresult;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +50,19 @@ public class PostResultMainLogic {
 
 	//commentテーブルの取得
 		String commentSQL = "SELECT * FROM comment WHERE no = '" + no + "' ORDER BY commentTime ASC";
-		List<Map<String,Object>> commentList = jdbcTemplate.queryForList(commentSQL);
+		List<Map<String,Object>> tableList = jdbcTemplate.queryForList(commentSQL);
+		List<Map<String,Object>> commentList = new ArrayList<Map<String,Object>>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(int i = 0; i < tableList.size(); i++) {
+			String nameSQL = "SELECT name FROM user WHERE loginId = '" + tableList.get(i).get("commenter") + "'";
+			String name = jdbcTemplate.queryForObject(nameSQL, String.class);
+			map.put("commenter", name);
+			Object comments = tableList.get(i).get("comments");
+			map.put("comments", comments);
+			commentList.add(map);
+			System.out.println(commentList);
+		}
+		System.out.println("登録：" + commentList);
 		model.addAttribute("commentList", commentList);
 		
 	//userテーブルからの取得
@@ -56,6 +70,11 @@ public class PostResultMainLogic {
 		String nameSQL = "SELECT name FROM user WHERE loginId = '" + loginId + "'";
 		String name = jdbcTemplate.queryForObject(nameSQL, String.class);
 		model.addAttribute("name", name);
+		
+		//投稿者名の取得
+		String loginNameSQL = "SELECT name FROM user WHERE loginId = '" + sessionloginId + "'";
+		String loginName = jdbcTemplate.queryForObject(loginNameSQL, String.class);
+		model.addAttribute("loginName", loginName);
 		
 	//実装確認用
 		System.out.println(loginId);
