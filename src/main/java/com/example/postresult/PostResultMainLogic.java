@@ -1,12 +1,24 @@
 package com.example.postresult;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
+
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.util.IOUtils;
 
 
 public class PostResultMainLogic {
@@ -35,7 +47,33 @@ public class PostResultMainLogic {
 		
 		//投稿画像の取得
 		String imageSQL = "SELECT image FROM postmsg WHERE no = '" + no + "'";
-		String image = jdbcTemplate.queryForObject(imageSQL, String.class);
+		String imagePath = jdbcTemplate.queryForObject(imageSQL, String.class);
+		String image = "";
+		if(!"".equals(imagePath)) {
+			AWSCredentials credentials = new BasicAWSCredentials("AKIA25JTTTFF4U75OIMU","u1iS2VMTsAZvIZtmPRvs1yVgjXxBLrWHg60GtvAr");
+		    // S3クライアントの生成
+		    AmazonS3 s3Client = AmazonS3ClientBuilder
+		            .standard()
+		            .withCredentials(new AWSStaticCredentialsProvider(credentials))
+		            .withRegion(Regions.AP_NORTHEAST_1)
+		            .build();
+		    // バケット名とS3のファイルパス（キー値）を指定
+		    GetObjectRequest request = new GetObjectRequest("bucket-5omsgu", imagePath);
+		    // ファイルダウンロード
+		    S3Object object = s3Client.getObject(request);
+		    String fileBase64 = null;
+
+            // バイナリデータをBase64に変換
+	        byte[] encode;
+			try {
+				encode = Base64.getEncoder().encode(IOUtils.toByteArray(object.getObjectContent()));
+				fileBase64 = new String(encode);
+				image = "data:image/png;base64," + fileBase64;
+			} catch (IOException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+		}
 		model.addAttribute("image", image);
 		
 		//投稿日時の取得

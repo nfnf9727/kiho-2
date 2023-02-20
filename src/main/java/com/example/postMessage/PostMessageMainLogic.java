@@ -1,16 +1,23 @@
 package com.example.postMessage;
 
-import java.io.OutputStream;
+import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
+import java.util.UUID;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.example.top.TopMainLogic;
 
 public class PostMessageMainLogic {
@@ -36,34 +43,50 @@ public class PostMessageMainLogic {
 				hashTag = form.getHashtagSelect();
 			}
 
-			// 画像のファイル名生成 同じ画像をアップロードする可能性もあるため、被らないようランダムでファイル名を設定する
-			StringBuilder sb1 = new StringBuilder("abcdefghijklmnopqrstuvwxyz");
-			StringBuilder sb2 = new StringBuilder("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-			StringBuilder sb3 = new StringBuilder("0123456789");
-			sb1.append(sb2);
-			sb1.append(sb3);
-			StringBuilder sb = new StringBuilder();
-			Random rand = new Random();
-			for (int i = 0; i < 20; i++) {
-				int num = rand.nextInt(sb1.length());
-				sb.append(sb1.charAt(num));
-			}
+//			// 画像のファイル名生成 同じ画像をアップロードする可能性もあるため、被らないようランダムでファイル名を設定する
+//			StringBuilder sb1 = new StringBuilder("abcdefghijklmnopqrstuvwxyz");
+//			StringBuilder sb2 = new StringBuilder("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+//			StringBuilder sb3 = new StringBuilder("0123456789");
+//			sb1.append(sb2);
+//			sb1.append(sb3);
+//			StringBuilder sb = new StringBuilder();
+//			Random rand = new Random();
+//			for (int i = 0; i < 20; i++) {
+//				int num = rand.nextInt(sb1.length());
+//				sb.append(sb1.charAt(num));
+//			}
 			try {
-				Path path = Paths.get("src/main/resources/static/images/" + sb + ".png");
-				if (!form.getImage().isEmpty()) {
-					byte[] bytes = form.getImage().getBytes();
-					OutputStream stream = Files.newOutputStream(path);
-					stream.write(bytes);
-				}
+//				Path path = Paths.get("src/main/resources/static/images/" + sb + ".png");
+//				if (!form.getImage().isEmpty()) {
+//					byte[] bytes = form.getImage().getBytes();
+//					OutputStream stream = Files.newOutputStream(path);
+//					stream.write(bytes);
+//				}
 				
-				String imagePath = "/images/" + sb + ".png";
 				if (form.getImage().isEmpty()) {
 					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('" + loginId + "', '"
 							+ form.getPostText() + "','" + hashTag + "', '','" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				} else {
+					var filenameExtension = StringUtils.getFilenameExtension(form.getImage().getOriginalFilename());
+				    var key = UUID.randomUUID().toString() + "." + filenameExtension;
+				    System.out.println("key" + key);
+				    var metadata = new ObjectMetadata();
+				    metadata.setContentLength(form.getImage().getSize());
+				    metadata.setContentType(form.getImage().getContentType());
+					// S3へ画像をアップロード
+					AWSCredentials credentials = new BasicAWSCredentials("AKIA25JTTTFF4U75OIMU","u1iS2VMTsAZvIZtmPRvs1yVgjXxBLrWHg60GtvAr");
+				    // S3クライアントの生成
+				    AmazonS3 s3Client = AmazonS3ClientBuilder
+				            .standard()
+				            .withCredentials(new AWSStaticCredentialsProvider(credentials))
+				            .withRegion(Regions.AP_NORTHEAST_1)
+				            .build();
+					
+				    s3Client.putObject("bucket-5omsgu", key, form.getImage().getInputStream(), metadata);
+				    
 					String sql1 = "INSERT INTO postmsg(loginId, postText, hashTag, image, createdTime, iine) VALUES('" + loginId + "', '"
-							+ form.getPostText() + "', '" + hashTag + "', '" + imagePath + "', '" + fdate1 + "', '0')";
+							+ form.getPostText() + "', '" + hashTag + "', '" + key + "', '" + fdate1 + "', '0')";
 					jdbcTemplate.update(sql1);
 				}
 
