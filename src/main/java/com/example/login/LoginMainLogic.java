@@ -76,7 +76,6 @@ public class LoginMainLogic {
 
 			String loginPasswordSQL = "SELECT password FROM user WHERE loginID = '" + uid + "'";
 			String loginPassword = jdbcTemplate.queryForObject(loginPasswordSQL, String.class);
-
 			if (!password.equals(loginPassword)) {
 				System.out.println("パスワードが一致しません");
 				model.addAttribute("message2", "パスワードが一致しません");
