@@ -27,7 +27,6 @@ public class MyPageMainLogic {
 		String myPageSQL = "SELECT * FROM postmsg WHERE loginId = '" + loginId + "' ORDER BY createdTime DESC";
 		List<Map<String, Object>> list = jdbcTemplate.queryForList(myPageSQL);
 		List<Map<String, Object>> myPageList = new ArrayList<Map<String, Object>>();
-		System.out.println("List:"+list);
 		for (int i = 0; i < list.size(); i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("no", list.get(i).get("no"));
@@ -36,7 +35,6 @@ public class MyPageMainLogic {
 			
 			if ("".equals(list.get(i).get("image"))) {
 				map.put("image", list.get(i).get("image"));
-				System.out.println(map);
 				myPageList.add(map);
 			} else {
 				AWSCredentials credentials = new BasicAWSCredentials("AKIA25JTTTFF4U75OIMU",
@@ -61,7 +59,6 @@ public class MyPageMainLogic {
 					
 					map.put("image", base64);
 					myPageList.add(map);
-					System.out.println(map);
 				} catch (IOException e) {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();

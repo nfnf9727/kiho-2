@@ -189,7 +189,6 @@ public class SearchMainLogic {
 				postList.add(map);
 			}
 		}
-		System.out.println(postList);
 		//沖田追加↓
 		model.addAttribute("midashimessage","すべての投稿");
 		//沖田追加↑
