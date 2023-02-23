@@ -129,13 +129,14 @@ main {
  
 .modal-header {
   background: black;
-  padding: 3px 15px;
+  padding: 20px 15px;
   display: flex;
   justify-content: space-between;
 }
  
 .modalClose {
-  font-size: 2rem;
+  font-size: 3rem;
+  color: white;
 }
  
 .modalClose:hover {
@@ -143,7 +144,7 @@ main {
 }
  
 .modal-body {
-  padding: 10px 0px;
+  padding: 80px 0px;
   color: black;
 }
 
