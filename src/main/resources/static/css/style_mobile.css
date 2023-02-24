@@ -42,9 +42,11 @@
 
 
 table.toukou {
+	width: 800px;
 	height: 100%;
 	table-layout: fixed;
 	margin: auto;
+	font-size: 30px;
 }
 
 table.toukou tr {
@@ -103,10 +105,26 @@ table.toukou td.toukouButton {
 @media (min-width: 768px) {
   .button-54 {
     padding: 0.25em 0.75em;
+    width: 130px;
+    height: 60px;
+    font-size: 30px;
   }
 }
 
+#imageLogo {
+	width: 80px;	
+}
 
+#hashtagSelect{
+	width:150px;
+	height: 50px;
+	font-size: 20px;
+}
+
+#hashtagInput{
+	width: 200px;
+	height: 30px;
+}
 
 .slide {
   position: relative;
@@ -122,7 +140,7 @@ table.toukou td.toukouButton {
   width: inherit;
   height: inherit;
   left: 100%;
-  animation: slide-anime 30s ease infinite;
+  animation: slide-anime 30s infinite;
 }
 .slide form:nth-of-type(1) {animation-delay: 0s;}
 .slide form:nth-of-type(2) {animation-delay: 3s;}
