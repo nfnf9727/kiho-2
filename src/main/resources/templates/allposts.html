@@ -7,7 +7,7 @@
 	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 400px)" />
 	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
 	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 400px)" />
-	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 400px)"/>
+	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -26,11 +26,11 @@
 				<input type="hidden" name="no" th:value="${postList.no}">
 				<div class="post-icon">
 					<th:block th:if="${postList.image != ''}">
-						<input style="max-width: 100%; height: auto; width /**/:auto;" type="image"
+						<input style="max-width: 100%; height: 100px;" type="image"
 							th:src="${postList.image}" />
 					</th:block>
 					<th:block th:if="${postList.image == ''}">
-						<input style="max-width: 100%; height: auto; width /**/:auto;" type="image"
+						<input style="max-width: 100%; height: 100px;" type="image"
 							src="/commonImages/noimage.png" />
 					</th:block>
 				 </div>	

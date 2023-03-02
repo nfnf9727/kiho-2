@@ -163,17 +163,15 @@ header {
 }
 
 .post-icon {
-  position: relative;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-icon img {
   max-width: 100%;
-  height: auto;
-  width /**/:auto;
-  object-fit: cover;
   overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 150px;
 }
 
 
