@@ -373,7 +373,8 @@ body {
 /* Nav items */
 .menu1 {
   list-style: none;
-  position: absolute;
+  position: fixed;
+  overflow: auto;
   width: 100%;
   height: 100%;
   top: 0;
