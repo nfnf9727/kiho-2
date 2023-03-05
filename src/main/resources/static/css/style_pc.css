@@ -551,9 +551,11 @@ td{
 
 
 table.toukou {
+	width: 800px;
 	height: 100%;
 	table-layout: fixed;
 	margin: auto;
+	font-size: 30px;
 }
 
 table.toukou tr {
@@ -605,6 +607,9 @@ table.toukou td.toukouButton {
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;
+  width: 130px;
+    height: 60px;
+    font-size: 30px;
 }
 
 @media (min-width: 768px) {
@@ -754,3 +759,6 @@ table.mypage td{
   border-top: 1px solid #f2f2f2;
   border-right: 1px solid #f2f2f2;
 }
+
+
+
