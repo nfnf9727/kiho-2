@@ -170,5 +170,14 @@ public class LoginMainLogic {
 		jdbcTemplate.update(LoginTime);
 
 	}
+	
+	public List<Map<String, Object>> getNotification(Model model, JdbcTemplate jdbcTemplate, String loginId) {
+
+		String SQL = "SELECT * FROM notifications WHERE receiveLoginId = '" + loginId + "' ORDER BY time DESC";
+		List<Map<String, Object>> notificationList = jdbcTemplate.queryForList(SQL);
+		
+		return notificationList;
+
+	}
 
 }

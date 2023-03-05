@@ -4,7 +4,7 @@
 <head>
 	<title>タイトル</title>
 	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" />
-	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css"  />
 	<link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
 	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" />
 </head>
@@ -73,7 +73,7 @@
 			</div>
 			<input type="hidden" name="no" th:value="${noList[4]}" />
 		</form>
-		<form method="post" name="FORM8" action="/postDetail">
+<!--		<form method="post" name="FORM8" action="/postDetail">
 			<a href="javascript:FORM8.submit()" style="text-decoration: none; color:black;"><span
 					th:text="${hashTagList[5]}"></span></a>
 			<div th:if="${imagePathList[5] == ''}">
@@ -128,6 +128,7 @@
 			</div>
 			<input type="hidden" name="no" th:value="${noList[9]}" />
 		</form>
+		-->
 	</div>
 	<br />
 	<div class="alltoukou">

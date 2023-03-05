@@ -1,5 +1,7 @@
 package com.example.kiho;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -295,7 +297,18 @@ public class MainController {
 		tc.topImagePath(model, jdbcTemplate);
 		tc.topNo(model, jdbcTemplate);
 		tc.topCategory(model, jdbcTemplate);
-
+		
+		// 通知情報取得
+		List<Map<String, Object>> notificationList = lml3.getNotification(model, jdbcTemplate, uid);
+		httpSession.setAttribute("notificationList", notificationList);
+		if(notificationList.isEmpty() || notificationList == null) {
+			System.out.println("通知なし");
+			httpSession.setAttribute("notificationFlg", 0);
+		}else {
+			httpSession.setAttribute("notificationFlg", 1);
+		}
+		System.out.println(notificationList);
+		
 		Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
 
@@ -478,13 +491,14 @@ public class MainController {
 	 */
 	@PostMapping("/iineadd")
 	@ResponseBody
-	public int iineAdd(@RequestParam int iinenum, int no) {
+	public int iineAdd(@RequestParam int iinenum, int no, HttpSession httpSession) {
 		System.out.println("iineAddメソッド開始");
 		System.out.println(iinenum);
 		System.out.println(no);
 //		postmsgテーブルのいいね数の更新が必要
+		String loginId = (String) httpSession.getAttribute("loginId");
 		IineAddMainLogic iaml = new IineAddMainLogic();
-		iaml.iineAddMainLogic(jdbcTemplate, no);
+		iaml.iineAddMainLogic(jdbcTemplate, no, loginId);
 		return iinenum += 1;
 	}
 	

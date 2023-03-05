@@ -3,10 +3,10 @@
 
 <head>
 	<title>タイトル</title>
-	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 401px)" />
-	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
-	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width: 401px)" />
-	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" />
+	<link th:href="@{/css/style_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width:701px)" />
+	<link th:href="@{/css/style_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 700px)" />
+	<link th:href="@{/css/base_pc.css}" rel="stylesheet" type="text/css" media="screen and (min-width:701px)" />
+	<link th:href="@{/css/base_mobile.css}" rel="stylesheet" type="text/css" media="screen and (max-width: 700px)" />
 	<link th:href="@{/css/allposts.css}" rel="stylesheet" type="text/css" />
 </head>
 <header class="header">
@@ -41,6 +41,30 @@
 			</form>
 		</li>
 	</ul>
+	
+	<input type="checkbox" class="menu-btn1" id="menu-btn1">
+	<label for="menu-btn1" class="menu-icon1" style="float: right;">
+	  <div style="text-align: center;">
+			<img style="width: 50px; height: 50px;" src="/commonImages/notification_1.PNG">
+	  </div>
+	</label>
+	<th:block th:if="${session.notificationFlg == 0}">
+		<ul class="menu1">
+			<li>
+				<span>まだ通知が届いていません。</span>
+			</li>
+		</ul>
+	</th:block>
+	<th:block th:if="${session.notificationFlg == 1}">
+		<ul class="menu1">
+			<th:block th:each="notificationList : ${session.notificationList}">
+				<li>
+					<span th:text="${notificationList.time}"></span>
+					<p th:text="${notificationList.notification}"></p>
+				</li>
+			</th:block>
+		</ul>
+	</th:block>
 
 	<div id="easyModal" class="modal">
 		<div class="modal-content">
