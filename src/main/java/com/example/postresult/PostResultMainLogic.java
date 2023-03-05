@@ -123,7 +123,7 @@ public class PostResultMainLogic {
 		System.out.println(name);
 		System.out.println(no);
 		System.out.println(sessionloginId);
-		model.addAttribute("loginId", sessionloginId);
+
 		
 	}
 
