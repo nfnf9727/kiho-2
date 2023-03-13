@@ -21,14 +21,6 @@ a {
 
 
 
-.container {
-    /*max-width: 1170px;*/
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
 .btn {
   padding: 8px 24px;
   color: white;
@@ -50,7 +42,7 @@ header {
 }
 
 .logo {
-  width: 124px;
+  width: 200px;
   margin-top: 15px;
   margin-left: 15px;
 }
@@ -91,21 +83,6 @@ header {
   display: block;
 }
 
-/*追加*/
-.post-wrapper {
-    width: 100%;
-    display: flex;
-}
-
-.post-container {
-  height: auto;
-  background-color: #f7f7f7;
-  text-align: center;
-  width: 82%;
-}
-
-
-
 .heading {
   padding-top: 80px;
   padding-bottom: 50px;
@@ -116,27 +93,29 @@ header {
   font-weight: normal;
 }*/
 
-
-.post-icon {
-  position: relative;
+.container {
+    /*max-width: 1170px;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    
 }
 
 
-.post-icon p {
-  position: absolute;
-  top: 44%;
-  width: 100%;
-  /*color: white;*/
+/*追加*/
+.post-wrapper {
+    width: 100%;
+    display: flex;
+    min-height: 800px;
 }
 
-.text-contents {
-  width: 80%;
-  display: inline-block;
-  margin-top: 15px;
-  font-size: 13px;
-  color: #b3aeb5;
-}
-  
+.post-container {
+  height: auto;
+  background-color: #f7f7f7;
+  text-align: center;
+  width: 82%;
+}  
 
 .side {
   padding-top: 10px;
@@ -157,7 +136,7 @@ header {
 
 /*以下追加*/
 .modal-body {
-  padding: 10px 0px;
+  padding: 100px 0px;
   color: black;
 }
 
@@ -182,16 +161,205 @@ header {
   background-color: #f5f5f5;
 
 }
- 
+
+.post-icon {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .post-icon img {
   max-width: 100%;
-  height: auto;
-  width /**/:auto;
-  
-    
-  object-fit: cover;
   overflow: hidden;
-  transition-duration: 0.5s;
-  max-height: 150px;
 }
-  
+
+
+.iine {
+  position: relative;
+} 
+
+
+.iine-count {
+  position: absolute;
+  text-align: end;
+  margin: 20px 0 0 0;
+}
+
+.iine-img {
+  position: absolute;
+  text-align: end;
+  margin: 0 20px 0 0;
+}
+
+.iine-img:hover {
+    border-bottom: 0;
+    transform: translateY(4px);
+    margin-bottom: 4px;
+}
+
+
+.text-contents {
+  width: 80%;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #b3aeb5;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+body {
+  margin: 0;
+}
+
+/* Navbar & Navmenu color */
+:root {
+  --background-navbar: rgba(55, 55, 55, 0.98);
+}
+
+.header {
+  background: var(--background-navbar);
+  position: fixed;
+  width: 100%;
+  height: 100px;
+}
+
+/* Nav items */
+.menu {
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  margin-top: 100px;
+  padding: 0 0 10px 0;
+  clear: both;
+  background: var(--background-navbar);
+  transition: 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
+  transform: scale(1, 0);
+  transform-origin: top;
+}
+
+/* Hamburger menu button */
+.menu-btn:checked ~ .menu {
+  transform: scale(1, 1);
+  transform-origin: top;
+  transition: 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
+}
+
+/* Hamburger menbu text */
+.menu a {
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ddd;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.menu li {
+  border-top: 1px solid rgb(75, 75, 75);
+  padding: 45px 0;
+  margin: 0 54px;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.menu-btn:checked ~ .menu a,
+.menu-btn:checked ~ .menu li {
+  opacity: 1;
+  transition: 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.2s;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.menu-icon {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding: 48px 14px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.navicon {
+  background: #ddd;
+  display: block;
+  height: 3px;
+  width: 48px;
+  position: relative;
+  transition: 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
+}
+
+.navicon:before,
+.navicon:after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: #ddd;
+  transition: 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
+}
+
+.navicon:before {
+  top: 9px;
+}
+
+.navicon:after {
+  bottom: 9px;
+}
+
+/* Hamburger Menu Animation Start */
+.menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before {
+  top: 0;
+}
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  bottom: 0;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon {
+  background: rgba(0, 0, 0, 0);
+  transition: 0.2192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
+}
+/* Hamburger Menu Animation End */
+
+/* Navbar Container */
+.navtext-container {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navbar Text */
+.navtext {
+  position: absolute;
+  text-transform: uppercase;
+  color: #ddd;
+  letter-spacing: 4px;
+  font-size: 20px;
+}
