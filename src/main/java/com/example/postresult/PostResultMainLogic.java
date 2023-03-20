@@ -97,10 +97,14 @@ public class PostResultMainLogic {
 			map.put("commenter", name);
 			Object comments = tableList.get(i).get("comments");
 			map.put("comments", comments);
+			Object commentloginid = tableList.get(i).get("commenter");
+			map.put("commentloginid", commentloginid);
+			Object commentno = tableList.get(i).get("commentNo");
+			map.put("commentno", commentno);
 			commentList.add(map);
 		}
 		model.addAttribute("commentList", commentList);
-		
+		System.out.println(commentList);
 	//userテーブルからの取得
 		//投稿者名の取得
 		String nameSQL = "SELECT name FROM user WHERE loginId = '" + loginId + "'";

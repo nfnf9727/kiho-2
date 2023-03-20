@@ -22,6 +22,7 @@ import com.example.mypage.MyPageMainLogic;
 import com.example.postMessage.PostForm;
 import com.example.postMessage.PostMessageMainLogic;
 import com.example.postresult.CommentAddMainLogic;
+import com.example.postresult.CommentDeleteMainLogic;
 import com.example.postresult.IineAddMainLogic;
 import com.example.postresult.PostDeleteMainLogic;
 import com.example.postresult.PostResultMainLogic;
@@ -482,7 +483,27 @@ public class MainController {
 
 		return comments;
 	}
+	/**
+	 * コメント削除 --2023.3.9 okita Add--
+	 * 
+	 * @parm model
+	 * @parm no
+	 * @return
+	 */
+	@PostMapping(path = "/commentdelete")
+	public String commentDelete(Model model, @RequestParam int no, HttpSession httpSession) {
+		System.out.println("commentDeleteメソッド開始");
+//		コメント削除の実行
+		CommentDeleteMainLogic cdml = new CommentDeleteMainLogic();
+		String loginId = (String) httpSession.getAttribute("loginId");
+		cdml.commentDeleteMainLogic(model,jdbcTemplate, no);
+		//再度投稿画面表示
+		TopMainLogic tc = new TopMainLogic();
+		tc.topCategory(model, jdbcTemplate);
+		return "postresult";
+	}
 
+	
 	/**
 	 * いいね！更新 --2022.9.15 hatano Add
 	 * 
