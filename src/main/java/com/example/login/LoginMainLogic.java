@@ -1,9 +1,14 @@
 package com.example.login;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -171,10 +176,28 @@ public class LoginMainLogic {
 
 	}
 	
-	public List<Map<String, Object>> getNotification(Model model, JdbcTemplate jdbcTemplate, String loginId) {
+	public List<Map<String, Object>> getNotification(Model model, JdbcTemplate jdbcTemplate, String loginId, HttpSession httpSession) {
 
 		String SQL = "SELECT * FROM notifications WHERE receiveLoginId = '" + loginId + "' ORDER BY time DESC";
 		List<Map<String, Object>> notificationList = jdbcTemplate.queryForList(SQL);
+		
+		String SQL1 = "SELECT time FROM notifications WHERE receiveLoginId = '" + loginId + "' ORDER BY time DESC limit 1";
+		String strNewTime = jdbcTemplate.queryForObject(SQL1, String.class);
+		String SQL2 = "SELECT lastlogin FROM user WHERE loginID = '" + loginId + "'";
+		String strLastTime = jdbcTemplate.queryForObject(SQL2, String.class);
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			Date newTime = sdFormat.parse(strNewTime);
+			Date lastTime = sdFormat.parse(strLastTime);
+			if(newTime.after(lastTime)) {
+				httpSession.setAttribute("notificationNewFlg", 1);
+			}else {
+				httpSession.setAttribute("notificationNewFlg", 0);
+			}
+		} catch (ParseException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 		
 		return notificationList;
 

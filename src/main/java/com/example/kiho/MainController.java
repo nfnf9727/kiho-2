@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -263,6 +264,16 @@ public class MainController {
 
 		System.out.println(widthScreen);
 		httpSession.setAttribute("width", widthScreen);
+		// 通知情報取得
+		LoginMainLogic lml3 = new LoginMainLogic();
+		List<Map<String, Object>> notificationList = lml3.getNotification(model, jdbcTemplate, uid, httpSession);
+		httpSession.setAttribute("notificationList", notificationList);
+		if(notificationList.isEmpty() || notificationList == null) {
+			httpSession.setAttribute("notificationFlg", 0);
+		}else {
+			httpSession.setAttribute("notificationFlg", 1);
+		}
+		
 		// インプットチェック
 
 		LoginMainLogic lml = new LoginMainLogic();
@@ -285,7 +296,7 @@ public class MainController {
 			return "password";
 		}
 
-		LoginMainLogic lml3 = new LoginMainLogic();
+		
 		lml3.LastLogin(model, jdbcTemplate, uid);
 		System.out.println(uid);
 		System.out.println(password);
@@ -297,17 +308,6 @@ public class MainController {
 		tc.topImagePath(model, jdbcTemplate);
 		tc.topNo(model, jdbcTemplate);
 		tc.topCategory(model, jdbcTemplate);
-		
-		// 通知情報取得
-		List<Map<String, Object>> notificationList = lml3.getNotification(model, jdbcTemplate, uid);
-		httpSession.setAttribute("notificationList", notificationList);
-		if(notificationList.isEmpty() || notificationList == null) {
-			System.out.println("通知なし");
-			httpSession.setAttribute("notificationFlg", 0);
-		}else {
-			httpSession.setAttribute("notificationFlg", 1);
-		}
-		System.out.println(notificationList);
 		
 		Random rnd = new Random();
 		model.addAttribute("flg", rnd.nextInt(3));
@@ -500,6 +500,14 @@ public class MainController {
 		IineAddMainLogic iaml = new IineAddMainLogic();
 		iaml.iineAddMainLogic(jdbcTemplate, no, loginId);
 		return iinenum += 1;
+	}
+	
+	@PostMapping("/notificationChange")
+	@ResponseBody
+	public void notificationChange(@RequestParam int notificationNewFlg, HttpSession httpSession) {
+		System.out.println("notificationChangeメソッド開始");
+		httpSession.setAttribute("notificationNewFlg", 0);
+		System.out.println(httpSession.getAttribute("notificationNewFlg"));
 	}
 	
 	/**
