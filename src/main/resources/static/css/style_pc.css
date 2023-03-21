@@ -551,11 +551,11 @@ td{
 
 
 table.toukou {
-	width: 700px;
+	width: 80%;
 	height: 100%;
 	table-layout: fixed;
 	margin: auto;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 table.toukou tr {
