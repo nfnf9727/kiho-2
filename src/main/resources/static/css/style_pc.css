@@ -551,11 +551,11 @@ td{
 
 
 table.toukou {
-	width: 80%;
+	width: 700px;
 	height: 100%;
 	table-layout: fixed;
 	margin: auto;
-	font-size: 20px;
+	font-size: 30px;
 }
 
 table.toukou tr {
@@ -663,7 +663,7 @@ h2.h2indent {
 
 
 table.mypage{
-  width: 60%;
+  width: 70%;
   border-collapse: collapse;
 }
 
@@ -761,4 +761,13 @@ table.mypage td{
 }
 
 
+#hashtagInput{
+	width: 200px;
+	height: 30px;
+}
 
+#hashtagSelect{
+	width:150px;
+	height: 50px;
+	font-size: 20px;
+}
