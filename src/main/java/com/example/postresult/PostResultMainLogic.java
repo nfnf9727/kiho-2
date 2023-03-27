@@ -120,7 +120,6 @@ public class PostResultMainLogic {
 		System.out.println(loginId);
 		System.out.println(postText);
 		System.out.println(hashTag);
-		System.out.println(image);
 		System.out.println(createdTime);
 		System.out.println(iine);
 		System.out.println(commentList); //これだと１つしか出せない？まぁいっか。

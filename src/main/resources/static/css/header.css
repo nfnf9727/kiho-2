@@ -1,0 +1,131 @@
+.header{
+	background: rgba(34, 49, 52, 0.9);
+	height: 150px;
+}
+
+#menu-conts {
+	font-size: 20px;
+}
+
+#menu-conts li{
+	border-bottom: 1px solid white;
+	padding: 5px;
+	height: 70px;
+}
+
+
+#menu-btn {
+  position: absolute;
+  width: 70px;
+  margin: 40px;
+}
+ 
+#menu-conts {
+  display: none;
+  background: rgba(34, 49, 52, 0.9);
+  position: absolute;
+  top: 155px;
+  width: 100%;
+  z-index: 1;
+}
+ 
+#menu-conts a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+ 
+#menu-conts a:hover {
+  background: rgba(0, 0, 0, .6);
+}
+
+
+
+#menu-btn1 {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  margin: 30px 20px 0px 0px;
+}
+ 
+#menu-conts1 {
+  display: none;
+  background: rgba(34, 49, 52, 0.9);
+  position: absolute;
+  top: 155px;
+  width: 100%;
+  z-index: 1;
+}
+ 
+#menu-conts1 a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+ 
+#menu-conts1 a:hover {
+  background: rgba(0, 0, 0, .6);
+}
+
+#menu-conts1 ul{
+	color: white;
+}
+
+#menu-conts1 li{
+	border-bottom: 1px solid;
+	padding: 5px;
+}
+
+
+
+#menu-btn2 {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  margin: 30px 20px 0px 0px;
+}
+ 
+#menu-conts2 {
+  display: none;
+  background: rgba(34, 49, 52, 0.9);
+  position: absolute;
+  top: 155px;
+  width: 100%;
+  z-index: 1;
+}
+ 
+#menu-conts2 a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+ 
+#menu-conts2 a:hover {
+  background: rgba(0, 0, 0, .6);
+}
+
+#menu-conts2 ul{
+	color: white;
+}
+
+#menu-conts2 li{
+	border-bottom: 1px solid;
+	padding: 5px;
+}
