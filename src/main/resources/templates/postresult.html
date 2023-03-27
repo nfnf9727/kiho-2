@@ -72,7 +72,7 @@
                 <span>◆</span>
                 <p th:text="${commentList.comments}"></p>
               </div>
-<!-- 2023.3.8 okita add ->              
+<!-- 2023.3.8 okita add -->              
               <div class="delete" th:if="${sessionloginId == commentList.commentloginid}">
 	            <form method="post" action="/commentdelete">
 		          <input type="hidden" name="no" th:value="${commentList.commentno}">

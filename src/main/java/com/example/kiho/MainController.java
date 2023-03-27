@@ -483,7 +483,7 @@ public class MainController {
 		return comments;
 	}
 	/**
-	 * コメント削除 --2023.3.9 okita Add-
+	 * コメント削除 --2023.3.9 okita Add--
 	 * 
 	 * @parm model
 	 * @parm no
