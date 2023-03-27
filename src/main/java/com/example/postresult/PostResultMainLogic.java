@@ -86,7 +86,7 @@ public class PostResultMainLogic {
 		String iine = jdbcTemplate.queryForObject(iineSQL, String.class);
 		model.addAttribute("iine", iine);
 
-	//commentテーブルの取得 --3.9 okita henko--
+	//commentテーブルの取得 --3.9 okita henko-
 		String commentSQL = "SELECT * FROM comment WHERE no = '" + no + "' ORDER BY commentTime ASC";
 		List<Map<String,Object>> tableList = jdbcTemplate.queryForList(commentSQL);
 		List<Map<String,Object>> commentList = new ArrayList<Map<String,Object>>();

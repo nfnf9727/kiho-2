@@ -1,4 +1,4 @@
-//コメント削除 --2023.3.9 okita Add--
+//コメント削除 --2023.3.9 okita Add-
 package com.example.postresult;
 
 
