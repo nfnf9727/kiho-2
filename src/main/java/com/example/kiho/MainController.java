@@ -473,12 +473,12 @@ public class MainController {
 	 */
 	@PostMapping("/comment-post")
 	@ResponseBody
-	public String commentPost(@RequestParam String comments, int no, HttpSession httpSession) {
+	public String commentPost(Model model, @RequestParam String comments, int no, HttpSession httpSession) {
 		System.out.println(no);
         //commentテーブルの更新が必要
 		CommentAddMainLogic caml = new CommentAddMainLogic();
 		String loginId = (String) httpSession.getAttribute("loginId");
-		caml.commentAddMainLogic(jdbcTemplate, no, loginId, comments);
+		caml.commentAddMainLogic(jdbcTemplate, no, loginId, comments, model);
 
 		return comments;
 	}
@@ -490,15 +490,33 @@ public class MainController {
 	 * @return
 	 */
 	@PostMapping(path = "/commentdelete")
-	public String commentDelete(Model model, @RequestParam int no, HttpSession httpSession) {
+	public String commentDelete(Model model, @RequestParam int no, String toukouNo, HttpSession httpSession) {
 		System.out.println("commentDeleteメソッド開始");
 //		コメント削除の実行
 		CommentDeleteMainLogic cdml = new CommentDeleteMainLogic();
-		String loginId = (String) httpSession.getAttribute("loginId");
 		cdml.commentDeleteMainLogic(model,jdbcTemplate, no);
 		//再度投稿画面表示
 		TopMainLogic tc = new TopMainLogic();
 		tc.topCategory(model, jdbcTemplate);
+		String sessionloginId = (String) httpSession.getAttribute("loginId");
+		PostResultMainLogic prml = new PostResultMainLogic();
+		prml.postresult(model, jdbcTemplate, sessionloginId, toukouNo);
+		return "postresult";
+	}
+	
+	
+	@PostMapping(path = "/newCommentdelete")
+	public String newCommentDelete(Model model, @RequestParam String no, String comments, HttpSession httpSession) {
+		System.out.println("newCommentDeleteメソッド開始111");
+//		コメント削除の実行
+		CommentDeleteMainLogic cdml = new CommentDeleteMainLogic();
+		cdml.newCommentDeleteMainLogic(model,jdbcTemplate, no, comments);
+		//再度投稿画面表示
+		TopMainLogic tc = new TopMainLogic();
+		tc.topCategory(model, jdbcTemplate);
+		String sessionloginId = (String) httpSession.getAttribute("loginId");
+		PostResultMainLogic prml = new PostResultMainLogic();
+		prml.postresult(model, jdbcTemplate, sessionloginId, no);
 		return "postresult";
 	}
 

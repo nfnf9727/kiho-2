@@ -75,6 +75,7 @@
 <!-- 2023.3.8 okita add -->              
               <div class="delete" th:if="${sessionloginId == commentList.commentloginid}">
 	            <form method="post" action="/commentdelete">
+	              <input type="hidden" name="toukouNo" th:value="${no}">
 		          <input type="hidden" name="no" th:value="${commentList.commentno}">
 		          <button id="commentdel" class="button">削除</button>
 	            </form>
@@ -83,7 +84,10 @@
 <!-- 2023.3.8 okita add -->              
             </th:block>
 <!-- 2022.9.15 add -->
+			
+				
 				<div class="comment-post"></div>
+			
 <!-- 2022.9.15 add -->
           </div>
         </div>     

@@ -4,9 +4,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.ui.Model;
 
 public class CommentAddMainLogic {
-	public void commentAddMainLogic(JdbcTemplate jdbcTemplate, int no, String commenter, String comments) {
+	public void commentAddMainLogic(JdbcTemplate jdbcTemplate, int no, String commenter, String comments, Model model) {
 
 		// 現在時刻の設定
 		LocalDateTime date1 = LocalDateTime.now();
@@ -14,7 +15,6 @@ public class CommentAddMainLogic {
 		String fdate1 = dtformat.format(date1);
 		String sql1 = "INSERT INTO comment(no, commenter, commentTime, comments) VALUES('" + no + "', '" + commenter + "','" + fdate1 + "', '" + comments + "')";
 		jdbcTemplate.update(sql1);
-		System.out.println("コメント挿入OK");
 		
 		// 現在時刻の設定
 		String nameSQL = "SELECT name FROM user WHERE loginId = '" + commenter + "'";
@@ -34,7 +34,6 @@ public class CommentAddMainLogic {
 				+ no + "','" + notification + "', '" + fdate1 + "')";
 		jdbcTemplate.update(sql);
 
-		
 	}
 
 }

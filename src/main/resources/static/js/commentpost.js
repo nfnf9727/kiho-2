@@ -10,7 +10,7 @@ $(function() {
 			}
 		})
 		.done(function(data) {
-			$(".comment-post").append(`<div>◆ ${document.getElementById("loginName").value} ◆</div><br/><div>${data}</div>`);
+			$(".comment-post").append(`<form method="post" action="/newCommentdelete"><input type="hidden" name="no" value="${$("#no").val()}"><div>◆ ${document.getElementById("loginName").value} ◆</div><br/><div>${data}</div><br/><input type="hidden" name="comments" value="${data}"><button class="button">削除</button></form>`);
 			$("#comments").val("");  // 入力欄を空にする
 		})
 		.fail(function() {
