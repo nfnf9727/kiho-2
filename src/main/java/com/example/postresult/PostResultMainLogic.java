@@ -89,6 +89,7 @@ public class PostResultMainLogic {
 	//commentテーブルの取得 --3.9 okita henko-
 		String commentSQL = "SELECT * FROM comment WHERE no = '" + no + "' ORDER BY commentTime ASC";
 		List<Map<String,Object>> tableList = jdbcTemplate.queryForList(commentSQL);
+		System.out.println(tableList);
 		List<Map<String,Object>> commentList = new ArrayList<Map<String,Object>>();
 		for(int i = 0; i < tableList.size(); i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -104,7 +105,6 @@ public class PostResultMainLogic {
 			commentList.add(map);
 		}
 		model.addAttribute("commentList", commentList);
-		System.out.println(commentList);
 	//userテーブルからの取得
 		//投稿者名の取得
 		String nameSQL = "SELECT name FROM user WHERE loginId = '" + loginId + "'";

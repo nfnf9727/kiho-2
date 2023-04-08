@@ -20,22 +20,10 @@ public class CommentDeleteMainLogic {
 	}
 
 	public void newCommentDeleteMainLogic(Model model, JdbcTemplate jdbcTemplate, String no, String comments) {
-		System.out.println("newCommentDeleteMainLogicメソッド開始");
-
-		String commentSQL1 = "SELECT * FROM comment WHERE no = '" + no + "' ORDER BY commentTime ASC";
-		List<Map<String,Object>> tableList1 = jdbcTemplate.queryForList(commentSQL1);
-		System.out.println(tableList1);
-		
-		
+		System.out.println("newCommentDeleteMainLogicメソッド開始");		
 		String sql1 = "DELETE FROM comment WHERE comments = '" + comments + "' AND no = '" + no + "'";
 		System.out.println(sql1);
 		jdbcTemplate.update(sql1);
-		
-		
-		String commentSQL = "SELECT * FROM comment WHERE no = '" + no + "' ORDER BY commentTime ASC";
-		List<Map<String,Object>> tableList = jdbcTemplate.queryForList(commentSQL);
-		System.out.println(tableList);
-
 	}
 
 }
