@@ -1,7 +1,6 @@
 package com.example.kiho;
 
-import java.util.List;
-import java.util.Map;
+
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -266,12 +265,10 @@ public class MainController {
 		httpSession.setAttribute("width", widthScreen);
 		// 通知情報取得
 		LoginMainLogic lml3 = new LoginMainLogic();
-		List<Map<String, Object>> notificationList = lml3.getNotification(model, jdbcTemplate, uid, httpSession);
-		httpSession.setAttribute("notificationList", notificationList);
-		if(notificationList.isEmpty() || notificationList == null) {
-			httpSession.setAttribute("notificationFlg", 0);
-		}else {
-			httpSession.setAttribute("notificationFlg", 1);
+		int errMsg = lml3.getNotification(model, jdbcTemplate, uid, httpSession);
+		if(errMsg == 1) {
+			System.out.println("111111");
+			return "login";
 		}
 		
 		// インプットチェック

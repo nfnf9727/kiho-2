@@ -167,39 +167,70 @@ public class LoginMainLogic {
 		LocalDateTime date1 = LocalDateTime.now();
 		DateTimeFormatter dtformat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		String fdate1 = dtformat.format(date1);
-		
+
 		// ログイン時刻の更新
-		
+
 		System.out.println(fdate1);
 		String LoginTime = "UPDATE user SET lastlogin = '" + fdate1 + "' WHERE loginID = '" + uid + "'";
 		jdbcTemplate.update(LoginTime);
 
 	}
-	
-	public List<Map<String, Object>> getNotification(Model model, JdbcTemplate jdbcTemplate, String loginId, HttpSession httpSession) {
+
+	public int getNotification(Model model, JdbcTemplate jdbcTemplate, String loginId, HttpSession httpSession) {
+
+		int errMsg = 0;
+		String idCheckSQL = "SELECT COUNT(*) FROM user WHERE loginID = '" + loginId + "'";
+		String idCheck = jdbcTemplate.queryForObject(idCheckSQL, String.class);
+		System.out.println(idCheck);
+
+		if ("0".equals(idCheck)) {
+			model.addAttribute("message1", "ユーザＩＤが一致しません");
+			errMsg = 1;
+			return errMsg;
+
+		}
+		
+		
+		
 
 		String SQL = "SELECT * FROM notifications WHERE receiveLoginId = '" + loginId + "' ORDER BY time DESC";
 		List<Map<String, Object>> notificationList = jdbcTemplate.queryForList(SQL);
-		
-		String SQL1 = "SELECT time FROM notifications WHERE receiveLoginId = '" + loginId + "' ORDER BY time DESC limit 1";
-		String strNewTime = jdbcTemplate.queryForObject(SQL1, String.class);
-		String SQL2 = "SELECT lastlogin FROM user WHERE loginID = '" + loginId + "'";
-		String strLastTime = jdbcTemplate.queryForObject(SQL2, String.class);
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		try {
-			Date newTime = sdFormat.parse(strNewTime);
-			Date lastTime = sdFormat.parse(strLastTime);
-			if(newTime.after(lastTime)) {
-				httpSession.setAttribute("notificationNewFlg", 1);
-			}else {
-				httpSession.setAttribute("notificationNewFlg", 0);
+		System.out.println(notificationList);
+
+		if (notificationList.isEmpty()) {
+			httpSession.setAttribute("notificationNewFlg", 0);
+		} else {
+
+			String SQL1 = "SELECT time FROM notifications WHERE receiveLoginId = '" + loginId
+					+ "' ORDER BY time DESC limit 1";
+			String strNewTime = jdbcTemplate.queryForObject(SQL1, String.class);
+			System.out.println(strNewTime);
+			String SQL2 = "SELECT lastlogin FROM user WHERE loginID = '" + loginId + "'";
+			String strLastTime = jdbcTemplate.queryForObject(SQL2, String.class);
+			SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+			try {
+				Date newTime = sdFormat.parse(strNewTime);
+				Date lastTime = sdFormat.parse(strLastTime);
+				if (newTime.after(lastTime)) {
+					httpSession.setAttribute("notificationNewFlg", 1);
+				} else {
+					httpSession.setAttribute("notificationNewFlg", 0);
+				}
+			} catch (ParseException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
 			}
-		} catch (ParseException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
 		}
-		
-		return notificationList;
+
+		httpSession.setAttribute("notificationList", notificationList);
+		if (notificationList.isEmpty() || notificationList == null) {
+			httpSession.setAttribute("notificationFlg", 0);
+		} else {
+			httpSession.setAttribute("notificationFlg", 1);
+		}
+
+		return errMsg;
 
 	}
 
