@@ -1,16 +1,16 @@
 div {text-align:center;}
 
-img {zoom:50%;}
+img {zoom:75%;}
 
 p {text-align:center;}
 
-form {text-align:center;}
+form {text-align:center;font-size:35px}
 
 table {margin:auto;}
 
-input#npw{height:30px;font-size: 20px;}
+input#npw{height:40px;font-size: 30px;}
 
-input#npw2{height:30px;font-size: 20px;}
+input#npw2{height:40px;font-size: 30px;}
 
 input[type="submit"]{
  background:#3366CC;
@@ -19,8 +19,9 @@ input[type="submit"]{
  border-radius:5px;
  position:relative;
  margin:0px 20px 0px 20px;
- font-size: 20px;
- height:35px;
+ font-size: 30px;
+ height:50px;
+ width:300px;
 }
 
 
@@ -29,4 +30,4 @@ input[type="submit"]:hover{
  cursor:pointer;
 }
 
-h4 {color: red;text-align:center;}
+h4 {color: red;text-align:center;font-size:30px;}

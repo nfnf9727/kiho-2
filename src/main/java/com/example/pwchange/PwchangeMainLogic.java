@@ -30,6 +30,7 @@ public class PwchangeMainLogic {
 		if (newpass == "") {
 			System.out.println("変更後のパスワードを入力してください");
 			model.addAttribute("message1", "変更後のパスワードを入力してください");
+			model.addAttribute("loginId", loginId);
 			errsw1 = 1;
 		}
 
@@ -38,6 +39,7 @@ public class PwchangeMainLogic {
 		if (newpass2 == "") {
 			System.out.println("変更後のパスワードを再入力してください");
 			model.addAttribute("message2", "変更後のパスワードを再入力してください");
+			model.addAttribute("loginId", loginId);
 			errsw1 = 1;
 		}
 
@@ -50,6 +52,7 @@ public class PwchangeMainLogic {
 			if (!newpass.equals(newpass2)) {
 				System.out.println("再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
 				model.addAttribute("message1", "再入力したパスワードが不一致です。再度変更後のパスワードを入力してください");
+				model.addAttribute("loginId", loginId);
 				errsw1 = 1;
 			}
 		}
@@ -61,6 +64,7 @@ public class PwchangeMainLogic {
 			if (newpass.equals("kihos")) {
 				System.out.println("変更後パスワードが初期パスワードと一致しています。別のパスワードを設定してください。");
 				model.addAttribute("message1", "変更後パスワードが初期パスワードと一致しています。別のパスワードを設定してください。");
+				model.addAttribute("loginId", loginId);
 				errsw1 = 1;
 			}
 		}
@@ -76,6 +80,7 @@ public class PwchangeMainLogic {
 			if (newpass.equals(pwCheck)) {
 				System.out.println("変更後のパスワードが旧パスワードと一致しています。");
 				model.addAttribute("message1", "変更後のパスワードが旧パスワードと一致しています。");
+				model.addAttribute("loginId", loginId);
 				errsw1 = 1;
 
 			}

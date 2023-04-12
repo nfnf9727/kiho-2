@@ -1,7 +1,7 @@
 use user;
 
 create table user
- (loginId char(6),
+ (loginId char(7),
   password VARCHAR(10) NOT NULL,
   name VARCHAR(30) NOT NULL,
   lastLogin datetime,
@@ -9,7 +9,7 @@ create table user
 
 create table postmsg
  (No INT(10) AUTO_INCREMENT,
-  loginId char(6) NOT NULL,
+  loginId char(7) NOT NULL,
   createdTime datetime,
   tag VARCHAR(50),
   picture VARCHAR(100),
@@ -20,9 +20,9 @@ create table postmsg
   PRIMARY KEY (No));
 
 create table comment
- (loginId char(6),
+ (loginId char(7),
   createdTime datetime,
-  commenter CHAR(6),
+  commenter CHAR(7),
   commentTime datetime,
   comments VARCHAR(100),
   FOREIGN KEY fk_commenter(commenter) REFERENCES user(loginId),
